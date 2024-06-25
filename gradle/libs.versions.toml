@@ -1,0 +1,17 @@
+[versions]
+kotlin = "2.0.0"
+kotlin-html = "0.11.0"
+kotlin-css = "1.0.0-pre.761"
+
+ktor = "2.3.12"
+
+[libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version.ref = "kotlin-html" }
+kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref = "kotlin-css" }
+
+ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

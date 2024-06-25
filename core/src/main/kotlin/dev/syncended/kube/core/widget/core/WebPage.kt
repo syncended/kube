@@ -2,13 +2,19 @@ package dev.syncended.kube.core.widget.core
 
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.FontStyle
+import kotlinx.css.FontWeight
 import kotlinx.css.LinearDimension
 import kotlinx.css.Margin
 import kotlinx.css.Padding
 import kotlinx.css.display
 import kotlinx.css.fontFamily
+import kotlinx.css.fontSize
+import kotlinx.css.fontStyle
+import kotlinx.css.fontWeight
 import kotlinx.css.margin
 import kotlinx.css.padding
+import kotlinx.css.src
 import kotlinx.html.FlowContent
 import kotlinx.html.body
 import kotlinx.html.dom.createHTMLDocument
@@ -42,10 +48,16 @@ fun webPage(builder: WebPage.() -> Unit): String {
 
 private fun pageStyle(): String {
   return CssBuilder().apply {
+    fontFace {
+      fontFamily = Design.Font.REGULAR
+      src = "url(data:font/truetype;charset=utf-8;base64,${Fonts.regular()}) format('truetype');"
+      fontWeight = FontWeight.normal
+      fontStyle = FontStyle.normal
+    }
     all {
       padding = Padding(LinearDimension("0px"))
       margin = Margin(LinearDimension("0px"))
-
+      fontFamily = Design.Font.REGULAR
     }
     inline { display = Display.flex }
   }.toString()

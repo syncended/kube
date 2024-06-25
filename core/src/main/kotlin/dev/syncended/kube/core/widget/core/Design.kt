@@ -6,4 +6,8 @@ object Design {
     const val TEXT = "text"
     const val INLINE = "inline"
   }
+
+  object Font {
+    const val REGULAR = "jb-regular"
+  }
 }

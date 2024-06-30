@@ -7,14 +7,17 @@ import kotlinx.css.FontWeight
 import kotlinx.css.LinearDimension
 import kotlinx.css.Margin
 import kotlinx.css.Padding
+import kotlinx.css.TextAlign
 import kotlinx.css.display
 import kotlinx.css.fontFamily
-import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
 import kotlinx.css.margin
+import kotlinx.css.p
 import kotlinx.css.padding
 import kotlinx.css.src
+import kotlinx.css.textAlign
+import kotlinx.css.width
 import kotlinx.html.FlowContent
 import kotlinx.html.body
 import kotlinx.html.dom.createHTMLDocument
@@ -40,7 +43,7 @@ class WebPage : Layout() {
   }
 }
 
-fun webPage(builder: WebPage.() -> Unit): String {
+fun cleanWebPage(builder: WebPage.() -> Unit): String {
   val page = WebPage()
   page.builder()
   return page.render()
@@ -59,6 +62,11 @@ private fun pageStyle(): String {
       margin = Margin(LinearDimension("0px"))
       fontFamily = Design.Font.REGULAR
     }
+    p { display = Display.inlineBlock }
     inline { display = Display.flex }
+    center {
+      margin = Margin(horizontal = LinearDimension.auto)
+      textAlign = TextAlign.center
+    }
   }.toString()
 }

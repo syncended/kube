@@ -8,7 +8,11 @@ import kotlinx.html.div
 class ColumnLayout : Layout() {
   override fun render(parent: FlowContent) {
     parent.div {
-      widgets.forEach { it.render(this) }
+      widgets.forEach {
+        div {
+          it.render(this)
+        }
+      }
     }
   }
 }

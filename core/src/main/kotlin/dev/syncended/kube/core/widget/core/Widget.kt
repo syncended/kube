@@ -13,6 +13,10 @@ abstract class Layout : Widget() {
   fun add(widget: Widget) {
     _widgets.add(widget)
   }
+
+  fun renderChildren(context: FlowContent) {
+    widgets.forEach { it.render(context) }
+  }
 }
 
 fun <T : Layout> Layout.childLayout(instance: T, builder: T.() -> Unit) {

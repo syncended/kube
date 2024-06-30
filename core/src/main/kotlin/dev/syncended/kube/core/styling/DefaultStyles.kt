@@ -3,25 +3,31 @@ package dev.syncended.kube.core.styling
 import dev.syncended.kube.core.widget.core.Design
 import dev.syncended.kube.core.widget.core.Fonts
 import dev.syncended.kube.core.widget.core.all
-import dev.syncended.kube.core.widget.core.center
+import dev.syncended.kube.core.widget.core.centerHorizontal
 import dev.syncended.kube.core.widget.core.inline
+import dev.syncended.kube.core.widget.core.px
+import kotlinx.css.Align
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FontStyle
 import kotlinx.css.FontWeight
+import kotlinx.css.JustifyContent
 import kotlinx.css.LinearDimension
 import kotlinx.css.Margin
 import kotlinx.css.Padding
 import kotlinx.css.TextAlign
+import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.fontFamily
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
+import kotlinx.css.justifyContent
 import kotlinx.css.margin
 import kotlinx.css.p
 import kotlinx.css.padding
 import kotlinx.css.src
 import kotlinx.css.textAlign
+import kotlinx.css.width
 
 
 fun webPageStyle(): String {
@@ -58,8 +64,10 @@ private fun CssBuilder.applyCustomClasses() {
     display = Display.flex
   }
 
-  center {
-    margin = Margin(horizontal = LinearDimension.auto)
-    textAlign = TextAlign.center
+  centerHorizontal {
+    width = LinearDimension("100%")
+    display = Display.flex
+    justifyContent = JustifyContent.center
+    alignItems = Align.center
   }
 }

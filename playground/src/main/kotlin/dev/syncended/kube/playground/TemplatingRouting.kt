@@ -1,5 +1,9 @@
 package dev.syncended.kube.playground
 
+import dev.syncended.kube.core.styling.background
+import dev.syncended.kube.core.styling.maxWidth
+import dev.syncended.kube.core.styling.minWidth
+import dev.syncended.kube.core.styling.modifier
 import dev.syncended.kube.core.widget.core.cleanWebPage
 import dev.syncended.kube.core.widget.element.text
 import dev.syncended.kube.core.widget.layout.centerHorizontal
@@ -25,6 +29,13 @@ fun Route.helloWorld() = get("hello-world") {
     row {
       centerHorizontal { text("test") }
       centerHorizontal { text("test") }
+    }
+
+    centerHorizontal {
+      column(modifier().minWidth(600).background("#ff0000")) {
+        text("abcd")
+        text("fex")
+      }
     }
   }
 

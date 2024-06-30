@@ -1,12 +1,13 @@
 package dev.syncended.kube.core.widget.core
 
+import dev.syncended.kube.core.styling.Modifier
 import kotlinx.html.FlowContent
 
-abstract class Widget {
+abstract class Widget(protected val modifier: Modifier = Modifier()) {
   abstract fun render(parent: FlowContent)
 }
 
-abstract class Layout : Widget() {
+abstract class Layout(modifier: Modifier = Modifier()) : Widget(modifier) {
   private val _widgets = mutableListOf<Widget>()
   val widgets: List<Widget> get() = _widgets.toList()
 

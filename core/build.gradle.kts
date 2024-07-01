@@ -9,6 +9,6 @@ repositories {
 
 dependencies {
   implementation(libs.kotlin.stdlib)
-  api(libs.kotlin.html)
-  api(libs.kotlin.css)
+  implementation(libs.kotlin.html)
+  implementation(libs.kotlin.css)
 }

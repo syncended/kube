@@ -56,13 +56,13 @@ var Modifier.paddingBottom: Int?
 
 /** Padding in px */
 var Modifier.paddingLeft: Int?
-  get() = get("padding-bottom") as? Int
-  set(value) = set("padding-bottom", value)
+  get() = get("padding-left") as? Int
+  set(value) = set("padding-left", value)
 
 /** Padding in px */
 var Modifier.paddingRight: Int?
-  get() = get("padding-bottom") as? Int
-  set(value) = set("padding-bottom", value)
+  get() = get("padding-right") as? Int
+  set(value) = set("padding-right", value)
 
 /** Common padding in px */
 fun Modifier.padding(value: Int): Modifier {
@@ -113,13 +113,13 @@ var Modifier.marginBottom: Int?
 
 /** Margin in px */
 var Modifier.marginLeft: Int?
-  get() = get("margin-bottom") as? Int
-  set(value) = set("margin-bottom", value)
+  get() = get("margin-left") as? Int
+  set(value) = set("margin-left", value)
 
 /** Margin in px */
 var Modifier.marginRight: Int?
-  get() = get("margin-bottom") as? Int
-  set(value) = set("margin-bottom", value)
+  get() = get("margin-right") as? Int
+  set(value) = set("margin-right", value)
 
 
 /** Common margin in px */

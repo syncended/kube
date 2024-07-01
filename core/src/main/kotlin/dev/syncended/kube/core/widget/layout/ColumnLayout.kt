@@ -1,22 +1,15 @@
 package dev.syncended.kube.core.widget.layout
 
 import dev.syncended.kube.core.styling.Modifier
-import dev.syncended.kube.core.styling.buildStyle
-import dev.syncended.kube.core.styling.modifier
 import dev.syncended.kube.core.widget.core.Layout
 import dev.syncended.kube.core.widget.core.childLayout
-import kotlinx.html.FlowContent
 import kotlinx.html.div
-import kotlinx.html.style
 
 class ColumnLayout(modifier: Modifier) : Layout(modifier) {
-  override fun render(parent: FlowContent) {
-    parent.div {
-      style = modifier.buildStyle()
-      widgets.forEach {
-        div {
-          it.render(this)
-        }
+  override fun render() {
+    div {
+      widgets.forEach { child ->
+        div { renderChildren(child, this) }
       }
     }
   }
@@ -24,7 +17,7 @@ class ColumnLayout(modifier: Modifier) : Layout(modifier) {
 
 
 fun Layout.column(
-  modifier: Modifier = modifier(),
+  modifier: Modifier = Modifier(),
   builder: ColumnLayout.() -> Unit
 ) = childLayout(ColumnLayout(modifier), builder)
 

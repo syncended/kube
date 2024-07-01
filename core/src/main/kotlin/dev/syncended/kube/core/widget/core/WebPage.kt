@@ -10,14 +10,18 @@ import kotlinx.html.html
 import kotlinx.html.style
 
 class WebPage : Layout() {
-  override fun render(parent: FlowContent) {
-    widgets.forEach { it.render(parent) }
+
+  override fun render() {
+    widgets.forEach { renderChildren(it, parent) }
   }
 
-  fun render(): String {
+  fun build(): String {
     return createHTMLDocument().html {
       head { style { text(webPageStyle()) } }
-      body { render(this) }
+      body {
+        attach(this)
+        render()
+      }
     }.serialize(true)
   }
 }
@@ -25,5 +29,5 @@ class WebPage : Layout() {
 fun cleanWebPage(builder: WebPage.() -> Unit): String {
   val page = WebPage()
   page.builder()
-  return page.render()
+  return page.build()
 }

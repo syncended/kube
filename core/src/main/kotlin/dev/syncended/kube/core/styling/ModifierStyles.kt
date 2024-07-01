@@ -1,16 +1,21 @@
 package dev.syncended.kube.core.styling
 
+import dev.syncended.kube.core.widget.core.Design
 import dev.syncended.kube.core.widget.core.px
 import kotlinx.css.CssBuilder
 import kotlinx.css.Margin
 import kotlinx.css.Padding
 import kotlinx.css.background
+import kotlinx.css.height
 import kotlinx.css.margin
 import kotlinx.css.maxHeight
 import kotlinx.css.maxWidth
 import kotlinx.css.minHeight
 import kotlinx.css.minWidth
 import kotlinx.css.padding
+import kotlinx.css.width
+import kotlinx.html.FlowContent
+import kotlinx.html.div
 
 fun Modifier.buildStyle(): String {
   val builder = CssBuilder()
@@ -19,6 +24,14 @@ fun Modifier.buildStyle(): String {
   builder.applyBackground(this)
   builder.applyMaxSize(this)
   return builder.toString()
+}
+
+fun Modifier.wrap(parent: FlowContent, block: FlowContent.() -> Unit) {
+  gravity?.let { gravity ->
+    parent.div(gravity.toClass()) {
+      without("gravity").wrap(this, block)
+    }
+  } ?: run { parent.block() }
 }
 
 private fun CssBuilder.applyPadding(modifier: Modifier) {
@@ -46,8 +59,18 @@ private fun CssBuilder.applyBackground(modifier: Modifier) {
 }
 
 private fun CssBuilder.applyMaxSize(modifier: Modifier) {
+  modifier.width?.let { width = it.px }
+  modifier.height?.let { height = it.px }
   modifier.maxWidth?.let { maxWidth = it.px }
   modifier.maxHeight?.let { maxHeight = it.px }
   modifier.minWidth?.let { minWidth = it.px }
   modifier.minHeight?.let { minHeight = it.px }
+}
+
+private fun Gravity.toClass(): String {
+  return when (this) {
+    Gravity.START -> Design.Class.GRAVITY_START
+    Gravity.CENTER -> Design.Class.GRAVITY_CENTER
+    Gravity.END -> Design.Class.GRAVITY_END
+  }
 }

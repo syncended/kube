@@ -1,12 +1,12 @@
 package dev.syncended.kube.playground
 
+import dev.syncended.kube.core.styling.Gravity
+import dev.syncended.kube.core.styling.Modifier
 import dev.syncended.kube.core.styling.background
+import dev.syncended.kube.core.styling.gravity
 import dev.syncended.kube.core.styling.maxWidth
-import dev.syncended.kube.core.styling.minWidth
-import dev.syncended.kube.core.styling.modifier
 import dev.syncended.kube.core.widget.core.cleanWebPage
 import dev.syncended.kube.core.widget.element.text
-import dev.syncended.kube.core.widget.layout.centerHorizontal
 import dev.syncended.kube.core.widget.layout.column
 import dev.syncended.kube.core.widget.layout.row
 import io.ktor.http.ContentType
@@ -26,16 +26,15 @@ fun Route.helloWorld() = get("hello-world") {
         text("World")
       }
     }
-    row {
-      centerHorizontal { text("test") }
-      centerHorizontal { text("test") }
+    column(Modifier().maxWidth(600).background("#ff0000")) {
+      text("abcd")
+      text("fex")
     }
 
-    centerHorizontal {
-      column(modifier().minWidth(600).background("#ff0000")) {
-        text("abcd")
-        text("fex")
-      }
+    row {
+      text("aboba", Modifier().gravity(Gravity.CENTER))
+      text("aboba", Modifier().gravity(Gravity.START))
+      text("aboba", Modifier().gravity(Gravity.END))
     }
   }
 

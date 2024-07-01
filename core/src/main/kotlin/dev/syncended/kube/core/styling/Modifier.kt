@@ -1,7 +1,8 @@
 package dev.syncended.kube.core.styling
 
-class Modifier {
-  private val properties = mutableMapOf<String, Any>()
+class Modifier private constructor(
+  private val properties: MutableMap<String, Any>
+) {
   fun set(key: String, value: Any?) {
     value?.let { properties[key] = it }
       ?: run { properties.remove(key) }
@@ -10,9 +11,23 @@ class Modifier {
   fun get(key: String): Any? {
     return properties[key]
   }
+
+  fun without(key: String): Modifier {
+    val newProps = properties.toMutableMap()
+    newProps.remove(key)
+    return Modifier(newProps)
+  }
+
+  companion object {
+    fun newInstance() = Modifier(mutableMapOf())
+  }
 }
 
-fun modifier() = Modifier()
+enum class Gravity {
+  START, CENTER, END
+}
+
+fun Modifier(): Modifier = Modifier.newInstance()
 
 /** Padding in px */
 var Modifier.padding: Int?
@@ -140,6 +155,30 @@ fun Modifier.background(value: String): Modifier {
   return this
 }
 
+var Modifier.width: Int?
+  get() = get("width") as? Int
+  set(value) = set("width", value)
+
+var Modifier.height: Int?
+  get() = get("height") as? Int
+  set(value) = set("height", value)
+
+fun Modifier.width(value: Int): Modifier {
+  width = value
+  return this
+}
+
+fun Modifier.height(value: Int): Modifier {
+  height = value
+  return this
+}
+
+fun Modifier.size(width: Int? = null, height: Int? = null): Modifier {
+  width?.let { this.width = it }
+  height?.let { this.height = it }
+  return this
+}
+
 var Modifier.maxWidth: Int?
   get() = get("max-width") as? Int
   set(value) = set("max-width", value)
@@ -158,6 +197,11 @@ fun Modifier.maxHeight(value: Int): Modifier {
   return this
 }
 
+fun Modifier.maxSize(width: Int? = null, height: Int? = null): Modifier {
+  width?.let { this.maxWidth = it }
+  height?.let { this.maxHeight = it }
+  return this
+}
 
 var Modifier.minWidth: Int?
   get() = get("min-width") as? Int
@@ -174,5 +218,20 @@ fun Modifier.minWidth(value: Int): Modifier {
 
 fun Modifier.minHeight(value: Int): Modifier {
   minHeight = value
+  return this
+}
+
+fun Modifier.minSize(width: Int? = null, height: Int? = null): Modifier {
+  width?.let { this.minWidth = it }
+  height?.let { this.minHeight = it }
+  return this
+}
+
+var Modifier.gravity: Gravity?
+  get() = get("gravity") as? Gravity
+  set(value) = set("gravity", value)
+
+fun Modifier.gravity(gravity: Gravity): Modifier {
+  this.gravity = gravity
   return this
 }

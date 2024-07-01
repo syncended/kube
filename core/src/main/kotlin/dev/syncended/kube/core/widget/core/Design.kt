@@ -11,7 +11,9 @@ object Design {
   object Class {
     const val TEXT = "text"
     const val INLINE = "inline"
-    const val CENTER_HORIZONTAL = "center-horizontal"
+    const val GRAVITY_START = "gravity-start"
+    const val GRAVITY_CENTER = "gravity-center"
+    const val GRAVITY_END = "gravity-end"
   }
 
   object Font {

@@ -23,62 +23,63 @@ class Modifier private constructor(
   }
 }
 
-enum class Gravity {
-  START, CENTER, END
-}
-
 fun Modifier(): Modifier = Modifier.newInstance()
 
 /** Padding in px */
-var Modifier.padding: Int?
-  get() = get("padding") as? Int
+var Modifier.padding: Size.Px?
+  get() = get("padding") as? Size.Px
   set(value) = set("padding", value)
 
 /** Padding in px */
-var Modifier.paddingVertical: Int?
-  get() = get("padding-vertical") as? Int
+var Modifier.paddingVertical: Size.Px?
+  get() = get("padding-vertical") as? Size.Px
   set(value) = set("padding-vertical", value)
 
 /** Padding in px */
-var Modifier.paddingHorizontal: Int?
-  get() = get("padding-horizontal") as? Int
+var Modifier.paddingHorizontal: Size.Px?
+  get() = get("padding-horizontal") as? Size.Px
   set(value) = set("padding-horizontal", value)
 
 /** Padding in px */
-var Modifier.paddingTop: Int?
-  get() = get("padding-top") as? Int
+var Modifier.paddingTop: Size.Px?
+  get() = get("padding-top") as? Size.Px
   set(value) = set("padding-top", value)
 
 /** Padding in px */
-var Modifier.paddingBottom: Int?
-  get() = get("padding-bottom") as? Int
+var Modifier.paddingBottom: Size.Px?
+  get() = get("padding-bottom") as? Size.Px
   set(value) = set("padding-bottom", value)
 
 /** Padding in px */
-var Modifier.paddingLeft: Int?
-  get() = get("padding-left") as? Int
+var Modifier.paddingLeft: Size.Px?
+  get() = get("padding-left") as? Size.Px
   set(value) = set("padding-left", value)
 
 /** Padding in px */
-var Modifier.paddingRight: Int?
-  get() = get("padding-right") as? Int
+var Modifier.paddingRight: Size.Px?
+  get() = get("padding-right") as? Size.Px
   set(value) = set("padding-right", value)
 
 /** Common padding in px */
-fun Modifier.padding(value: Int): Modifier {
+fun Modifier.padding(value: Size.Px): Modifier {
   padding = value
   return this
 }
 
 /** Side padding in px */
-fun Modifier.padding(vertical: Int? = null, horizontal: Int? = null): Modifier {
+fun Modifier.padding(vertical: Size.Px? = null, horizontal: Size.Px? = null): Modifier {
   paddingVertical = vertical
   paddingHorizontal = horizontal
   return this
 }
 
 /** Side padding in px */
-fun Modifier.padding(top: Int? = null, bottom: Int? = null, left: Int? = null, right: Int? = null): Modifier {
+fun Modifier.padding(
+  top: Size.Px? = null,
+  bottom: Size.Px? = null,
+  left: Size.Px? = null,
+  right: Size.Px? = null
+): Modifier {
   paddingTop = top
   paddingBottom = bottom
   paddingLeft = left
@@ -87,56 +88,61 @@ fun Modifier.padding(top: Int? = null, bottom: Int? = null, left: Int? = null, r
 }
 
 /** Margin in px */
-var Modifier.margin: Int?
-  get() = get("margin") as? Int
+var Modifier.margin: Size.Px?
+  get() = get("margin") as? Size.Px
   set(value) = set("margin", value)
 
 /** Margin in px */
-var Modifier.marginVertical: Int?
-  get() = get("margin-vertical") as? Int
+var Modifier.marginVertical: Size.Px?
+  get() = get("margin-vertical") as? Size.Px
   set(value) = set("margin-vertical", value)
 
 /** Margin in px */
-var Modifier.marginHorizontal: Int?
-  get() = get("margin-horizontal") as? Int
+var Modifier.marginHorizontal: Size.Px?
+  get() = get("margin-horizontal") as? Size.Px
   set(value) = set("margin-horizontal", value)
 
 /** Margin in px */
-var Modifier.marginTop: Int?
-  get() = get("margin-top") as? Int
+var Modifier.marginTop: Size.Px?
+  get() = get("margin-top") as? Size.Px
   set(value) = set("margin-top", value)
 
 /** Margin in px */
-var Modifier.marginBottom: Int?
-  get() = get("margin-bottom") as? Int
+var Modifier.marginBottom: Size.Px?
+  get() = get("margin-bottom") as? Size.Px
   set(value) = set("margin-bottom", value)
 
 /** Margin in px */
-var Modifier.marginLeft: Int?
-  get() = get("margin-left") as? Int
+var Modifier.marginLeft: Size.Px?
+  get() = get("margin-left") as? Size.Px
   set(value) = set("margin-left", value)
 
 /** Margin in px */
-var Modifier.marginRight: Int?
-  get() = get("margin-right") as? Int
+var Modifier.marginRight: Size.Px?
+  get() = get("margin-right") as? Size.Px
   set(value) = set("margin-right", value)
 
 
 /** Common margin in px */
-fun Modifier.margin(value: Int): Modifier {
+fun Modifier.margin(value: Size.Px): Modifier {
   margin = value
   return this
 }
 
 /** Side margin in px */
-fun Modifier.margin(vertical: Int? = null, horizontal: Int? = null): Modifier {
+fun Modifier.margin(vertical: Size.Px? = null, horizontal: Size.Px? = null): Modifier {
   marginVertical = vertical
   marginHorizontal = horizontal
   return this
 }
 
 /** Side margin in px */
-fun Modifier.margin(top: Int? = null, bottom: Int? = null, left: Int? = null, right: Int? = null): Modifier {
+fun Modifier.margin(
+  top: Size.Px? = null,
+  bottom: Size.Px? = null,
+  left: Size.Px? = null,
+  right: Size.Px? = null
+): Modifier {
   marginTop = top
   marginBottom = bottom
   marginLeft = left
@@ -155,73 +161,73 @@ fun Modifier.background(value: String): Modifier {
   return this
 }
 
-var Modifier.width: Int?
-  get() = get("width") as? Int
+var Modifier.width: Size?
+  get() = get("width") as? Size
   set(value) = set("width", value)
 
-var Modifier.height: Int?
-  get() = get("height") as? Int
+var Modifier.height: Size?
+  get() = get("height") as? Size
   set(value) = set("height", value)
 
-fun Modifier.width(value: Int): Modifier {
+fun Modifier.width(value: Size): Modifier {
   width = value
   return this
 }
 
-fun Modifier.height(value: Int): Modifier {
+fun Modifier.height(value: Size): Modifier {
   height = value
   return this
 }
 
-fun Modifier.size(width: Int? = null, height: Int? = null): Modifier {
+fun Modifier.size(width: Size? = null, height: Size? = null): Modifier {
   width?.let { this.width = it }
   height?.let { this.height = it }
   return this
 }
 
-var Modifier.maxWidth: Int?
-  get() = get("max-width") as? Int
+var Modifier.maxWidth: Size?
+  get() = get("max-width") as? Size
   set(value) = set("max-width", value)
 
-var Modifier.maxHeight: Int?
-  get() = get("max-height") as? Int
+var Modifier.maxHeight: Size?
+  get() = get("max-height") as? Size
   set(value) = set("max-height", value)
 
-fun Modifier.maxWidth(value: Int): Modifier {
+fun Modifier.maxWidth(value: Size): Modifier {
   maxWidth = value
   return this
 }
 
-fun Modifier.maxHeight(value: Int): Modifier {
+fun Modifier.maxHeight(value: Size): Modifier {
   maxHeight = value
   return this
 }
 
-fun Modifier.maxSize(width: Int? = null, height: Int? = null): Modifier {
+fun Modifier.maxSize(width: Size? = null, height: Size? = null): Modifier {
   width?.let { this.maxWidth = it }
   height?.let { this.maxHeight = it }
   return this
 }
 
-var Modifier.minWidth: Int?
-  get() = get("min-width") as? Int
+var Modifier.minWidth: Size?
+  get() = get("min-width") as? Size
   set(value) = set("min-width", value)
 
-var Modifier.minHeight: Int?
-  get() = get("min-height") as? Int
+var Modifier.minHeight: Size?
+  get() = get("min-height") as? Size
   set(value) = set("min-height", value)
 
-fun Modifier.minWidth(value: Int): Modifier {
+fun Modifier.minWidth(value: Size): Modifier {
   minWidth = value
   return this
 }
 
-fun Modifier.minHeight(value: Int): Modifier {
+fun Modifier.minHeight(value: Size): Modifier {
   minHeight = value
   return this
 }
 
-fun Modifier.minSize(width: Int? = null, height: Int? = null): Modifier {
+fun Modifier.minSize(width: Size? = null, height: Size? = null): Modifier {
   width?.let { this.minWidth = it }
   height?.let { this.minHeight = it }
   return this
@@ -233,5 +239,14 @@ var Modifier.gravity: Gravity?
 
 fun Modifier.gravity(gravity: Gravity): Modifier {
   this.gravity = gravity
+  return this
+}
+
+var Modifier.alignment: Alignment?
+  get() = get("alignment") as? Alignment
+  set(value) = set("alignment", value)
+
+fun Modifier.alignment(alignment: Alignment): Modifier {
+  this.alignment = alignment
   return this
 }

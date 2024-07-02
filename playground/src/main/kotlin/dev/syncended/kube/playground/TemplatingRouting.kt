@@ -6,8 +6,7 @@ import dev.syncended.kube.core.styling.background
 import dev.syncended.kube.core.styling.gravity
 import dev.syncended.kube.core.styling.margin
 import dev.syncended.kube.core.styling.maxWidth
-import dev.syncended.kube.core.styling.minWidth
-import dev.syncended.kube.core.styling.padding
+import dev.syncended.kube.core.styling.px
 import dev.syncended.kube.core.widget.core.cleanWebPage
 import dev.syncended.kube.core.widget.element.text
 import dev.syncended.kube.core.widget.layout.column
@@ -18,7 +17,7 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 
-fun Route.helloWorld() = get("hello-world") {
+fun Route.clearPageRouting() = get("clear-web") {
   val page = cleanWebPage {
     text("Hello world!")
     column {
@@ -29,7 +28,7 @@ fun Route.helloWorld() = get("hello-world") {
         text("World")
       }
     }
-    column(Modifier().maxWidth(600).background("#ff0000")) {
+    column(Modifier().maxWidth(600.px).background("#ff0000")) {
       text("abcd")
       text("fex")
     }
@@ -41,7 +40,7 @@ fun Route.helloWorld() = get("hello-world") {
     }
 
     row {
-      column(modifier = Modifier().margin(right = 100)) {
+      column(modifier = Modifier().margin(right = 100.px)) {
         text("Hello v1")
         text("world v1")
       }

@@ -1,7 +1,9 @@
 package dev.syncended.kube.core.styling
 
-import dev.syncended.kube.core.widget.core.Design
 import dev.syncended.kube.core.widget.core.Fonts
+import dev.syncended.kube.core.widget.core.alignBottom
+import dev.syncended.kube.core.widget.core.alignCenter
+import dev.syncended.kube.core.widget.core.alignTop
 import dev.syncended.kube.core.widget.core.all
 import dev.syncended.kube.core.widget.core.gravityCenter
 import dev.syncended.kube.core.widget.core.gravityStart
@@ -16,6 +18,7 @@ import kotlinx.css.JustifyContent
 import kotlinx.css.LinearDimension
 import kotlinx.css.Margin
 import kotlinx.css.Padding
+import kotlinx.css.alignContent
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.fontFamily
@@ -67,20 +70,35 @@ private fun CssBuilder.applyCustomClasses() {
     width = LinearDimension("100%")
     display = Display.flex
     justifyContent = JustifyContent.center
-    alignItems = Align.center
+    alignContent = Align.center
   }
 
   gravityStart {
     width = LinearDimension("100%")
     display = Display.flex
     justifyContent = JustifyContent.start
-    alignItems = Align.start
+    alignContent = Align.start
   }
 
   gravityEnd {
     width = LinearDimension("100%")
     display = Display.flex
     justifyContent = JustifyContent.end
+    alignContent = Align.end
+  }
+
+  alignCenter {
+    display = Display.flex
+    alignItems = Align.center
+  }
+
+  alignTop {
+    display = Display.flex
+    alignItems = Align.start
+  }
+
+  alignBottom {
+    display = Display.flex
     alignItems = Align.end
   }
 }

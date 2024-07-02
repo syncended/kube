@@ -1,7 +1,5 @@
 package dev.syncended.kube.core.styling
 
-import dev.syncended.kube.core.widget.core.Design
-import dev.syncended.kube.core.widget.core.px
 import kotlinx.css.CssBuilder
 import kotlinx.css.Margin
 import kotlinx.css.Padding
@@ -26,12 +24,12 @@ fun Modifier.buildStyle(): String {
   return builder.toString()
 }
 
-fun Modifier.wrap(parent: FlowContent, block: FlowContent.() -> Unit) {
-  gravity?.let { gravity ->
-    parent.div(gravity.toClass()) {
-      without("gravity").wrap(this, block)
-    }
-  } ?: run { parent.block() }
+fun Modifier.buildClass(): String {
+  return buildString {
+    append(gravity?.toClass().orEmpty())
+    append(' ')
+    append(alignment?.toClass().orEmpty())
+  }.trim()
 }
 
 private fun CssBuilder.applyPadding(modifier: Modifier) {
@@ -41,7 +39,12 @@ private fun CssBuilder.applyPadding(modifier: Modifier) {
   val right = modifier.paddingRight ?: modifier.paddingHorizontal ?: modifier.padding
 
   if (top == null && bottom == null && left == null && right == null) return
-  padding = Padding(top = top?.px, bottom = bottom?.px, left = left?.px, right = right?.px)
+  padding = Padding(
+    top = top?.toLinearDimension(),
+    bottom = bottom?.toLinearDimension(),
+    left = left?.toLinearDimension(),
+    right = right?.toLinearDimension()
+  )
 }
 
 private fun CssBuilder.applyMargin(modifier: Modifier) {
@@ -51,7 +54,12 @@ private fun CssBuilder.applyMargin(modifier: Modifier) {
   val right = modifier.marginRight ?: modifier.marginHorizontal ?: modifier.margin
 
   if (top == null && bottom == null && left == null && right == null) return
-  margin = Margin(top = top?.px, bottom = bottom?.px, left = left?.px, right = right?.px)
+  margin = Margin(
+    top = top?.toLinearDimension(),
+    bottom = bottom?.toLinearDimension(),
+    left = left?.toLinearDimension(),
+    right = right?.toLinearDimension()
+  )
 }
 
 private fun CssBuilder.applyBackground(modifier: Modifier) {
@@ -59,12 +67,12 @@ private fun CssBuilder.applyBackground(modifier: Modifier) {
 }
 
 private fun CssBuilder.applyMaxSize(modifier: Modifier) {
-  modifier.width?.let { width = it.px }
-  modifier.height?.let { height = it.px }
-  modifier.maxWidth?.let { maxWidth = it.px }
-  modifier.maxHeight?.let { maxHeight = it.px }
-  modifier.minWidth?.let { minWidth = it.px }
-  modifier.minHeight?.let { minHeight = it.px }
+  modifier.width?.let { width = it.toLinearDimension() }
+  modifier.height?.let { height = it.toLinearDimension() }
+  modifier.maxWidth?.let { maxWidth = it.toLinearDimension() }
+  modifier.maxHeight?.let { maxHeight = it.toLinearDimension() }
+  modifier.minWidth?.let { minWidth = it.toLinearDimension() }
+  modifier.minHeight?.let { minHeight = it.toLinearDimension() }
 }
 
 private fun Gravity.toClass(): String {
@@ -72,5 +80,14 @@ private fun Gravity.toClass(): String {
     Gravity.START -> Design.Class.GRAVITY_START
     Gravity.CENTER -> Design.Class.GRAVITY_CENTER
     Gravity.END -> Design.Class.GRAVITY_END
+  }
+}
+
+
+private fun Alignment.toClass(): String {
+  return when (this) {
+    Alignment.TOP -> Design.Class.ALIGN_TOP
+    Alignment.CENTER -> Design.Class.ALIGN_CENTER
+    Alignment.BOTTOM -> Design.Class.ALIGN_BOTTOM
   }
 }

@@ -5,7 +5,7 @@ import dev.syncended.kube.core.widget.core.Layout
 import dev.syncended.kube.core.widget.core.childLayout
 import kotlinx.html.div
 
-class ColumnLayout(modifier: Modifier) : Layout(modifier) {
+open class ColumnLayout(modifier: Modifier) : Layout(modifier) {
   override fun render() {
     div {
       widgets.forEach { child ->

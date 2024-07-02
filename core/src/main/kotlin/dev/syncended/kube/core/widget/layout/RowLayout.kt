@@ -1,7 +1,7 @@
 package dev.syncended.kube.core.widget.layout
 
 import dev.syncended.kube.core.styling.Modifier
-import dev.syncended.kube.core.widget.core.Design
+import dev.syncended.kube.core.styling.Design
 import dev.syncended.kube.core.widget.core.Layout
 import dev.syncended.kube.core.widget.core.childLayout
 

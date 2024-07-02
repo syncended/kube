@@ -19,5 +19,6 @@ private fun Application.setup() {
 }
 
 private fun Application.installRoutes() = routing {
-  helloWorld()
+  clearPageRouting()
+  webPageRouting()
 }

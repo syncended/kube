@@ -11,6 +11,17 @@ sealed class Selector {
   data class Id(
     val name: String
   ) : Selector()
+
+  fun toRawSelector(): String {
+    return when (this) {
+      is Class -> ".$name"
+      is Id -> "#$name"
+    }
+  }
+
+  private fun Selector.toCssSelector(): TagSelector {
+    return TagSelector(this.toRawSelector())
+  }
 }
 
 fun String.toClassSelector(): Selector.Class {
@@ -19,12 +30,4 @@ fun String.toClassSelector(): Selector.Class {
 
 fun String.toIdSelector(): Selector.Id {
   return Selector.Id(this)
-}
-
-internal fun Selector.toCssSelector(): TagSelector {
-  val rawSelector = when (this) {
-    is Selector.Class -> ".$name"
-    is Selector.Id -> "#$name"
-  }
-  return TagSelector(rawSelector)
 }

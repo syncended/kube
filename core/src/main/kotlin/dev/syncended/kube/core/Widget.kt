@@ -12,5 +12,5 @@ abstract class Widget {
     _flowContent = null
   }
 
-  abstract fun render()
+  protected abstract fun render()
 }

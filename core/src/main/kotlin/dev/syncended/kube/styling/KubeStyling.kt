@@ -18,7 +18,7 @@ object KubeStyling {
   }
 
   private fun applyDefaultStyling() {
-
+    defaultStyling()
   }
 }
 

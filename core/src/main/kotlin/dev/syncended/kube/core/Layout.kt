@@ -10,7 +10,7 @@ abstract class Layout : Widget() {
     _child.add(child)
   }
 
-  protected fun renderAll(flowContent: FlowContent) {
+  protected fun renderChild(flowContent: FlowContent) {
     _child.forEach { it.render(flowContent) }
   }
 }

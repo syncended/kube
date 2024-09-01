@@ -38,7 +38,7 @@ fun ImageModifier.rawBase64Image(image: String): ImageModifier {
   return this
 }
 
-fun ImageModifier.alt(value: String): ImageModifier {
+fun ImageModifier.alt(value: String?): ImageModifier {
   alt = value
   return this
 }

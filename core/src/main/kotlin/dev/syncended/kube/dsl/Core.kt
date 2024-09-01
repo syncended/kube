@@ -6,19 +6,19 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.RenderMode
 import dev.syncended.kube.core.component.Widget
 
-internal fun <M : Modifier, T : Widget<M>> widget(
+internal fun <T : Widget<*>> widget(
   mode: RenderMode = RenderMode.VIEW_ONLY,
   instance: T,
-  body: T .(M) -> Unit
+  body: T.() -> Unit
 ): String {
-  instance.body(instance.modifier)
+  instance.body()
   return Kube.render(mode, instance)
 }
 
-internal fun <M : Modifier, T : Widget<M>> Layout<*>.widget(
+internal fun <T : Widget<*>> Layout<*>.widget(
   instance: T,
-  body: T.(M) -> Unit = {}
+  body: T.() -> Unit = {}
 ) {
-  instance.body(instance.modifier)
+  instance.body()
   addChild(instance)
 }

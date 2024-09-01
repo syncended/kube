@@ -1,7 +1,10 @@
 package dev.syncended.kube.playground
 
 import dev.syncended.kube.components.align
+import dev.syncended.kube.core.component.paddingLeft
+import dev.syncended.kube.core.component.paddingTop
 import dev.syncended.kube.core.model.Alignment
+import dev.syncended.kube.core.model.px
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
@@ -17,6 +20,7 @@ fun Routing.getMain() = get("/") {
 
 fun mainPage(): String = column {
   modifier.align(Alignment.Horizontal.Center)
+    .paddingTop(10.px)
 
   text("value")
 

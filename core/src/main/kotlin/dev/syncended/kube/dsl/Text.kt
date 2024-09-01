@@ -5,7 +5,7 @@ import dev.syncended.kube.components.TextModifier
 import dev.syncended.kube.components.text
 import dev.syncended.kube.core.component.Layout
 
-fun Layout<*>.text(text: String, body: Text.(TextModifier) -> Unit = {}) = widget(
+fun Layout<*>.text(text: String, body: Text.() -> Unit = {}) = widget(
   instance = Text(TextModifier().text(text)),
   body = body
 )

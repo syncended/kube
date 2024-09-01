@@ -1,6 +1,14 @@
 package dev.syncended.kube.core.component
 
 import kotlinx.css.CssBuilder
+import kotlinx.css.marginBottom
+import kotlinx.css.marginLeft
+import kotlinx.css.marginRight
+import kotlinx.css.marginTop
+import kotlinx.css.paddingBottom
+import kotlinx.css.paddingLeft
+import kotlinx.css.paddingRight
+import kotlinx.css.paddingTop
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.DIV
 import kotlinx.html.FlowContent
@@ -42,6 +50,15 @@ abstract class Widget<M : Modifier>(val modifier: M) {
   }
 
   protected open fun applyModifierStyling(builder: CssBuilder) {
+    modifier.paddingTop?.let { builder.paddingTop = it.toDimension() }
+    modifier.paddingLeft?.let { builder.paddingLeft = it.toDimension() }
+    modifier.paddingRight?.let { builder.paddingRight = it.toDimension() }
+    modifier.paddingBottom?.let { builder.paddingBottom = it.toDimension() }
+
+    modifier.marginTop?.let { builder.marginTop = it.toDimension() }
+    modifier.marginLeft?.let { builder.marginLeft = it.toDimension() }
+    modifier.marginRight?.let { builder.marginRight = it.toDimension() }
+    modifier.marginBottom?.let { builder.marginBottom = it.toDimension() }
   }
 
   private fun buildClasses(): String? {

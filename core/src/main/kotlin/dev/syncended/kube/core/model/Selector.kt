@@ -1,4 +1,4 @@
-package dev.syncended.kube.core
+package dev.syncended.kube.core.model
 
 import kotlinx.css.TagSelector
 

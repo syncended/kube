@@ -1,8 +1,8 @@
 package dev.syncended.kube.components
 
-import dev.syncended.kube.core.Layout
-import dev.syncended.kube.core.Modifier
-import dev.syncended.kube.core.withClass
+import dev.syncended.kube.core.component.Layout
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.styling.Selectors.row
 import dev.syncended.kube.styling.styling
 import kotlinx.css.Display

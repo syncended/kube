@@ -1,9 +1,13 @@
 package dev.syncended.kube.core
 
-import dev.syncended.kube.components.Box
+import dev.syncended.kube.core.component.Widget
+import dev.syncended.kube.core.model.RenderMode
+import dev.syncended.kube.core.model.ResourceMode
+import dev.syncended.kube.styling.Font
+import dev.syncended.kube.styling.Fonts
+import dev.syncended.kube.styling.KubeStyling
 import dev.syncended.kube.styling.KubeStyling.buildStyle
 import dev.syncended.kube.utils.setAttr
-import kotlinx.html.HEAD
 import kotlinx.html.HTML
 import kotlinx.html.body
 import kotlinx.html.dom.createHTMLDocument
@@ -14,9 +18,23 @@ import kotlinx.html.meta
 import kotlinx.html.style
 import kotlinx.html.unsafe
 
-internal object Kube {
+object Kube {
+  private var _resourceMode = ResourceMode.FAT
+  internal val resourceMode: ResourceMode get() = _resourceMode
 
-  fun render(mode: RenderMode, root: Widget<*>): String {
+  private var _defaultFont = Fonts.jbMono
+  internal val defaultFont: Font get() = _defaultFont
+
+  fun setResourceMode(mode: ResourceMode) {
+    _resourceMode = mode
+  }
+
+  fun setDefaultFont(font: Font) {
+    _defaultFont = font
+
+  }
+
+  internal fun render(mode: RenderMode, root: Widget<*>): String {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }

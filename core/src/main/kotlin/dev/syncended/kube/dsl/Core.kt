@@ -1,10 +1,10 @@
 package dev.syncended.kube.dsl
 
 import dev.syncended.kube.core.Kube
-import dev.syncended.kube.core.Layout
-import dev.syncended.kube.core.Modifier
-import dev.syncended.kube.core.RenderMode
-import dev.syncended.kube.core.Widget
+import dev.syncended.kube.core.component.Layout
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.RenderMode
+import dev.syncended.kube.core.component.Widget
 
 internal fun <M : Modifier, T : Widget<M>> widget(
   mode: RenderMode = RenderMode.VIEW_ONLY,

@@ -1,4 +1,6 @@
-package dev.syncended.kube.core
+package dev.syncended.kube.core.component
+
+import dev.syncended.kube.core.model.Selector
 
 
 open class Modifier {

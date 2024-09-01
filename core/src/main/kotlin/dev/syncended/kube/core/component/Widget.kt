@@ -1,4 +1,4 @@
-package dev.syncended.kube.core
+package dev.syncended.kube.core.component
 
 import kotlinx.css.CssBuilder
 import kotlinx.html.CommonAttributeGroupFacade

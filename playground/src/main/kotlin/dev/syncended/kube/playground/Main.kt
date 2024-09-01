@@ -1,7 +1,7 @@
 package dev.syncended.kube.playground
 
 import dev.syncended.kube.components.align
-import dev.syncended.kube.core.Alignment
+import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text

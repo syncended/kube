@@ -1,4 +1,4 @@
-package dev.syncended.kube.core
+package dev.syncended.kube.core.component
 
 import kotlinx.html.FlowContent
 

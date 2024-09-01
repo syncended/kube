@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
-import dev.syncended.kube.core.Widget
-import dev.syncended.kube.core.Modifier
+import dev.syncended.kube.core.component.Widget
+import dev.syncended.kube.core.component.Modifier
 
 class Text(
   modifier: TextModifier

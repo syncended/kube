@@ -1,8 +1,8 @@
 package dev.syncended.kube.styling
 
-import dev.syncended.kube.core.toClassSelector
-import dev.syncended.kube.core.toRawSelector
-import dev.syncended.kube.core.toTagSelector
+import dev.syncended.kube.core.model.toClassSelector
+import dev.syncended.kube.core.model.toRawSelector
+import dev.syncended.kube.core.model.toTagSelector
 
 internal object Selectors {
   // Default tags

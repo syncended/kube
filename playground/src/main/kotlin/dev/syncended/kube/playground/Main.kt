@@ -2,6 +2,7 @@ package dev.syncended.kube.playground
 
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.render
+import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
 import io.ktor.http.ContentType
 import io.ktor.server.application.call
@@ -17,5 +18,11 @@ fun mainPage(): String = render {
   column {
     text("test")
     text("value")
+
+    row {
+      text("Test")
+      text("row")
+    }
+    text("value after row")
   }
 }

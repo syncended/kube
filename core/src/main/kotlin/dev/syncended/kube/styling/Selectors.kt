@@ -4,7 +4,7 @@ import dev.syncended.kube.core.toClassSelector
 import dev.syncended.kube.core.toRawSelector
 import dev.syncended.kube.core.toTagSelector
 
-object Selectors {
+internal object Selectors {
   // Default tags
   val all = "*".toRawSelector()
   val html = "html".toTagSelector()
@@ -12,4 +12,5 @@ object Selectors {
 
   // Custom classes
   val column = "kube-column".toClassSelector()
+  val row = "kube-row".toClassSelector()
 }

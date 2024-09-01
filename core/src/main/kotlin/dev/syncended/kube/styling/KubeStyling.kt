@@ -1,6 +1,7 @@
 package dev.syncended.kube.styling
 
 import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.Row
 import dev.syncended.kube.core.Selector
 import kotlinx.css.CssBuilder
 
@@ -25,6 +26,7 @@ object KubeStyling {
   private fun applyDefaultStyling() {
     defaultStyling()
     Column.styling()
+    Row.styling()
   }
 }
 

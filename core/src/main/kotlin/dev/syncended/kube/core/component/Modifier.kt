@@ -1,5 +1,6 @@
 package dev.syncended.kube.core.component
 
+import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
 
@@ -7,6 +8,8 @@ import dev.syncended.kube.core.model.Size
 open class Modifier {
   var id: Selector.Id? = null
   val classes: MutableList<Selector.Class> = mutableListOf()
+
+  var backgroundColor: Color? = null
 
   var paddingLeft: Size? = null
   var paddingRight: Size? = null
@@ -69,3 +72,8 @@ fun <T : Modifier> T.paddingLeft(value: Size): T = padding(left = value)
 fun <T : Modifier> T.paddingRight(value: Size): T = padding(right = value)
 fun <T : Modifier> T.paddingTop(value: Size): T = padding(top = value)
 fun <T : Modifier> T.paddingBottom(value: Size): T = padding(bottom = value)
+
+fun <T : Modifier> T.backgorundColor(value: Color): T {
+  backgroundColor = value
+  return this
+}

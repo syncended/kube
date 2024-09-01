@@ -49,3 +49,7 @@ fun String.toTagSelector(): Selector.Tag {
 fun String.toRawSelector(): Selector.Raw {
   return Selector.Raw(this)
 }
+
+fun Selector.Class.appendName(appendName: String): Selector.Class {
+  return this.copy(name = name + appendName)
+}

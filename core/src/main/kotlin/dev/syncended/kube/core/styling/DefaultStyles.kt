@@ -1,7 +1,10 @@
-package dev.syncended.kube.styling
+package dev.syncended.kube.core.styling
 
 import dev.syncended.kube.core.Kube
+import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.ResourceMode
+import dev.syncended.kube.core.model.toCssFontStyle
+import dev.syncended.kube.core.model.toCssFontWeight
 import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.styling.Selectors.all
 import dev.syncended.kube.styling.Selectors.body
@@ -30,7 +33,7 @@ internal fun defaultStyling() {
     padding = Padding(rem0.toDimension())
     margin = Margin(rem0.toDimension())
     userSelect = UserSelect.none
-    fontFamily = Kube.defaultFont.name
+    fontFamily = KubeStyling.defaultFont.name
   }
   html.styling {
     height = percent100.toDimension()
@@ -40,8 +43,8 @@ internal fun defaultStyling() {
   }
 }
 
-internal fun defaultFonts(fonts: List<Font>) {
-  fonts.forEach(::fontStyling)
+internal fun defaultFonts() {
+  KubeStyling.fonts.forEach(::fontStyling)
 }
 
 internal fun fontStyling(font: Font) {

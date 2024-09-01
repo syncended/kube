@@ -1,18 +1,34 @@
-package dev.syncended.kube.styling
+package dev.syncended.kube.core.styling
 
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.Row
+import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.Selector
+import dev.syncended.kube.styling.Fonts
 import dev.syncended.kube.styling.Fonts.jbMono
 import kotlinx.css.CssBuilder
 
 object KubeStyling {
   private var selectors = mutableSetOf<Selector>()
   private val cssBuilder = CssBuilder()
-  private val fonts = mutableListOf(jbMono)
+
+  private val _fonts = mutableSetOf(jbMono)
+  internal val fonts: Set<Font> get() = _fonts
+
+  private var _defaultFont = Fonts.jbMono
+  internal val defaultFont: Font get() = _defaultFont
 
   init {
     applyDefaultStyling()
+  }
+
+  fun setDefaultFont(font: Font) {
+    _defaultFont = font
+    addFont(font)
+  }
+
+  fun addFont(font: Font) {
+    _fonts.add(font)
   }
 
   fun styling(selector: Selector, build: CssBuilder.() -> Unit) {
@@ -23,7 +39,7 @@ object KubeStyling {
 
   internal fun buildStyle(): String {
     defaultStyling()
-    defaultFonts(fonts)
+    defaultFonts()
     return cssBuilder.toString()
   }
 

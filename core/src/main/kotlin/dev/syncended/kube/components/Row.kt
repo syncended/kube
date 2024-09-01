@@ -4,7 +4,7 @@ import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.styling.Selectors.row
-import dev.syncended.kube.styling.styling
+import dev.syncended.kube.core.styling.styling
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection
 import kotlinx.css.display

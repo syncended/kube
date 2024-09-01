@@ -1,5 +1,10 @@
 package dev.syncended.kube.styling
 
+import dev.syncended.kube.core.model.Font
+import dev.syncended.kube.core.model.FontResource
+import dev.syncended.kube.core.model.FontStyle
+import dev.syncended.kube.core.model.FontWeight
+
 object Fonts {
   val jbMono = Font(
     name = "jb-mono",

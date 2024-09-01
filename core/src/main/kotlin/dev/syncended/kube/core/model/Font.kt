@@ -1,4 +1,4 @@
-package dev.syncended.kube.styling
+package dev.syncended.kube.core.model
 
 import kotlinx.css.FontStyle as CssFontStyle
 import kotlinx.css.FontWeight as CssFontWeight

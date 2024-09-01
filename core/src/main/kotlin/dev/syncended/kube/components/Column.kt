@@ -6,7 +6,7 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.styling.Selectors.column
-import dev.syncended.kube.styling.styling
+import dev.syncended.kube.core.styling.styling
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection

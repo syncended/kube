@@ -1,10 +1,8 @@
 package dev.syncended.kube.playground
 
-import dev.syncended.kube.components.ColumnModifier
 import dev.syncended.kube.components.align
+import dev.syncended.kube.components.text
 import dev.syncended.kube.core.Alignment
-import dev.syncended.kube.core.Modifier
-import dev.syncended.kube.core.modifier
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.render
 import dev.syncended.kube.dsl.row
@@ -20,14 +18,16 @@ fun Routing.getMain() = get("/") {
 }
 
 fun mainPage(): String = render {
-  column(modifier = modifier<ColumnModifier>().align(Alignment.Horizontal.Center)) {
-    text("test")
+  column {
+    modifier.align(Alignment.Horizontal.Center)
+
     text("value")
 
     row {
       text("Test")
       text("row")
     }
+
     text("value after row")
   }
 }

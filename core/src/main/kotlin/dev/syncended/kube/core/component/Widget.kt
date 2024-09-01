@@ -14,9 +14,11 @@ import kotlinx.css.paddingTop
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.DIV
 import kotlinx.html.FlowContent
+import kotlinx.html.IMG
 import kotlinx.html.P
 import kotlinx.html.div
 import kotlinx.html.id
+import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.style
 
@@ -39,6 +41,13 @@ abstract class Widget<M : Modifier>(val modifier: M) {
 
   fun p(body: P.() -> Unit) {
     flowContent.p(classes = buildClasses()) {
+      applyModifierAttributes()
+      body()
+    }
+  }
+
+  fun img(body: IMG.() -> Unit) {
+    flowContent.img(classes = buildClasses()) {
       applyModifierAttributes()
       body()
     }

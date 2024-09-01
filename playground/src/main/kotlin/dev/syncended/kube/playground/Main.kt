@@ -1,6 +1,7 @@
 package dev.syncended.kube.playground
 
 import dev.syncended.kube.components.align
+import dev.syncended.kube.components.textColor
 import dev.syncended.kube.core.component.backgorundColor
 import dev.syncended.kube.core.component.paddingLeft
 import dev.syncended.kube.core.component.paddingTop
@@ -28,7 +29,7 @@ fun mainPage(): String = column {
 
   row {
     text("Test") { modifier.backgorundColor(Colors.red) }
-    text("row")
+    text("row") { modifier.textColor(Colors.green) }
   }
 
   text("value after row")

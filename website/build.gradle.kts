@@ -1,6 +1,6 @@
 plugins {
   alias(libs.plugins.kotlin.jvm)
-  `java-library`
+  application
 }
 
 repositories {
@@ -8,7 +8,9 @@ repositories {
 }
 
 dependencies {
+  implementation(projects.core)
+
   implementation(libs.kotlin.stdlib)
-  implementation(libs.kotlin.html)
-  implementation(libs.kotlin.css)
+  implementation(libs.spring.boot.webflux)
+  implementation(libs.slf4j)
 }

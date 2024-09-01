@@ -4,6 +4,7 @@ kotlin-html = "0.11.0"
 kotlin-css = "1.0.0-pre.798"
 
 ktor = "2.3.12"
+spring-boot = "3.3.3"
 slf4j = "2.0.16"
 
 [libraries]
@@ -14,6 +15,8 @@ kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref 
 
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+
+spring-boot-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
 
 slf4j = { module = " org.slf4j:slf4j-simple", version.ref = "slf4j" }
 

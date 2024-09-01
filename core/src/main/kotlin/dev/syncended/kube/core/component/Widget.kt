@@ -74,7 +74,7 @@ abstract class Widget<M : Modifier>(val modifier: M) {
     modifier.height?.let { builder.height = it.toDimension() }
     modifier.minHeight?.let { builder.minHeight = it.toDimension() }
     modifier.maxHeight?.let { builder.maxHeight = it.toDimension() }
-    
+
     modifier.paddingTop?.let { builder.paddingTop = it.toDimension() }
     modifier.paddingLeft?.let { builder.paddingLeft = it.toDimension() }
     modifier.paddingRight?.let { builder.paddingRight = it.toDimension() }

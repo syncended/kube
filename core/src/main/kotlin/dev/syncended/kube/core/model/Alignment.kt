@@ -1,6 +1,7 @@
 package dev.syncended.kube.core.model
 
 import kotlinx.css.Align
+import kotlinx.css.JustifyContent
 
 sealed class Alignment {
   sealed class Vertical : Alignment() {
@@ -13,6 +14,14 @@ sealed class Alignment {
     data object Start : Horizontal()
     data object Center : Horizontal()
     data object End : Horizontal()
+  }
+}
+
+internal fun Alignment.Horizontal.toJustifyContent(): JustifyContent {
+  return when (this) {
+    Alignment.Horizontal.Start -> JustifyContent.start
+    Alignment.Horizontal.Center -> JustifyContent.center
+    Alignment.Horizontal.End -> JustifyContent.end
   }
 }
 

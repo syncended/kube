@@ -11,6 +11,7 @@ internal object Selectors {
   val body = "body".toTagSelector()
 
   // Custom classes
+  val box = "kube-box".toClassSelector()
   val column = "kube-column".toClassSelector()
   val row = "kube-row".toClassSelector()
 }

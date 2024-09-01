@@ -1,15 +1,19 @@
 [versions]
 kotlin = "2.0.20"
+kotlin-coroutines = "1.8.1"
 kotlin-html = "0.11.0"
 kotlin-css = "1.0.0-pre.798"
 
 ktor = "2.3.12"
 spring-boot = "3.3.3"
 slf4j = "2.0.16"
+logback = "1.5.7"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlin-coroutines" }
 kotlin-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version.ref = "kotlin-html" }
 kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref = "kotlin-css" }
 
@@ -18,7 +22,8 @@ ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor"
 
 spring-boot-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
 
-slf4j = { module = " org.slf4j:slf4j-simple", version.ref = "slf4j" }
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

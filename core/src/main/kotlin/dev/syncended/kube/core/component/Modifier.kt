@@ -53,6 +53,8 @@ fun <T : Modifier> T.height(value: Size): T {
 
 fun <T : Modifier> T.fillMaxHeight(): T = height(percent100)
 
+fun <T : Modifier> T.fillMaxSize(): T = fillMaxWidth().fillMaxHeight()
+
 fun <T : Modifier> T.size(width: Size, height: Size): T = width(width).height(height)
 
 

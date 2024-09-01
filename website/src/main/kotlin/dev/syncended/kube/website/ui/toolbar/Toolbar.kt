@@ -8,14 +8,14 @@ import dev.syncended.kube.core.component.minHeight
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.styling.Colors.red
+import dev.syncended.kube.website.ui.styling.Colors.colorBackground
 import dev.syncended.kube.website.ui.styling.Sizes.sizeToolbarHeight
 
 fun Layout<*>.toolbar() = row {
   modifier.fillMaxWidth()
     .minHeight(sizeToolbarHeight)
     .align(Alignment.Vertical.Center)
-    .backgorundColor(red)
+    .backgorundColor(colorBackground)
 
   text("te")
 }

@@ -3,6 +3,7 @@ package dev.syncended.kube.core.component
 import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
+import dev.syncended.kube.styling.Size.percent100
 
 open class Modifier {
   var id: Selector.Id? = null
@@ -43,10 +44,14 @@ fun <T : Modifier> T.width(value: Size): T {
   return this
 }
 
+fun <T : Modifier> T.fillMaxWidth(): T = width(percent100)
+
 fun <T : Modifier> T.height(value: Size): T {
   height = value
   return this
 }
+
+fun <T : Modifier> T.fillMaxHeight(): T = height(percent100)
 
 fun <T : Modifier> T.size(width: Size, height: Size): T = width(width).height(height)
 

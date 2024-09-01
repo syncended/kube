@@ -24,7 +24,7 @@ class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
 
   override fun applyModifierStyling(builder: CssBuilder) {
     super.applyModifierStyling(builder)
-    builder.alignItems = modifier.alignment.toAlignment()
+    modifier.alignment?.let { builder.alignItems = it.toAlignment() }
   }
 
   companion object {
@@ -38,7 +38,7 @@ class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
 }
 
 class ColumnModifier : Modifier() {
-  var alignment: Alignment.Horizontal = Alignment.Horizontal.Start
+  var alignment: Alignment.Horizontal? = null
 }
 
 fun ColumnModifier.align(alignment: Alignment.Horizontal): ColumnModifier {

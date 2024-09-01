@@ -5,6 +5,7 @@ import dev.syncended.kube.components.BoxModifier
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.ColumnModifier
 import dev.syncended.kube.components.Row
+import dev.syncended.kube.components.RowModifier
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.RenderMode
@@ -32,12 +33,12 @@ fun column(mode: RenderMode = RenderMode.PAGE, body: Column.() -> Unit) = widget
 )
 
 fun Layout<*>.row(body: Row.() -> Unit) = widget(
-  instance = Row(Modifier()),
+  instance = Row(RowModifier()),
   body = body
 )
 
 fun row(mode: RenderMode = RenderMode.PAGE, body: Row.() -> Unit) = widget(
   mode = mode,
-  instance = Row(Modifier()),
+  instance = Row(RowModifier()),
   body = body
 )

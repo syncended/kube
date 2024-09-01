@@ -6,15 +6,19 @@ import dev.syncended.kube.core.Layout
 import dev.syncended.kube.core.Modifier
 import dev.syncended.kube.core.RenderMode
 import dev.syncended.kube.core.Widget
-import dev.syncended.kube.core.modifier
 
 fun render(
   mode: RenderMode = RenderMode.FAT_PAGE,
-  body: Box.() -> Unit
+  body: Box.(Modifier) -> Unit
+): String = box(mode = mode, body = body)
+
+internal fun <M : Modifier, T : Widget<M>> widget(
+  mode: RenderMode = RenderMode.VIEW_ONLY,
+  instance: T,
+  body: T .(M) -> Unit
 ): String {
-  val root = Box(modifier())
-  root.body()
-  return Kube.render(mode, root)
+  instance.body(instance.modifier)
+  return Kube.render(mode, instance)
 }
 
 internal fun <M : Modifier, T : Widget<M>> Layout<*>.widget(

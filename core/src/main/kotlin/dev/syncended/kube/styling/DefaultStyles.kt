@@ -1,5 +1,7 @@
 package dev.syncended.kube.styling
 
+import dev.syncended.kube.core.Kube
+import dev.syncended.kube.core.toRawSelector
 import dev.syncended.kube.styling.Selectors.all
 import dev.syncended.kube.styling.Selectors.body
 import dev.syncended.kube.styling.Selectors.html
@@ -24,5 +26,15 @@ internal fun defaultStyling() {
   }
   body.styling {
     height = percent100.toDimension()
+  }
+}
+
+internal fun fontStyling(font: Font) {
+  KubeStyling.styling(font.name.toRawSelector()) {
+    font.resources.forEach { resource ->
+      fontFace {
+
+      }
+    }
   }
 }

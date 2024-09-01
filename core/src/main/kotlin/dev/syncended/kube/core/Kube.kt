@@ -16,7 +16,7 @@ import kotlinx.html.unsafe
 
 internal object Kube {
 
-  fun render(mode: RenderMode, root: Box): String {
+  fun render(mode: RenderMode, root: Widget<*>): String {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }

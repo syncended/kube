@@ -38,7 +38,7 @@ class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
 }
 
 class ColumnModifier : Modifier() {
-  var alignment: Alignment.Horizontal? = null
+  internal var alignment: Alignment.Horizontal? = null
 }
 
 fun ColumnModifier.align(alignment: Alignment.Horizontal): ColumnModifier {

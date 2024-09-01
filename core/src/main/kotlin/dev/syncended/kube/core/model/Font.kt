@@ -1,7 +1,7 @@
 package dev.syncended.kube.core.model
 
+import kotlinx.css.FontWeight
 import kotlinx.css.FontStyle as CssFontStyle
-import kotlinx.css.FontWeight as CssFontWeight
 
 data class Font(
   val name: String,
@@ -10,26 +10,18 @@ data class Font(
 
 data class FontResource(
   val resourceName: String,
-  val weight: FontWeight,
+  val size: FontSize,
   val style: FontStyle
 )
 
-enum class FontStyle {
-  NORMAL, ITALIC
+sealed class FontStyle(internal val mapping: CssFontStyle) {
+  data object Normal : FontStyle(CssFontStyle.normal)
+  data object Italic : FontStyle(CssFontStyle.italic)
 }
 
-enum class FontWeight {
-  THIN, REGULAR, MEDIUM, BOLD
-}
-
-internal fun FontWeight.toCssFontWeight(): CssFontWeight = when (this) {
-  FontWeight.REGULAR -> CssFontWeight.normal
-  FontWeight.THIN -> CssFontWeight.w100
-  FontWeight.MEDIUM -> CssFontWeight.w300
-  FontWeight.BOLD -> CssFontWeight.bold
-}
-
-internal fun FontStyle.toCssFontStyle(): CssFontStyle = when (this) {
-  FontStyle.ITALIC -> CssFontStyle.italic
-  FontStyle.NORMAL -> CssFontStyle.normal
+sealed class FontSize(internal val mapping: FontWeight) {
+  data object Thin : FontSize(FontWeight.w100)
+  data object Regular : FontSize(FontWeight.normal)
+  data object Medium : FontSize(FontWeight.w300)
+  data object Bold : FontSize(FontWeight.bold)
 }

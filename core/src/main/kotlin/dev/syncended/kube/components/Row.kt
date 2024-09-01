@@ -37,7 +37,7 @@ class Row(modifier: RowModifier) : Layout<RowModifier>(
 }
 
 class RowModifier : Modifier() {
-  var alignment: Alignment.Vertical? = null
+  internal var alignment: Alignment.Vertical? = null
 }
 
 fun RowModifier.align(alignment: Alignment.Vertical): RowModifier {

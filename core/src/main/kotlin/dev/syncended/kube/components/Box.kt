@@ -33,8 +33,8 @@ class Box(modifier: BoxModifier) : Layout<BoxModifier>(modifier.withClass(box)) 
 }
 
 class BoxModifier : Modifier() {
-  var verticalAlignment: Alignment.Vertical? = null
-  var horizontalAlignment: Alignment.Horizontal? = null
+  internal var verticalAlignment: Alignment.Vertical? = null
+  internal var horizontalAlignment: Alignment.Horizontal? = null
 }
 
 fun BoxModifier.verticalAlignment(alignment: Alignment.Vertical): BoxModifier {

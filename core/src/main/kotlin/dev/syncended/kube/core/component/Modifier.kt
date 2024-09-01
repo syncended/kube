@@ -6,27 +6,27 @@ import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.styling.Size.percent100
 
 open class Modifier {
-  var id: Selector.Id? = null
-  val classes: MutableList<Selector.Class> = mutableListOf()
+  internal var id: Selector.Id? = null
+  internal val classes: MutableList<Selector.Class> = mutableListOf()
 
-  var backgroundColor: Color? = null
+  internal var backgroundColor: Color? = null
 
-  var width: Size? = null
-  var minWidth: Size? = null
-  var maxWidth: Size? = null
-  var height: Size? = null
-  var minHeight: Size? = null
-  var maxHeight: Size? = null
+  internal var width: Size? = null
+  internal var minWidth: Size? = null
+  internal var maxWidth: Size? = null
+  internal var height: Size? = null
+  internal var minHeight: Size? = null
+  internal var maxHeight: Size? = null
 
-  var paddingLeft: Size? = null
-  var paddingRight: Size? = null
-  var paddingTop: Size? = null
-  var paddingBottom: Size? = null
+  internal var paddingLeft: Size? = null
+  internal var paddingRight: Size? = null
+  internal var paddingTop: Size? = null
+  internal var paddingBottom: Size? = null
 
-  var marginLeft: Size? = null
-  var marginRight: Size? = null
-  var marginTop: Size? = null
-  var marginBottom: Size? = null
+  internal var marginLeft: Size? = null
+  internal var marginRight: Size? = null
+  internal var marginTop: Size? = null
+  internal var marginBottom: Size? = null
 }
 
 fun <T : Modifier> T.id(value: Selector.Id): T {
@@ -56,6 +56,7 @@ fun <T : Modifier> T.fillMaxHeight(): T = height(percent100)
 fun <T : Modifier> T.fillMaxSize(): T = fillMaxWidth().fillMaxHeight()
 
 fun <T : Modifier> T.size(width: Size, height: Size): T = width(width).height(height)
+fun <T : Modifier> T.size(value: Size): T = width(value).height(value)
 
 
 fun <T : Modifier> T.minWidth(value: Size): T {

@@ -3,8 +3,6 @@ package dev.syncended.kube.core.styling
 import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.ResourceMode
-import dev.syncended.kube.core.model.toCssFontStyle
-import dev.syncended.kube.core.model.toCssFontWeight
 import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.styling.Selectors.all
 import dev.syncended.kube.styling.Selectors.body
@@ -56,8 +54,8 @@ internal fun fontStyling(font: Font) {
           ResourceMode.LINK -> URL_TEMPLATE.format(resource.resourceName)
         }
         fontFamily = font.name
-        fontWeight = resource.weight.toCssFontWeight()
-        fontStyle = resource.style.toCssFontStyle()
+        fontWeight = resource.size.mapping
+        fontStyle = resource.style.mapping
       }
     }
   }

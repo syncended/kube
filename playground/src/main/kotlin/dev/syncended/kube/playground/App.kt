@@ -19,4 +19,5 @@ private fun Application.setup() {
 }
 
 private fun Application.installRoutes() = routing {
+  getMain()
 }

@@ -1,11 +1,16 @@
 package dev.syncended.kube.styling
 
+import dev.syncended.kube.components.Column
 import dev.syncended.kube.core.Selector
 import kotlinx.css.CssBuilder
 
 object KubeStyling {
   private var selectors = mutableSetOf<Selector>()
   private val cssBuilder = CssBuilder()
+
+  init {
+    applyDefaultStyling()
+  }
 
   fun styling(selector: Selector, build: CssBuilder.() -> Unit) {
     if (selector in selectors) return
@@ -19,6 +24,7 @@ object KubeStyling {
 
   private fun applyDefaultStyling() {
     defaultStyling()
+    Column.styling()
   }
 }
 

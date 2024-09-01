@@ -1,5 +1,6 @@
 package dev.syncended.kube.core
 
+import dev.syncended.kube.components.Box
 import dev.syncended.kube.styling.KubeStyling.buildStyle
 import dev.syncended.kube.utils.setAttr
 import kotlinx.html.HEAD
@@ -15,7 +16,7 @@ import kotlinx.html.unsafe
 
 internal object Kube {
 
-  fun render(mode: RenderMode, root: Layout): String {
+  fun render(mode: RenderMode, root: Box): String {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }

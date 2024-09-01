@@ -13,7 +13,7 @@ fun Layout<*>.box(body: Box.(Modifier) -> Unit) = widget(
   body = body
 )
 
-fun box(mode: RenderMode = RenderMode.VIEW_ONLY, body: Box.(Modifier) -> Unit) = widget(
+fun box(mode: RenderMode = RenderMode.FAT_PAGE, body: Box.(Modifier) -> Unit) = widget(
   mode = mode,
   instance = Box(Modifier()),
   body = body
@@ -24,7 +24,7 @@ fun Layout<*>.column(body: Column.(modifier: ColumnModifier) -> Unit) = widget(
   body = body
 )
 
-fun column(mode: RenderMode = RenderMode.VIEW_ONLY, body: Column.(modifier: ColumnModifier) -> Unit) = widget(
+fun column(mode: RenderMode = RenderMode.FAT_PAGE, body: Column.(modifier: ColumnModifier) -> Unit) = widget(
   mode = mode,
   instance = Column(ColumnModifier()),
   body = body
@@ -35,7 +35,7 @@ fun Layout<*>.row(body: Row.(Modifier) -> Unit) = widget(
   body = body
 )
 
-fun row(mode: RenderMode = RenderMode.VIEW_ONLY, body: Row.(Modifier) -> Unit) = widget(
+fun row(mode: RenderMode = RenderMode.FAT_PAGE, body: Row.(Modifier) -> Unit) = widget(
   mode = mode,
   instance = Row(Modifier()),
   body = body

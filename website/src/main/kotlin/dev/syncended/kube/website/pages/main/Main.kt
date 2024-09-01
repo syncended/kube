@@ -5,6 +5,6 @@ import dev.syncended.kube.dsl.column
 
 fun mainPage() = box {
   column {
-    
+
   }
 }

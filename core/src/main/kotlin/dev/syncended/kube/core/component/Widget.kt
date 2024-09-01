@@ -3,14 +3,20 @@ package dev.syncended.kube.core.component
 import dev.syncended.kube.core.model.toCssColor
 import kotlinx.css.CssBuilder
 import kotlinx.css.backgroundColor
+import kotlinx.css.height
 import kotlinx.css.marginBottom
 import kotlinx.css.marginLeft
 import kotlinx.css.marginRight
 import kotlinx.css.marginTop
+import kotlinx.css.maxHeight
+import kotlinx.css.maxWidth
+import kotlinx.css.minHeight
+import kotlinx.css.minWidth
 import kotlinx.css.paddingBottom
 import kotlinx.css.paddingLeft
 import kotlinx.css.paddingRight
 import kotlinx.css.paddingTop
+import kotlinx.css.width
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.DIV
 import kotlinx.html.FlowContent
@@ -61,6 +67,14 @@ abstract class Widget<M : Modifier>(val modifier: M) {
   }
 
   protected open fun applyModifierStyling(builder: CssBuilder) {
+    modifier.width?.let { builder.width = it.toDimension() }
+    modifier.minWidth?.let { builder.minWidth = it.toDimension() }
+    modifier.maxWidth?.let { builder.maxWidth = it.toDimension() }
+
+    modifier.height?.let { builder.height = it.toDimension() }
+    modifier.minHeight?.let { builder.minHeight = it.toDimension() }
+    modifier.maxHeight?.let { builder.maxHeight = it.toDimension() }
+    
     modifier.paddingTop?.let { builder.paddingTop = it.toDimension() }
     modifier.paddingLeft?.let { builder.paddingLeft = it.toDimension() }
     modifier.paddingRight?.let { builder.paddingRight = it.toDimension() }

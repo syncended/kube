@@ -4,12 +4,18 @@ import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
 
-
 open class Modifier {
   var id: Selector.Id? = null
   val classes: MutableList<Selector.Class> = mutableListOf()
 
   var backgroundColor: Color? = null
+
+  var width: Size? = null
+  var minWidth: Size? = null
+  var maxWidth: Size? = null
+  var height: Size? = null
+  var minHeight: Size? = null
+  var maxHeight: Size? = null
 
   var paddingLeft: Size? = null
   var paddingRight: Size? = null
@@ -31,6 +37,43 @@ fun <T : Modifier> T.withClass(className: Selector.Class): T {
   classes.add(className)
   return this
 }
+
+fun <T : Modifier> T.width(value: Size): T {
+  width = value
+  return this
+}
+
+fun <T : Modifier> T.height(value: Size): T {
+  height = value
+  return this
+}
+
+fun <T : Modifier> T.size(width: Size, height: Size): T = width(width).height(height)
+
+
+fun <T : Modifier> T.minWidth(value: Size): T {
+  minWidth = value
+  return this
+}
+
+fun <T : Modifier> T.minHeight(value: Size): T {
+  minHeight = value
+  return this
+}
+
+fun <T : Modifier> T.minSize(width: Size, height: Size): T = minWidth(width).minHeight(height)
+
+fun <T : Modifier> T.maxWidth(value: Size): T {
+  maxWidth = value
+  return this
+}
+
+fun <T : Modifier> T.maxHeight(value: Size): T {
+  maxHeight = value
+  return this
+}
+
+fun <T : Modifier> T.maxSize(width: Size, height: Size): T = maxWidth(width).maxHeight(height)
 
 fun <T : Modifier> T.margin(
   top: Size? = null,

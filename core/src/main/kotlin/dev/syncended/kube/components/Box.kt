@@ -14,7 +14,7 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.justifyContent
 
-class Box(modifier: BoxModifier) : Layout<BoxModifier>(modifier.withClass(box)) {
+abstract class AbstractBox<M: BoxModifier>(modifier: M): Layout<M>(modifier) {
   override fun render() = div {
     renderChild(this)
   }
@@ -24,7 +24,9 @@ class Box(modifier: BoxModifier) : Layout<BoxModifier>(modifier.withClass(box)) 
     modifier.horizontalAlignment?.let { builder.justifyContent = it.toJustifyContent() }
     modifier.verticalAlignment?.let { builder.alignItems = it.toAlignment() }
   }
+}
 
+class Box(modifier: BoxModifier) : AbstractBox<BoxModifier>(modifier.withClass(box)) {
   companion object {
     fun styling() = box.styling {
       display = Display.flex
@@ -32,7 +34,7 @@ class Box(modifier: BoxModifier) : Layout<BoxModifier>(modifier.withClass(box)) 
   }
 }
 
-class BoxModifier : Modifier() {
+open class BoxModifier : Modifier() {
   internal var verticalAlignment: Alignment.Vertical? = null
   internal var horizontalAlignment: Alignment.Horizontal? = null
 }

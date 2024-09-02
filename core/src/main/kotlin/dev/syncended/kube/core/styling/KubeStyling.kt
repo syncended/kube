@@ -1,6 +1,7 @@
 package dev.syncended.kube.core.styling
 
 import dev.syncended.kube.components.Box
+import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.Row
 import dev.syncended.kube.core.model.Font
@@ -46,6 +47,7 @@ object KubeStyling {
 
   private fun applyDefaultStyling() {
     Box.styling()
+    Card.styling()
     Column.styling()
     Row.styling()
   }

@@ -14,4 +14,5 @@ internal object Selectors {
   val box = "kube-box".toClassSelector()
   val column = "kube-column".toClassSelector()
   val row = "kube-row".toClassSelector()
+  val card = "kube-card".toClassSelector()
 }

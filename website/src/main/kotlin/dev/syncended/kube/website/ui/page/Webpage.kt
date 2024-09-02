@@ -3,7 +3,6 @@ package dev.syncended.kube.website.ui.page
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.horizontalAlignment
 import dev.syncended.kube.core.component.backgorundColor
-import dev.syncended.kube.core.component.fillMaxHeight
 import dev.syncended.kube.core.component.fillMaxSize
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.maxWidth

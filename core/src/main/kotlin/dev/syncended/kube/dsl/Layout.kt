@@ -2,6 +2,7 @@ package dev.syncended.kube.dsl
 
 import dev.syncended.kube.components.Box
 import dev.syncended.kube.components.BoxModifier
+import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.ColumnModifier
 import dev.syncended.kube.components.Row
@@ -40,5 +41,16 @@ fun Layout<*>.row(body: Row.() -> Unit) = widget(
 fun row(mode: RenderMode = RenderMode.PAGE, body: Row.() -> Unit) = widget(
   mode = mode,
   instance = Row(RowModifier()),
+  body = body
+)
+
+fun Layout<*>.card(body: Card.() -> Unit) = widget(
+  instance = Card(BoxModifier()),
+  body = body
+)
+
+fun card(mode: RenderMode = RenderMode.PAGE, body: Card.() -> Unit) = widget(
+  mode = mode,
+  instance = Card(BoxModifier()),
   body = body
 )

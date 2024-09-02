@@ -6,8 +6,8 @@ import dev.syncended.kube.components.textSize
 import dev.syncended.kube.core.component.AnyLayout
 import dev.syncended.kube.core.model.FontSize
 import dev.syncended.kube.dsl.text
+import dev.syncended.kube.website.ui.styling.Sizes.fontSizeDefault
 import dev.syncended.kube.website.ui.styling.Sizes.fontSizeHeader
-import dev.syncended.kube.website.ui.styling.Sizes.fontSizeTitle
 
 fun AnyLayout.heading(text: String, body: Text.() -> Unit = {}) = text(text) {
   modifier.textSize(fontSizeHeader)
@@ -16,7 +16,7 @@ fun AnyLayout.heading(text: String, body: Text.() -> Unit = {}) = text(text) {
 }
 
 fun AnyLayout.title(text: String, body: Text.() -> Unit = {}) = text(text) {
-  modifier.textSize(fontSizeTitle)
+  modifier.textSize(fontSizeDefault)
     .fontSize(fontSize = FontSize.Bold)
   body.invoke(this)
 }

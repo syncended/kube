@@ -108,6 +108,7 @@ fun <T : Modifier> T.marginRight(value: Size): T = margin(right = value)
 fun <T : Modifier> T.marginTop(value: Size): T = margin(top = value)
 fun <T : Modifier> T.marginBottom(value: Size): T = margin(bottom = value)
 
+fun <T : Modifier> T.padding(value: Size): T = padding(value, value, value, value)
 
 fun <T : Modifier> T.padding(
   top: Size? = null,

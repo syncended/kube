@@ -2,6 +2,8 @@ package dev.syncended.kube.core.component
 
 import kotlinx.html.FlowContent
 
+typealias AnyLayout = Layout<*>
+
 abstract class Layout<M : Modifier>(modifier: M) : Widget<M>(modifier) {
   private val _child = mutableListOf<Widget<*>>()
   protected val child: List<Widget<*>> get() = _child

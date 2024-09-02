@@ -1,18 +1,20 @@
 package dev.syncended.kube.components
 
-import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
-import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.component.withClass
-import dev.syncended.kube.styling.Selectors.column
+import dev.syncended.kube.core.model.Alignment
+import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.styling.Selectors.column
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection
+import kotlinx.css.LinearDimension
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
+import kotlinx.css.height
 
 class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
   modifier = modifier.withClass(column)

@@ -11,7 +11,7 @@ import dev.syncended.kube.components.imageUrl
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 
-fun Layout<*>.space(modifier: Modifier) = widget(Space(modifier))
+fun Layout<*>.space(body: Space.() -> Unit) = widget(Space(Modifier()), body)
 
 fun Layout<*>.image(url: String, alt: String? = null, body: Image.() -> Unit = {}) = widget(
   instance = Image(ImageModifier().imageUrl(url).alt(alt)),

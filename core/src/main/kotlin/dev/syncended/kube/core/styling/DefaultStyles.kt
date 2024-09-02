@@ -9,9 +9,12 @@ import dev.syncended.kube.styling.Selectors.body
 import dev.syncended.kube.styling.Selectors.html
 import dev.syncended.kube.styling.Size.percent100
 import dev.syncended.kube.styling.Size.rem0
+import kotlinx.css.BoxSizing
+import kotlinx.css.LinearDimension
 import kotlinx.css.Margin
 import kotlinx.css.Padding
 import kotlinx.css.UserSelect
+import kotlinx.css.boxSizing
 import kotlinx.css.fontFamily
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
@@ -20,6 +23,7 @@ import kotlinx.css.margin
 import kotlinx.css.padding
 import kotlinx.css.src
 import kotlinx.css.userSelect
+import kotlinx.css.width
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
@@ -28,15 +32,20 @@ private const val BASE_64_TEMPLATE = "url(data:font/truetype;charset=utf-8;base6
 
 internal fun defaultStyling() {
   all.styling {
+    width = LinearDimension.fitContent
+    height = LinearDimension.fitContent
+    boxSizing = BoxSizing.borderBox
     padding = Padding(rem0.toDimension())
     margin = Margin(rem0.toDimension())
     userSelect = UserSelect.none
     fontFamily = KubeStyling.defaultFont.name
   }
   html.styling {
+    width = percent100.toDimension()
     height = percent100.toDimension()
   }
   body.styling {
+    width = percent100.toDimension()
     height = percent100.toDimension()
   }
 }

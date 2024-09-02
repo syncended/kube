@@ -27,6 +27,11 @@ open class Modifier {
   internal var marginRight: Size? = null
   internal var marginTop: Size? = null
   internal var marginBottom: Size? = null
+
+  internal var borderTopLeftRadius: Size? = null
+  internal var borderTopRightRadius: Size? = null
+  internal var borderBottomLeftRadius: Size? = null
+  internal var borderBottomRightRadius: Size? = null
 }
 
 fun <T : Modifier> T.id(value: Selector.Id): T {
@@ -126,5 +131,38 @@ fun <T : Modifier> T.paddingBottom(value: Size): T = padding(bottom = value)
 
 fun <T : Modifier> T.backgorundColor(value: Color): T {
   backgroundColor = value
+  return this
+}
+
+fun <T : Modifier> T.borderTopLeftRadius(size: Size): T {
+  borderTopLeftRadius = size
+  return this
+}
+
+fun <T : Modifier> T.borderTopRightRadius(size: Size): T {
+  borderTopRightRadius = size
+  return this
+}
+
+fun <T : Modifier> T.borderBottomLeftRadius(size: Size): T {
+  borderBottomLeftRadius = size
+  return this
+}
+
+fun <T : Modifier> T.borderBottomRightRadius(size: Size): T {
+  borderBottomRightRadius = size
+  return this
+}
+
+fun <T : Modifier> T.borderRadius(
+  topLeft: Size? = null,
+  topRight: Size? = null,
+  bottomLeft: Size? = null,
+  bottomRight: Size? = null
+): T {
+  topLeft?.let { borderTopLeftRadius = it }
+  topRight?.let { borderTopRightRadius = it }
+  bottomLeft?.let { borderBottomLeftRadius = it }
+  bottomRight?.let { borderBottomRightRadius = it }
   return this
 }

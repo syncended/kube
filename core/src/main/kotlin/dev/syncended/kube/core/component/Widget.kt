@@ -3,6 +3,10 @@ package dev.syncended.kube.core.component
 import dev.syncended.kube.core.model.toCssColor
 import kotlinx.css.CssBuilder
 import kotlinx.css.backgroundColor
+import kotlinx.css.borderBottomLeftRadius
+import kotlinx.css.borderBottomRightRadius
+import kotlinx.css.borderTopLeftRadius
+import kotlinx.css.borderTopRightRadius
 import kotlinx.css.height
 import kotlinx.css.marginBottom
 import kotlinx.css.marginLeft
@@ -86,6 +90,10 @@ abstract class Widget<M : Modifier>(val modifier: M) {
     modifier.marginBottom?.let { builder.marginBottom = it.toDimension() }
 
     modifier.backgroundColor?.let { builder.backgroundColor = it.toCssColor() }
+    modifier.borderTopLeftRadius?.let { builder.borderTopLeftRadius = it.toDimension() }
+    modifier.borderTopRightRadius?.let { builder.borderTopRightRadius = it.toDimension() }
+    modifier.borderBottomLeftRadius?.let { builder.borderBottomLeftRadius = it.toDimension() }
+    modifier.borderBottomRightRadius?.let { builder.borderBottomRightRadius = it.toDimension() }
   }
 
   private fun buildClasses(): String? {

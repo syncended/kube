@@ -11,4 +11,6 @@ object Sizes {
 
   val sizeFontDefault = 1.rm
   val sizeFontHeader = 1.25.rm
+
+  val sizeRadiusDefault = 1.rm
 }

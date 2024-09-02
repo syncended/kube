@@ -5,6 +5,7 @@ import dev.syncended.kube.components.fontSize
 import dev.syncended.kube.components.textSize
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.backgorundColor
+import dev.syncended.kube.core.component.borderRadius
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginLeft
 import dev.syncended.kube.core.component.minHeight

@@ -1,5 +1,6 @@
 package dev.syncended.kube.styling
 
+import dev.syncended.kube.core.model.appendName
 import dev.syncended.kube.core.model.toClassSelector
 import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.core.model.toTagSelector
@@ -15,4 +16,8 @@ internal object Selectors {
   val column = "kube-column".toClassSelector()
   val row = "kube-row".toClassSelector()
   val card = "kube-card".toClassSelector()
+  val link = "kube-link".toClassSelector()
+
+  // Custom selectors
+  val linkVisited = link.appendName(":visited")
 }

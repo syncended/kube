@@ -3,6 +3,7 @@ package dev.syncended.kube.core.styling
 import dev.syncended.kube.components.Box
 import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.Link
 import dev.syncended.kube.components.Row
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.Selector
@@ -50,6 +51,7 @@ object KubeStyling {
     Card.styling()
     Column.styling()
     Row.styling()
+    Link.styling()
   }
 }
 

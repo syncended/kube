@@ -6,16 +6,15 @@ import dev.syncended.kube.core.component.AnyLayout
 import dev.syncended.kube.core.component.backgorundColor
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginLeft
-import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.minHeight
 import dev.syncended.kube.core.component.paddingHorizontal
 import dev.syncended.kube.core.component.size
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.card
+import dev.syncended.kube.dsl.link
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.svgImage
-import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.ui.styling.Colors.colorBackground
 import dev.syncended.kube.website.ui.styling.Images.cubeLogo
 import dev.syncended.kube.website.ui.styling.Sizes.sizeIconDefault
@@ -35,7 +34,7 @@ fun AnyLayout.toolbar() = card {
 
     logo()
     space { modifier.fillMaxWidth() }
-    text("GitHub")
+    link(text = "GitHub", href = "https://github.com/syncended/kube")
   }
 }
 

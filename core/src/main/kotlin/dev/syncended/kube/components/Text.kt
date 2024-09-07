@@ -39,27 +39,27 @@ open class TextModifier : Modifier() {
   internal var fontStyle: FontStyle? = null
 }
 
-fun TextModifier.text(text: String): TextModifier {
+fun <T : TextModifier> T.text(text: String): T {
   this.text = text
   return this
 }
 
-fun TextModifier.textColor(color: Color): TextModifier {
+fun <T : TextModifier> T.textColor(color: Color): T {
   this.color = color
   return this
 }
 
-fun TextModifier.textSize(value: Size): TextModifier {
+fun <T : TextModifier> T.textSize(value: Size): T {
   textSize = value
   return this
 }
 
-fun TextModifier.fontSize(fontSize: FontSize): TextModifier {
+fun <T : TextModifier> T.fontSize(fontSize: FontSize): T {
   this.fontSize = fontSize
   return this
 }
 
-fun TextModifier.fontStyle(fontStyle: FontStyle): TextModifier {
+fun <T : TextModifier> T.fontStyle(fontStyle: FontStyle): T {
   this.fontStyle = fontStyle
   return this
 }

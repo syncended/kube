@@ -1,0 +1,28 @@
+name: "Build website image"
+on:
+  workflow_dispatch:
+
+jobs:
+  build-website-image:
+    name: Build website
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: cr.yandex
+          username: json_key
+          password: ${{ secrets.DOCKER_REGISTRY_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: "${{ secrets.DOCKER_REGISTRY }}/kube-website:latest"

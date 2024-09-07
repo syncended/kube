@@ -1,10 +1,9 @@
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 plugins {
   alias(libs.plugins.kotlin.jvm)
+  alias(libs.plugins.spring.boot)
   application
-}
-
-repositories {
-  mavenCentral()
 }
 
 dependencies {
@@ -19,4 +18,14 @@ dependencies {
 
   implementation(libs.slf4j)
   implementation(libs.logback)
+}
+
+application {
+  mainClass = "dev.syncended.kube.website.application.KubeWebsiteApplication"
+  group = "dev.syncended.kube.website"
+  version = "0.1"
+}
+
+tasks.withType<BootJar> {
+  archiveFileName = "service.jar"
 }

@@ -1,11 +1,17 @@
 plugins {
-    alias(libs.plugins.kotlin.jvm)
+  alias(libs.plugins.kotlin.jvm)
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 kotlin {
-    jvmToolchain(21)
+  jvmToolchain(21)
+}
+
+allprojects {
+  repositories {
+    mavenCentral()
+  }
 }

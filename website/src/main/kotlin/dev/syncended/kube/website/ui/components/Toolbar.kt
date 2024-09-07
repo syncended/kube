@@ -35,7 +35,6 @@ fun AnyLayout.toolbar() = card {
 
     logo()
     space { modifier.fillMaxWidth() }
-    text("Docs") { modifier.marginRight(spaceSizeDefault)}
     text("GitHub")
   }
 }

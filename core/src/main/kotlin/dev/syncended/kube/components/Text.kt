@@ -13,13 +13,7 @@ import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
 
-class Text(
-  modifier: TextModifier
-) : Widget<TextModifier>(modifier) {
-
-  override fun render() = p {
-    +modifier.text.orEmpty()
-  }
+abstract class AbstractText<M : TextModifier>(modifier: M) : Widget<M>(modifier) {
 
   override fun applyModifierStyling(builder: CssBuilder) {
     super.applyModifierStyling(builder)
@@ -30,7 +24,14 @@ class Text(
   }
 }
 
-class TextModifier : Modifier() {
+class Text(modifier: TextModifier) : AbstractText<TextModifier>(modifier) {
+
+  override fun render() = p {
+    +modifier.text.orEmpty()
+  }
+}
+
+open class TextModifier : Modifier() {
   internal var text: String? = null
   internal var color: Color? = null
   internal var textSize: Size? = null

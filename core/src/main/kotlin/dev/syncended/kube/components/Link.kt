@@ -33,7 +33,7 @@ class Link(modifier: LinkModifier) : AbstractText<LinkModifier>(modifier.withCla
 }
 
 class LinkModifier : TextModifier() {
-  var href: String? = null
+  internal var href: String? = null
 }
 
 fun LinkModifier.href(value: String): LinkModifier {

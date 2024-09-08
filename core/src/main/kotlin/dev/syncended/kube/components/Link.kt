@@ -5,6 +5,7 @@ import dev.syncended.kube.core.model.toCssColor
 import dev.syncended.kube.core.styling.styling
 import dev.syncended.kube.styling.Colors
 import dev.syncended.kube.styling.Selectors.link
+import dev.syncended.kube.styling.Selectors.linkLink
 import dev.syncended.kube.styling.Selectors.linkVisited
 import kotlinx.css.color
 import kotlinx.css.properties.TextDecoration
@@ -20,6 +21,9 @@ class Link(modifier: LinkModifier) : AbstractText<LinkModifier>(modifier.withCla
     fun styling() {
       link.styling {
         textDecoration = TextDecoration.none
+      }
+      linkLink.styling {
+        color = Colors.black.toCssColor()
       }
       linkVisited.styling {
         color = Colors.black.toCssColor()

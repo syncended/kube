@@ -20,4 +20,5 @@ internal object Selectors {
 
   // Custom selectors
   val linkVisited = link.appendName(":visited")
+  val linkLink = link.appendName(":link")
 }

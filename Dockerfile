@@ -10,5 +10,5 @@ FROM jdk as runner
 WORKDIR /service
 COPY --from=builder /service/website/build/libs/service.jar /service/service.jar
 
-EXPOSE 8080
+EXPOSE 80
 CMD ["java", "-jar", "./service.jar"]

@@ -10,7 +10,7 @@ Sample webpage written using this library available at https://kube.syncended.de
 To create webpage - you should just using high-level funcitons of layout like
 `box`, `column`, `row`, etc.
 
-Each method support `RenderMode`. Render mode - describe how element should be rendered.
+Each method support `RenderMode`. Render mode - is an description how element should be rendered.
 - `PAGE` - include built in styles, attach js/css code on page, support scaling and etc
 - `VIEW_ONLY` - just render element, without any resources on it (it will be used to render dynamic elements of HTMX)  
 

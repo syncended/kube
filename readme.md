@@ -22,6 +22,22 @@ There is 2 possible values:
 - `LINK` - currently unsupported. Webpage will include each resource as `link`. Resources will
     be loaded asynchronously. (Better prformance for webpage loading)
 
+### Modifier
+Widget state holder. Every parameters of element is modifier.
+Modifier may contains widget-specific data, like `textColor`, `href`. Elements 
+use it as point of truth, when it render.
+
+You can access to element's modifier from element body
+
+For example
+```kotlin
+// Same elements
+text(text = "Sample text")
+text { modifier.text("Sample text") }
+```
+
+You can use modifier to customize styling, attributes and behavior of element.
+
 ## Roadmap
 Basic steps, which probably will be supported
 

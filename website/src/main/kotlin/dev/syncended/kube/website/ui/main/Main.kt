@@ -23,6 +23,7 @@ fun mainPage() = webpage {
       title("What is KUBE?")
       text("KUBE - Kotlin Ui Builder.") { modifier.marginVertical(spaceSizeSmall) }
       text("KUBE is an open-source library, that simplifies your routine of creating internal web interfaces (like an admin panel, or smth else).")
+
     }
   }
 }

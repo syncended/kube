@@ -1,6 +1,7 @@
 package dev.syncended.kube.website.ui.components
 
 import dev.syncended.kube.components.align
+import dev.syncended.kube.components.href
 import dev.syncended.kube.components.verticalAlignment
 import dev.syncended.kube.core.component.AnyLayout
 import dev.syncended.kube.core.component.backgorundColor
@@ -12,6 +13,7 @@ import dev.syncended.kube.core.component.size
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.card
 import dev.syncended.kube.dsl.link
+import dev.syncended.kube.dsl.textLink
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.svgImage
@@ -34,13 +36,17 @@ fun AnyLayout.toolbar() = card {
 
     logo()
     space { modifier.fillMaxWidth() }
-    link(text = "GitHub", href = "https://github.com/syncended/kube")
+    textLink(text = "GitHub", href = "https://github.com/syncended/kube")
   }
 }
 
-private fun AnyLayout.logo() = row {
-  modifier.align(Alignment.Vertical.Center)
+private fun AnyLayout.logo() = link {
+  modifier.href("/")
 
-  svgImage(rawImage = cubeLogo) { modifier.size(sizeIconDefault) }
-  heading("KUBE") { modifier.marginLeft(spaceSizeDefault) }
+  row {
+    modifier.align(Alignment.Vertical.Center)
+
+    svgImage(rawImage = cubeLogo) { modifier.size(sizeIconDefault) }
+    heading("KUBE") { modifier.marginLeft(spaceSizeDefault) }
+  }
 }

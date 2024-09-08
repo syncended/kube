@@ -1,7 +1,7 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.Link
-import dev.syncended.kube.components.LinkModifier
+import dev.syncended.kube.components.TextLink
+import dev.syncended.kube.components.TextLinkModifier
 import dev.syncended.kube.components.Text
 import dev.syncended.kube.components.TextModifier
 import dev.syncended.kube.components.href
@@ -18,12 +18,12 @@ fun Layout<*>.text(body: Text.() -> Unit = {}) = widget(
   body = body
 )
 
-fun Layout<*>.link(text: String, href: String, body: Link.() -> Unit = {}) = link {
+fun Layout<*>.textLink(text: String, href: String, body: TextLink.() -> Unit = {}) = textLink {
   modifier.href(href).text(text)
   body.invoke(this)
 }
 
-fun Layout<*>.link(body: Link.() -> Unit = {}) = widget(
-  instance = Link(LinkModifier()),
+fun Layout<*>.textLink(body: TextLink.() -> Unit = {}) = widget(
+  instance = TextLink(TextLinkModifier()),
   body = body
 )

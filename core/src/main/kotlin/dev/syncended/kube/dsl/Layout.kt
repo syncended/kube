@@ -5,10 +5,11 @@ import dev.syncended.kube.components.BoxModifier
 import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.ColumnModifier
+import dev.syncended.kube.components.Link
+import dev.syncended.kube.components.LinkModifier
 import dev.syncended.kube.components.Row
 import dev.syncended.kube.components.RowModifier
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.RenderMode
 
 fun Layout<*>.box(body: Box.() -> Unit) = widget(
@@ -54,3 +55,16 @@ fun card(mode: RenderMode = RenderMode.PAGE, body: Card.() -> Unit) = widget(
   instance = Card(BoxModifier()),
   body = body
 )
+
+
+fun Layout<*>.link(body: Link.() -> Unit) = widget(
+  instance = Link(LinkModifier()),
+  body = body
+)
+
+fun link(mode: RenderMode = RenderMode.PAGE, body: Link.() -> Unit) = widget(
+  mode = mode,
+  instance = Link(LinkModifier()),
+  body = body
+)
+

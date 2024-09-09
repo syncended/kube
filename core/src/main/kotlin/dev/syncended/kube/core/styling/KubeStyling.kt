@@ -40,7 +40,7 @@ object KubeStyling {
     cssBuilder.build()
   }
 
-  internal fun buildStyle(): String {
+  fun buildStyle(): String {
     defaultStyling()
     defaultFonts()
     return cssBuilder.toString()

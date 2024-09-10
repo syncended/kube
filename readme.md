@@ -47,7 +47,7 @@ Basic steps, which probably will be supported
 - Web page templates
   - Table view
   - List view 
-- Spring configuration
+- ~~Spring configuration~~
 - Ktor extensions
 - Extended elements
   - Markdown viewer

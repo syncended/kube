@@ -8,6 +8,7 @@ import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.ui.page.webpage
 import dev.syncended.kube.website.ui.styling.Colors.colorBackground
 import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
+import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode
 import org.springframework.http.server.reactive.ServerHttpResponse
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,9 +20,8 @@ class NotFoundController {
   @GetMapping("/**")
   fun redirect(serverHttpResponse: ServerHttpResponse){
     serverHttpResponse.apply {
-      statusCode =  HttpStatusCode.valueOf(301)
+      statusCode =  HttpStatus.TEMPORARY_REDIRECT
       headers.set("Location", "/not-found")
-      headers.set("Connection", "close")
     }
   }
 

@@ -1,5 +1,6 @@
 package dev.syncended.kube.core.model
 
+import dev.syncended.kube.core.Kube
 import kotlinx.css.FontWeight
 import kotlinx.css.FontStyle as CssFontStyle
 
@@ -24,4 +25,17 @@ sealed class FontSize(internal val mapping: FontWeight) {
   data object Regular : FontSize(FontWeight.normal)
   data object Medium : FontSize(FontWeight.w300)
   data object Bold : FontSize(FontWeight.bold)
+}
+
+val FontResource.name: String
+  get() = resourceName.split('/').last()
+val FontResource.extension: String
+  get() = name.split('.').last()
+val FontResource.url: String
+  get() = "/${Kube.resourcesPrefix}/font/${name}"
+
+fun FontResource.getBytes(): ByteArray? {
+  val url = "/$resourceName".replace("//", "/")
+  return Kube::class.java.getResource(url)
+    ?.readBytes()
 }

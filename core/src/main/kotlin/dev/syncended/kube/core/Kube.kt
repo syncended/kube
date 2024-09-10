@@ -11,6 +11,7 @@ import kotlinx.html.dom.createHTMLDocument
 import kotlinx.html.dom.serialize
 import kotlinx.html.head
 import kotlinx.html.html
+import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.style
 import kotlinx.html.unsafe
@@ -27,7 +28,7 @@ object Kube {
   }
 
   fun setResourcePrefix(prefix: String) {
-    _resourcesPrefix = prefix
+    _resourcesPrefix = prefix.trim('/')
   }
 
   internal fun render(mode: RenderMode, root: Widget<*>): String {
@@ -49,7 +50,10 @@ object Kube {
       if (resourceMode == ResourceMode.FAT) {
         style { unsafe { +buildStyle() } }
       } else {
-
+        link {
+          rel = "stylesheet"
+          href = "/$resourcesPrefix/css/main.css"
+        }
       }
     }
   }

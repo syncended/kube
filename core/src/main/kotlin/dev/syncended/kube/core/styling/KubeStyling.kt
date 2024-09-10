@@ -46,6 +46,8 @@ object KubeStyling {
     return cssBuilder.toString()
   }
 
+  fun getFonts(): Set<Font> = fonts
+
   private fun applyDefaultStyling() {
     Box.styling()
     Card.styling()

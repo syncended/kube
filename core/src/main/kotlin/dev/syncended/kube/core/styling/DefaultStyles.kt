@@ -2,8 +2,11 @@ package dev.syncended.kube.core.styling
 
 import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.model.Font
+import dev.syncended.kube.core.model.FontResource
 import dev.syncended.kube.core.model.ResourceMode
+import dev.syncended.kube.core.model.getBytes
 import dev.syncended.kube.core.model.toRawSelector
+import dev.syncended.kube.core.model.url
 import dev.syncended.kube.styling.Selectors.all
 import dev.syncended.kube.styling.Selectors.body
 import dev.syncended.kube.styling.Selectors.html
@@ -59,8 +62,8 @@ internal fun fontStyling(font: Font) {
     font.resources.forEach { resource ->
       fontFace {
         src = when (Kube.resourceMode) {
-          ResourceMode.FAT -> readBase64Resource(resource.resourceName)
-          ResourceMode.LINK -> URL_TEMPLATE.format(resource.resourceName)
+          ResourceMode.FAT -> readBase64Resource(resource)
+          ResourceMode.LINK -> URL_TEMPLATE.format(resource.url)
         }
         fontFamily = font.name
         fontWeight = resource.size.mapping
@@ -71,10 +74,8 @@ internal fun fontStyling(font: Font) {
 }
 
 
-private fun readBase64Resource(name: String): String {
-  val url = if (name.startsWith('/')) name else "/$name"
-  val resourceBytes = Kube::class.java.getResource(url)
-    ?.readBytes() ?: return ""
+private fun readBase64Resource(resource: FontResource): String {
+  val resourceBytes = resource.getBytes() ?: return ""
 
   @OptIn(ExperimentalEncodingApi::class)
   val encoded = Base64.encode(resourceBytes)

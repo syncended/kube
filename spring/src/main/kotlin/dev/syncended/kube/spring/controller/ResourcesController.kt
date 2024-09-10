@@ -5,7 +5,6 @@ import dev.syncended.kube.core.model.name
 import dev.syncended.kube.core.styling.KubeStyling
 import dev.syncended.kube.spring.utils.contentType
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType

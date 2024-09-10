@@ -18,7 +18,7 @@ object KubeStyling {
   private val _fonts = mutableSetOf(jbMono)
   internal val fonts: Set<Font> get() = _fonts
 
-  private var _defaultFont = Fonts.jbMono
+  private var _defaultFont = jbMono
   internal val defaultFont: Font get() = _defaultFont
 
   init {

@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
   implementation(projects.core)
+  implementation(projects.spring)
 
   implementation(libs.kotlin.stdlib)
   implementation(libs.kotlin.reflect)

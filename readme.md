@@ -44,6 +44,9 @@ Basic steps, which probably will be supported
 - Basic html elements support
   - Buttons
   - Forms
+  - Dropdown menu
+- Styling
+  - ~~Mobile/desktop changes~~
 - Maven publish
 - Github releases
 - Web page templates

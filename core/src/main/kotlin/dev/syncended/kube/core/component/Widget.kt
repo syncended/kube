@@ -6,6 +6,7 @@ import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
 import dev.syncended.kube.styling.Size.rem0
 import kotlinx.css.CssBuilder
+import kotlinx.css.Display
 import kotlinx.css.LinearDimension
 import kotlinx.css.Visibility
 import kotlinx.css.backgroundColor
@@ -13,6 +14,7 @@ import kotlinx.css.borderBottomLeftRadius
 import kotlinx.css.borderBottomRightRadius
 import kotlinx.css.borderTopLeftRadius
 import kotlinx.css.borderTopRightRadius
+import kotlinx.css.display
 import kotlinx.css.height
 import kotlinx.css.marginBottom
 import kotlinx.css.marginLeft
@@ -127,17 +129,13 @@ abstract class Widget<M : Modifier>(val modifier: M) {
   companion object {
     fun styling() {
       dynamicDesktop.styling {
-        media("screen and (max-width: 400px)") {
-          width = LinearDimension("0px !important")
-          height = LinearDimension("0px !important")
-          visibility = Visibility.collapse
+        media("screen and (max-width: 475px)") {
+          display = Display.none
         }
       }
       dynamicMobile.styling {
-        media("screen and (min-width: 401px)") {
-          width = LinearDimension("0px !important")
-          height = LinearDimension("0px !important")
-          visibility = Visibility.collapse
+        media("screen and (min-width: 476px)") {
+          display = Display.none
         }
       }
     }

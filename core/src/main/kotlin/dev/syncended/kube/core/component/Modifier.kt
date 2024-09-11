@@ -3,6 +3,8 @@ package dev.syncended.kube.core.component
 import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
+import dev.syncended.kube.styling.Selectors.dynamicDesktop
+import dev.syncended.kube.styling.Selectors.dynamicMobile
 import dev.syncended.kube.styling.Size.percent100
 
 open class Modifier {
@@ -166,4 +168,16 @@ fun <T : Modifier> T.borderRadius(
   bottomLeft?.let { borderBottomLeftRadius = it }
   bottomRight?.let { borderBottomRightRadius = it }
   return this
+}
+
+
+fun <T : Modifier> T.renderOn(size: LayoutSize): T {
+  size.clazz?.let { withClass(it) }
+  return this
+}
+
+sealed class LayoutSize(internal val clazz: Selector.Class?) {
+  data object Mobile : LayoutSize(dynamicMobile)
+  data object Desktop : LayoutSize(dynamicDesktop)
+  data object All : LayoutSize(null)
 }

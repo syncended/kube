@@ -1,7 +1,13 @@
 package dev.syncended.kube.core.component
 
 import dev.syncended.kube.core.model.toCssColor
+import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.styling.Selectors.dynamicDesktop
+import dev.syncended.kube.styling.Selectors.dynamicMobile
+import dev.syncended.kube.styling.Size.rem0
 import kotlinx.css.CssBuilder
+import kotlinx.css.LinearDimension
+import kotlinx.css.Visibility
 import kotlinx.css.backgroundColor
 import kotlinx.css.borderBottomLeftRadius
 import kotlinx.css.borderBottomRightRadius
@@ -20,6 +26,7 @@ import kotlinx.css.paddingBottom
 import kotlinx.css.paddingLeft
 import kotlinx.css.paddingRight
 import kotlinx.css.paddingTop
+import kotlinx.css.visibility
 import kotlinx.css.width
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
@@ -115,6 +122,25 @@ abstract class Widget<M : Modifier>(val modifier: M) {
     applyModifierStyling(builder)
     return builder.toString()
       .trim().takeIf { it.isNotEmpty() }
+  }
+
+  companion object {
+    fun styling() {
+      dynamicDesktop.styling {
+        media("screen and (max-width: 400px)") {
+          width = LinearDimension("0px !important")
+          height = LinearDimension("0px !important")
+          visibility = Visibility.collapse
+        }
+      }
+      dynamicMobile.styling {
+        media("screen and (min-width: 401px)") {
+          width = LinearDimension("0px !important")
+          height = LinearDimension("0px !important")
+          visibility = Visibility.collapse
+        }
+      }
+    }
   }
 }
 

@@ -18,6 +18,9 @@ internal object Selectors {
   val card = "kube-card".toClassSelector()
   val link = "kube-link".toClassSelector()
 
+  val dynamicMobile = "kube-dynamic-mobile".toClassSelector()
+  val dynamicDesktop = "kube-dynamic-desktop".toClassSelector()
+
   // Custom selectors
   val linkVisited = link.appendName(":visited")
   val linkLink = link.appendName(":link")

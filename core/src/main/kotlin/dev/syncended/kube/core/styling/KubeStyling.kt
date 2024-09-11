@@ -5,6 +5,7 @@ import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.TextLink
 import dev.syncended.kube.components.Row
+import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.styling.Fonts
@@ -54,6 +55,7 @@ object KubeStyling {
     Column.styling()
     Row.styling()
     TextLink.styling()
+    Widget.styling()
   }
 }
 

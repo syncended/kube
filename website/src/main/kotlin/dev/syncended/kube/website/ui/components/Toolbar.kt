@@ -10,6 +10,7 @@ import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginLeft
 import dev.syncended.kube.core.component.minHeight
 import dev.syncended.kube.core.component.paddingHorizontal
+import dev.syncended.kube.core.component.paddingVertical
 import dev.syncended.kube.core.component.renderOn
 import dev.syncended.kube.core.component.size
 import dev.syncended.kube.core.model.Alignment
@@ -20,18 +21,18 @@ import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.svgImage
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.dsl.textLink
+import dev.syncended.kube.styling.Size.rem0
 import dev.syncended.kube.website.ui.styling.Colors.colorBackground
 import dev.syncended.kube.website.ui.styling.Images.cubeLogo
 import dev.syncended.kube.website.ui.styling.Sizes.sizeIconDefault
 import dev.syncended.kube.website.ui.styling.Sizes.sizeToolbarHeight
 import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
 
-fun AnyLayout.toolbar() = card {
+fun AnyLayout.toolbar() = cardComponent {
   modifier.fillMaxWidth()
     .minHeight(sizeToolbarHeight)
+    .paddingVertical(rem0)
     .verticalAlignment(Alignment.Vertical.Center)
-    .paddingHorizontal(spaceSizeDefault)
-    .backgorundColor(colorBackground)
 
   row {
     modifier.fillMaxWidth()
@@ -39,7 +40,6 @@ fun AnyLayout.toolbar() = card {
 
     logo()
     space { modifier.fillMaxWidth() }
-    textLink(text = "GitHub", href = "https://github.com/syncended/kube")
     menu()
   }
 }
@@ -55,6 +55,5 @@ private fun AnyLayout.logo() = link {
 }
 
 private fun AnyLayout.menu() {
-  text("Mobile") { modifier.renderOn(LayoutSize.Mobile) }
-  text("Desktop") { modifier.renderOn(LayoutSize.Desktop) }
+  textLink(text = "GitHub", href = "https://github.com/syncended/kube")
 }

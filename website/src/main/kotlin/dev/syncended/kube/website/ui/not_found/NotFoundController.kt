@@ -5,6 +5,7 @@ import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.padding
 import dev.syncended.kube.dsl.card
 import dev.syncended.kube.dsl.text
+import dev.syncended.kube.website.ui.components.cardComponent
 import dev.syncended.kube.website.ui.page.webpage
 import dev.syncended.kube.website.ui.styling.Colors.colorBackground
 import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
@@ -27,11 +28,8 @@ class NotFoundController {
 
   @GetMapping("/not-found")
   fun notFound(): String = webpage {
-    card {
+    cardComponent {
       modifier.fillMaxWidth()
-        .padding(spaceSizeDefault)
-        .backgorundColor(colorBackground)
-
       text(text = "Nothing was found :(")
     }
   }

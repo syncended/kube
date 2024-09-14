@@ -8,6 +8,7 @@ import dev.syncended.kube.core.component.LayoutSize
 import dev.syncended.kube.core.component.backgorundColor
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginLeft
+import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.minHeight
 import dev.syncended.kube.core.component.paddingHorizontal
 import dev.syncended.kube.core.component.paddingVertical
@@ -55,5 +56,6 @@ private fun AnyLayout.logo() = link {
 }
 
 private fun AnyLayout.menu() {
+  textLink(text = "Docs", href = "/docs") { modifier.marginRight(spaceSizeDefault) }
   textLink(text = "GitHub", href = "https://github.com/syncended/kube")
 }

@@ -16,4 +16,6 @@ object Sizes {
   val fontSizeHeader = 1.25.rm
 
   val radiusSizeDefault = 1.rm
+
+  val sizeNavBar = 14.rm
 }

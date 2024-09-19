@@ -1,8 +1,8 @@
 package dev.syncended.kube.website.ui.page
 
 import dev.syncended.kube.components.Column
-import dev.syncended.kube.components.horizontalAlignment
-import dev.syncended.kube.core.component.backgorundColor
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.fillMaxSize
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.height
@@ -17,18 +17,19 @@ import dev.syncended.kube.website.ui.styling.Colors.colorPageBackground
 import dev.syncended.kube.website.ui.styling.Sizes.sizeMaxPage
 import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
 
-fun webpage(content: Column.() -> Unit): String = box {
-  modifier.fillMaxSize()
-    .backgorundColor(colorPageBackground)
-    .horizontalAlignment(Alignment.Horizontal.Center)
-
-  column {
-    modifier.fillMaxWidth()
+fun webpage(content: Column.() -> Unit): String = box(
+  horizontalAlignment = Alignment.Horizontal.Center,
+  modifier = Modifier.fillMaxSize()
+    .backgroundColor(colorPageBackground)
+) {
+  column(
+    modifier = Modifier.fillMaxWidth()
       .marginHorizontal(spaceSizeSmall)
       .maxWidth(sizeMaxPage)
+  ) {
 
     toolbar()
-    space { modifier.height(spaceSizeSmall) }
+    space(modifier = Modifier.height(spaceSizeSmall))
     content.invoke(this)
   }
 }

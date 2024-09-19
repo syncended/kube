@@ -1,8 +1,9 @@
 package dev.syncended.kube.website.ui.docs
 
 import dev.syncended.kube.components.Column
-import dev.syncended.kube.core.component.AnyLayout
+import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.LayoutSize
+import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginBottom
 import dev.syncended.kube.core.component.marginRight
@@ -26,30 +27,31 @@ fun docs(path: DocsPath) = webpage {
   }
 }
 
-private fun AnyLayout.docsLayout(path: DocsPath, content: Column.() -> Unit) = row {
-  modifier.fillMaxWidth()
+private fun Layout.docsLayout(
+  path: DocsPath,
+  content: Column.() -> Unit
+) = row(modifier = Modifier.fillMaxWidth()) {
 
-  cardComponent {
-    modifier.renderOn(LayoutSize.Desktop)
+  cardComponent(
+    modifier = Modifier.renderOn(LayoutSize.Desktop)
       .fillMaxWidth()
       .maxWidth(sizeNavBar)
       .marginRight(spaceSizeSmall)
-
+  ) {
     column { menuElements(path) }
   }
 
-  column {
-    modifier.fillMaxWidth()
+  column(modifier = Modifier.fillMaxWidth()) {
 
-    cardComponent {
-      modifier.fillMaxWidth()
+    cardComponent(
+      modifier = Modifier.fillMaxWidth()
         .marginBottom(spaceSizeSmall)
         .renderOn(LayoutSize.Mobile)
+    ) {
       column { menuElements(path) }
     }
 
-    cardComponent {
-      modifier.fillMaxWidth()
+    cardComponent(modifier = Modifier.fillMaxWidth()) {
       column { content() }
     }
   }
@@ -69,7 +71,7 @@ private fun Column.menuElements(path: DocsPath) {
 }
 
 private fun Column.menuElement(name: String, path: DocsPath, selectedPath: DocsPath) = row {
-  if (path == selectedPath) text(">") { modifier.marginRight(spaceSizeSmall) }
+  if (path == selectedPath) text(">", modifier = Modifier.marginRight(spaceSizeSmall))
   textLink(text = name, href = "/docs/${path.name.lowercase()}")
 }
 

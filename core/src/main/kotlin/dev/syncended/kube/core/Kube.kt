@@ -31,7 +31,7 @@ object Kube {
     _resourcesPrefix = prefix.trim('/')
   }
 
-  internal fun render(mode: RenderMode, root: Widget<*>): String {
+  internal fun render(mode: RenderMode, root: Widget): String {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }

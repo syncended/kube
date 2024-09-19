@@ -1,6 +1,7 @@
 package dev.syncended.kube.website.ui.main
 
-import dev.syncended.kube.core.component.backgorundColor
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginVertical
 import dev.syncended.kube.core.component.padding
@@ -14,14 +15,18 @@ import dev.syncended.kube.website.ui.styling.Sizes
 import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
 
 fun mainPage() = webpage {
-  card {
-    modifier.fillMaxWidth()
+  card(
+    modifier = Modifier.fillMaxWidth()
       .padding(Sizes.spaceSizeDefault)
-      .backgorundColor(Colors.colorBackground)
+      .backgroundColor(Colors.colorBackground)
+  ) {
 
     column {
       title("What is KUBE?")
-      text("KUBE - Kotlin Ui Builder.") { modifier.marginVertical(spaceSizeSmall) }
+      text(
+        text = "KUBE - Kotlin Ui Builder.",
+        modifier = Modifier.marginVertical(spaceSizeSmall)
+      )
       text("KUBE is an open-source library, that simplifies your routine of creating internal web interfaces (like an admin panel, or smth else).")
 
     }

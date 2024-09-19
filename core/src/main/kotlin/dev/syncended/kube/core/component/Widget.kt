@@ -1,6 +1,7 @@
 package dev.syncended.kube.core.component
 
 import dev.syncended.kube.core.model.toCssColor
+import dev.syncended.kube.core.modifier.KubeModifiers
 import dev.syncended.kube.core.styling.styling
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
@@ -108,6 +109,8 @@ abstract class Widget(protected val modifier: Modifier) {
     modifier.borderTopRightRadius?.let { builder.borderTopRightRadius = it.toDimension() }
     modifier.borderBottomLeftRadius?.let { builder.borderBottomLeftRadius = it.toDimension() }
     modifier.borderBottomRightRadius?.let { builder.borderBottomRightRadius = it.toDimension() }
+
+    KubeModifiers.cssBuilders.forEach { it.invoke(builder, modifier) }
   }
 
   private fun buildClasses(): String? {

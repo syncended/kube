@@ -1,29 +1,48 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.TextLink
-import dev.syncended.kube.components.TextLinkModifier
 import dev.syncended.kube.components.Text
-import dev.syncended.kube.components.TextModifier
-import dev.syncended.kube.components.href
-import dev.syncended.kube.components.text
+import dev.syncended.kube.components.TextLink
 import dev.syncended.kube.core.component.Layout
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.Color
+import dev.syncended.kube.core.model.FontSize
+import dev.syncended.kube.core.model.FontStyle
+import dev.syncended.kube.core.model.Size
 
-fun Layout<*>.text(text: String, body: Text.() -> Unit = {}) = text {
-  modifier.text(text)
-  body.invoke(this)
-}
-
-fun Layout<*>.text(body: Text.() -> Unit = {}) = widget(
-  instance = Text(TextModifier()),
-  body = body
+fun Layout.text(
+  text: String?,
+  modifier: Modifier = Modifier,
+  color: Color? = null,
+  textSize: Size? = null,
+  fontSize: FontSize? = null,
+  fontStyle: FontStyle? = null,
+) = widget(
+  instance = Text(
+    modifier = modifier,
+    color = color,
+    textSize = textSize,
+    fontSize = fontSize,
+    fontStyle = fontStyle,
+    text = text
+  ),
 )
 
-fun Layout<*>.textLink(text: String, href: String, body: TextLink.() -> Unit = {}) = textLink {
-  modifier.href(href).text(text)
-  body.invoke(this)
-}
-
-fun Layout<*>.textLink(body: TextLink.() -> Unit = {}) = widget(
-  instance = TextLink(TextLinkModifier()),
-  body = body
+fun Layout.textLink(
+  text: String?,
+  href: String?,
+  modifier: Modifier = Modifier,
+  color: Color? = null,
+  textSize: Size? = null,
+  fontSize: FontSize? = null,
+  fontStyle: FontStyle? = null,
+) = widget(
+  instance = TextLink(
+    modifier = modifier,
+    color = color,
+    textSize = textSize,
+    fontSize = fontSize,
+    fontStyle = fontStyle,
+    text = text,
+    href = href
+  ),
 )

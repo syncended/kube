@@ -1,70 +1,148 @@
 package dev.syncended.kube.dsl
 
 import dev.syncended.kube.components.Box
-import dev.syncended.kube.components.BoxModifier
 import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
-import dev.syncended.kube.components.ColumnModifier
 import dev.syncended.kube.components.Link
-import dev.syncended.kube.components.LinkModifier
 import dev.syncended.kube.components.Row
-import dev.syncended.kube.components.RowModifier
 import dev.syncended.kube.core.component.Layout
+import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.RenderMode
 
-fun Layout<*>.box(body: Box.() -> Unit) = widget(
-  instance = Box(BoxModifier()),
+fun Layout.box(
+  modifier: Modifier = Modifier,
+  verticalAlignment: Alignment.Vertical? = null,
+  horizontalAlignment: Alignment.Horizontal? = null,
+  body: Box.() -> Unit
+) = widget(
+  instance = Box(
+    modifier = modifier,
+    verticalAlignment = verticalAlignment,
+    horizontalAlignment = horizontalAlignment
+  ),
   body = body
 )
 
-fun box(mode: RenderMode = RenderMode.PAGE, body: Box.() -> Unit) = widget(
+fun box(
+  mode: RenderMode = RenderMode.PAGE,
+  modifier: Modifier = Modifier,
+  verticalAlignment: Alignment.Vertical? = null,
+  horizontalAlignment: Alignment.Horizontal? = null,
+  body: Box.() -> Unit
+) = widget(
   mode = mode,
-  instance = Box(BoxModifier()),
+  instance = Box(
+    modifier = modifier,
+    verticalAlignment = verticalAlignment,
+    horizontalAlignment = horizontalAlignment
+  ),
   body = body
 )
 
-fun Layout<*>.column(body: Column.() -> Unit) = widget(
-  instance = Column(ColumnModifier()),
+fun Layout.column(
+  modifier: Modifier = Modifier,
+  alignment: Alignment.Horizontal? = null,
+  body: Column.() -> Unit
+) = widget(
+  instance = Column(
+    modifier = modifier,
+    alignment = alignment
+  ),
   body = body
 )
 
-fun column(mode: RenderMode = RenderMode.PAGE, body: Column.() -> Unit) = widget(
+fun column(
+  mode: RenderMode = RenderMode.PAGE,
+  modifier: Modifier = Modifier,
+  alignment: Alignment.Horizontal? = null,
+  body: Column.() -> Unit
+) = widget(
   mode = mode,
-  instance = Column(ColumnModifier()),
+  instance = Column(
+    modifier = modifier,
+    alignment = alignment
+  ),
   body = body
 )
 
-fun Layout<*>.row(body: Row.() -> Unit) = widget(
-  instance = Row(RowModifier()),
+fun Layout.row(
+  modifier: Modifier = Modifier,
+  alignment: Alignment.Vertical? = null,
+  body: Row.() -> Unit
+) = widget(
+  instance = Row(
+    modifier = modifier,
+    alignment = alignment
+  ),
   body = body
 )
 
-fun row(mode: RenderMode = RenderMode.PAGE, body: Row.() -> Unit) = widget(
+fun row(
+  mode: RenderMode = RenderMode.PAGE,
+  modifier: Modifier = Modifier,
+  alignment: Alignment.Vertical? = null, body: Row.() -> Unit
+) = widget(
   mode = mode,
-  instance = Row(RowModifier()),
+  instance = Row(
+    modifier = modifier,
+    alignment = alignment
+  ),
   body = body
 )
 
-fun Layout<*>.card(body: Card.() -> Unit) = widget(
-  instance = Card(BoxModifier()),
+fun Layout.card(
+  modifier: Modifier = Modifier,
+  verticalAlignment: Alignment.Vertical? = null,
+  horizontalAlignment: Alignment.Horizontal? = null,
+  body: Card.() -> Unit
+) = widget(
+  instance = Card(
+    modifier = modifier,
+    verticalAlignment = verticalAlignment,
+    horizontalAlignment = horizontalAlignment
+  ),
   body = body
 )
 
-fun card(mode: RenderMode = RenderMode.PAGE, body: Card.() -> Unit) = widget(
+fun card(
+  mode: RenderMode = RenderMode.PAGE,
+  modifier: Modifier = Modifier,
+  verticalAlignment: Alignment.Vertical? = null,
+  horizontalAlignment: Alignment.Horizontal? = null, body: Card.() -> Unit
+) = widget(
   mode = mode,
-  instance = Card(BoxModifier()),
+  instance = Card(
+    modifier = modifier,
+    verticalAlignment = verticalAlignment,
+    horizontalAlignment = horizontalAlignment
+  ),
   body = body
 )
 
-
-fun Layout<*>.link(body: Link.() -> Unit) = widget(
-  instance = Link(LinkModifier()),
+fun Layout.link(
+  href: String,
+  modifier: Modifier = Modifier,
+  body: Link.() -> Unit
+) = widget(
+  instance = Link(
+    modifier = modifier,
+    href = href
+  ),
   body = body
 )
 
-fun link(mode: RenderMode = RenderMode.PAGE, body: Link.() -> Unit) = widget(
+fun link(
+  href: String,
+  mode: RenderMode = RenderMode.PAGE,
+  modifier: Modifier = Modifier,
+  body: Link.() -> Unit
+) = widget(
   mode = mode,
-  instance = Link(LinkModifier()),
+  instance = Link(
+    modifier = modifier,
+    href = href
+  ),
   body = body
 )
 

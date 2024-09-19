@@ -84,7 +84,7 @@ abstract class Widget(protected val modifier: Modifier) {
     buildStyling()?.let { style = it }
   }
 
-  protected open fun applyModifierStyling(builder: CssBuilder) {
+  protected open fun applyStyling(builder: CssBuilder) {
     modifier.width?.let { builder.width = it.toDimension() }
     modifier.minWidth?.let { builder.minWidth = it.toDimension() }
     modifier.maxWidth?.let { builder.maxWidth = it.toDimension() }
@@ -117,7 +117,7 @@ abstract class Widget(protected val modifier: Modifier) {
 
   private fun buildStyling(): String? {
     val builder = CssBuilder()
-    applyModifierStyling(builder)
+    applyStyling(builder)
     return builder.toString()
       .trim().takeIf { it.isNotEmpty() }
   }

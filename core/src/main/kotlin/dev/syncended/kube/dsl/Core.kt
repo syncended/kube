@@ -5,7 +5,7 @@ import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.model.RenderMode
 import dev.syncended.kube.core.component.Widget
 
-internal fun <T : Widget<*>> widget(
+internal fun <T : Widget> widget(
   mode: RenderMode = RenderMode.VIEW_ONLY,
   instance: T,
   body: T.() -> Unit
@@ -14,7 +14,7 @@ internal fun <T : Widget<*>> widget(
   return Kube.render(mode, instance)
 }
 
-internal fun <T : Widget<*>> Layout<*>.widget(
+internal fun <T : Widget> Layout.widget(
   instance: T,
   body: T.() -> Unit = {}
 ) {

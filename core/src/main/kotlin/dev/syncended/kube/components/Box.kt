@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.DeprModifier
+import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
@@ -14,37 +14,35 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.justifyContent
 
-abstract class AbstractBox<M : BoxModifier>(modifier: M) : Layout<M>(modifier) {
+abstract class AbstractBox(
+  modifier: Modifier,
+  private val verticalAlignment: Alignment.Vertical?,
+  private val horizontalAlignment: Alignment.Horizontal?,
+) : Layout(modifier) {
   override fun render() = div {
     renderChild(this)
   }
 
-  override fun applyModifierStyling(builder: CssBuilder) {
-    super.applyModifierStyling(builder)
-    modifier.horizontalAlignment?.let { builder.justifyContent = it.toJustifyContent() }
-    modifier.verticalAlignment?.let { builder.alignItems = it.toAlignment() }
+  override fun applyStyling(builder: CssBuilder) {
+    super.applyStyling(builder)
+    horizontalAlignment?.let { builder.justifyContent = it.toJustifyContent() }
+    verticalAlignment?.let { builder.alignItems = it.toAlignment() }
   }
 }
 
-class Box(modifier: BoxModifier) : AbstractBox<BoxModifier>(modifier.withClass(box)) {
+class Box(
+  modifier: Modifier = Modifier,
+  verticalAlignment: Alignment.Vertical? = null,
+  horizontalAlignment: Alignment.Horizontal? = null,
+) : AbstractBox(
+  modifier = modifier.withClass(box),
+  verticalAlignment = verticalAlignment,
+  horizontalAlignment = horizontalAlignment
+) {
+
   companion object {
     fun styling() = box.styling {
       display = Display.flex
     }
   }
-}
-
-open class BoxModifier : DeprModifier() {
-  internal var verticalAlignment: Alignment.Vertical? = null
-  internal var horizontalAlignment: Alignment.Horizontal? = null
-}
-
-fun <T : BoxModifier> T.verticalAlignment(alignment: Alignment.Vertical): T {
-  verticalAlignment = alignment
-  return this
-}
-
-fun <T : BoxModifier> T.horizontalAlignment(alignment: Alignment.Horizontal): T {
-  horizontalAlignment = alignment
-  return this
 }

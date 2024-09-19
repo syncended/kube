@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.DeprModifier
+import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
@@ -14,17 +14,18 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
 
-class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
-  modifier = modifier.withClass(column)
-) {
+class Column(
+  modifier: Modifier = Modifier,
+  private val alignment: Alignment.Horizontal? = null,
+) : Layout(modifier.withClass(column)) {
 
   override fun render() = div {
     renderChild(this)
   }
 
-  override fun applyModifierStyling(builder: CssBuilder) {
-    super.applyModifierStyling(builder)
-    modifier.alignment?.let { builder.alignItems = it.toAlignment() }
+  override fun applyStyling(builder: CssBuilder) {
+    super.applyStyling(builder)
+    alignment?.let { builder.alignItems = it.toAlignment() }
   }
 
   companion object {
@@ -35,13 +36,4 @@ class Column(modifier: ColumnModifier) : Layout<ColumnModifier>(
       }
     }
   }
-}
-
-class ColumnModifier : DeprModifier() {
-  internal var alignment: Alignment.Horizontal? = null
-}
-
-fun ColumnModifier.align(alignment: Alignment.Horizontal): ColumnModifier {
-  this.alignment = alignment
-  return this
 }

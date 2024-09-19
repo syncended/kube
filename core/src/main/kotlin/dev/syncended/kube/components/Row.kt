@@ -1,12 +1,12 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.DeprModifier
+import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
-import dev.syncended.kube.styling.Selectors.row
 import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.styling.Selectors.row
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection
@@ -14,17 +14,18 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
 
-class Row(modifier: RowModifier) : Layout<RowModifier>(
-  modifier = modifier.withClass(row)
-) {
+class Row(
+  modifier: Modifier = Modifier,
+  private val alignment: Alignment.Vertical? = null
+) : Layout(modifier.withClass(row)) {
 
   override fun render() = div {
     renderChild(this)
   }
 
-  override fun applyModifierStyling(builder: CssBuilder) {
-    super.applyModifierStyling(builder)
-    modifier.alignment?.let { builder.alignItems = it.toAlignment() }
+  override fun applyStyling(builder: CssBuilder) {
+    super.applyStyling(builder)
+    alignment?.let { builder.alignItems = it.toAlignment() }
   }
 
   companion object {
@@ -33,13 +34,4 @@ class Row(modifier: RowModifier) : Layout<RowModifier>(
       flexDirection = FlexDirection.row
     }
   }
-}
-
-class RowModifier : DeprModifier() {
-  internal var alignment: Alignment.Vertical? = null
-}
-
-fun RowModifier.align(alignment: Alignment.Vertical): RowModifier {
-  this.alignment = alignment
-  return this
 }

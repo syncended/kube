@@ -1,8 +1,8 @@
 package dev.syncended.kube.components
 
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 import dev.syncended.kube.core.component.Widget
 
-class Space(modifier: Modifier) : Widget<Modifier>(modifier) {
+class Space(modifier: DeprModifier) : Widget<DeprModifier>(modifier) {
   override fun render() = div { }
 }

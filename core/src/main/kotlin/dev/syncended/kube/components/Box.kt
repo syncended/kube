@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
@@ -34,7 +34,7 @@ class Box(modifier: BoxModifier) : AbstractBox<BoxModifier>(modifier.withClass(b
   }
 }
 
-open class BoxModifier : Modifier() {
+open class BoxModifier : DeprModifier() {
   internal var verticalAlignment: Alignment.Vertical? = null
   internal var horizontalAlignment: Alignment.Horizontal? = null
 }

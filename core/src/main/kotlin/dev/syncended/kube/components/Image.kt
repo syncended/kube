@@ -1,6 +1,6 @@
 package dev.syncended.kube.components
 
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 import dev.syncended.kube.core.component.Widget
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
@@ -22,7 +22,7 @@ enum class ImageType(internal val value: String) {
   PNG("png"), SVG("svg+xml")
 }
 
-class ImageModifier : Modifier() {
+class ImageModifier : DeprModifier() {
   internal var imageUrl: String? = null
   internal var base64Image: String? = null
   internal var base64Type: ImageType? = null

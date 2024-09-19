@@ -4,7 +4,7 @@ import kotlinx.html.FlowContent
 
 typealias AnyLayout = Layout<*>
 
-abstract class Layout<M : Modifier>(modifier: M) : Widget<M>(modifier) {
+abstract class Layout<M : DeprModifier>(modifier: M) : Widget<M>(modifier) {
   private val _child = mutableListOf<Widget<*>>()
   protected val child: List<Widget<*>> get() = _child
 

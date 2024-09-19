@@ -9,9 +9,9 @@ import dev.syncended.kube.components.base64Image
 import dev.syncended.kube.components.base64Type
 import dev.syncended.kube.components.imageUrl
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 
-fun Layout<*>.space(body: Space.() -> Unit) = widget(Space(Modifier()), body)
+fun Layout<*>.space(body: Space.() -> Unit) = widget(Space(DeprModifier()), body)
 
 fun Layout<*>.image(url: String, alt: String? = null, body: Image.() -> Unit = {}) = widget(
   instance = Image(ImageModifier().imageUrl(url).alt(alt)),

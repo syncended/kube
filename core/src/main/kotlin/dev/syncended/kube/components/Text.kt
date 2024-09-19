@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Widget
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.FontSize
 import dev.syncended.kube.core.model.FontStyle
@@ -31,7 +31,7 @@ class Text(modifier: TextModifier) : AbstractText<TextModifier>(modifier) {
   }
 }
 
-open class TextModifier : Modifier() {
+open class TextModifier : DeprModifier() {
   internal var text: String? = null
   internal var color: Color? = null
   internal var textSize: Size? = null

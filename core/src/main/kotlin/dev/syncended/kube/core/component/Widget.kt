@@ -4,11 +4,8 @@ import dev.syncended.kube.core.model.toCssColor
 import dev.syncended.kube.core.styling.styling
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
-import dev.syncended.kube.styling.Size.rem0
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
-import kotlinx.css.LinearDimension
-import kotlinx.css.Visibility
 import kotlinx.css.backgroundColor
 import kotlinx.css.borderBottomLeftRadius
 import kotlinx.css.borderBottomRightRadius
@@ -28,7 +25,6 @@ import kotlinx.css.paddingBottom
 import kotlinx.css.paddingLeft
 import kotlinx.css.paddingRight
 import kotlinx.css.paddingTop
-import kotlinx.css.visibility
 import kotlinx.css.width
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
@@ -43,7 +39,7 @@ import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.style
 
-abstract class Widget<M : Modifier>(val modifier: M) {
+abstract class Widget<M : DeprModifier>(val modifier: M) {
   private var _flowContent: FlowContent? = null
   private val flowContent: FlowContent get() = requireNotNull(_flowContent)
 

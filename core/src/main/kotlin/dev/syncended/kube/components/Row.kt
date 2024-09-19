@@ -1,7 +1,7 @@
 package dev.syncended.kube.components
 
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.DeprModifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
@@ -13,7 +13,6 @@ import kotlinx.css.FlexDirection
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
-import kotlinx.css.justifyContent
 
 class Row(modifier: RowModifier) : Layout<RowModifier>(
   modifier = modifier.withClass(row)
@@ -36,7 +35,7 @@ class Row(modifier: RowModifier) : Layout<RowModifier>(
   }
 }
 
-class RowModifier : Modifier() {
+class RowModifier : DeprModifier() {
   internal var alignment: Alignment.Vertical? = null
 }
 

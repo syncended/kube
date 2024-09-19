@@ -2,7 +2,6 @@ package dev.syncended.kube.dsl
 
 import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.RenderMode
 import dev.syncended.kube.core.component.Widget
 

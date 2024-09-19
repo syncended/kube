@@ -39,7 +39,7 @@ import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.style
 
-abstract class Widget<M : DeprModifier>(val modifier: M) {
+abstract class Widget(protected val modifier: Modifier) {
   private var _flowContent: FlowContent? = null
   private val flowContent: FlowContent get() = requireNotNull(_flowContent)
 

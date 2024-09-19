@@ -32,6 +32,9 @@ text(text = "Sample text", modifier = Modifier.marginLeft(2.rm))
 space(Modifier.height(1.rm))
 ```
 
+Under the hood, Modifier is a Map<String, Any>, which hold every parameter
+of widget, and render on applyStyling step
+
 ## Roadmap
 Basic steps, which probably will be supported
 

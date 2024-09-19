@@ -23,20 +23,14 @@ There is 2 possible values:
     be loaded asynchronously. (Better prformance for webpage loading)
 
 ### Modifier
-Widget state holder. Every parameters of element is modifier.
-Modifier may contains widget-specific data, like `textColor`, `href`. Elements 
-use it as point of truth, when it render.
+Common widget settings, like `backgroundColor`, `padding` and smth else.
+Each modifier will be applied to web element, as style/attribute of it.
 
-You can access to element's modifier from element body
-
-For example
+To create simple modifier - just call `Modifier` ~~(like a Compose)~~
 ```kotlin
-// Same elements
-text(text = "Sample text")
-text { modifier.text("Sample text") }
+text(text = "Sample text", modifier = Modifier.marginLeft(2.rm))
+space(Modifier.height(1.rm))
 ```
-
-You can use modifier to customize styling, attributes and behavior of element.
 
 ## Roadmap
 Basic steps, which probably will be supported

@@ -5,6 +5,8 @@
 
 Sample webpage written using this library available at https://kube.syncended.dev
 
+[Tasks tracker](https://github.com/users/syncended/projects/3/views/1)
+
 ## How to
 ### Webpage
 To create webpage - you should just using high-level funcitons of layout like
@@ -34,24 +36,3 @@ space(Modifier.height(1.rm))
 
 Under the hood, Modifier is a Map<String, Any>, which hold every parameter
 of widget, and render on applyStyling step
-
-## Roadmap
-Basic steps, which probably will be supported
-
-- Basic html elements support
-  - Buttons
-  - Forms
-  - Dropdown menu
-- Styling
-  - ~~Mobile/desktop changes~~
-- Maven publish
-- Github releases
-- Web page templates
-  - Table view
-  - List view 
-- ~~Spring configuration~~
-- Ktor extensions
-- Extended elements
-  - Markdown viewer
-- HTMX support
-- Plugin system

@@ -54,3 +54,4 @@ Basic steps, which probably will be supported
 - Extended elements
   - Markdown viewer
 - HTMX support
+- Plugin system

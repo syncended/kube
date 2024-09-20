@@ -6,7 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "kube")
 data class KubeProperties(
-  val resources: KubeResources = KubeResources()
+  val resources: KubeResources = KubeResources(),
+  var useHtmx: Boolean = false
 )
 
 data class KubeResources(

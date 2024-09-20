@@ -3,6 +3,7 @@ package dev.syncended.kube.spring.controller
 import dev.syncended.kube.core.model.getBytes
 import dev.syncended.kube.core.model.name
 import dev.syncended.kube.core.styling.KubeStyling
+import dev.syncended.kube.htmx.htmxMinJs
 import dev.syncended.kube.spring.utils.contentType
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.http.HttpHeaders
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/\${kube.resources.prefix:static}")
 class ResourcesController {
   private val mainCss by lazy { KubeStyling.buildStyle() }
+  private val htmx by lazy { htmxMinJs() }
 
   @GetMapping("/css/main.css")
   fun fonts(): ResponseEntity<String> {
@@ -30,6 +32,17 @@ class ResourcesController {
     headers.contentType = MediaType.valueOf("text/css")
     return ResponseEntity(
       mainCss,
+      headers,
+      HttpStatus.OK,
+    )
+  }
+
+  @GetMapping("/js/htmx.min.js")
+  fun htmxJs(): ResponseEntity<String> {
+    val headers = HttpHeaders()
+    headers.contentType = MediaType.valueOf("text/javascript")
+    return ResponseEntity(
+      htmx,
       headers,
       HttpStatus.OK,
     )
@@ -49,5 +62,9 @@ class ResourcesController {
       headers,
       HttpStatus.OK
     )
+  }
+
+  private companion object {
+    const val HTMX_LOCATION = "classpath:js/htmx.min.js"
   }
 }

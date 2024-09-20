@@ -13,5 +13,6 @@ open class KubeConfiguration(properties: KubeProperties) {
   init {
     Kube.setResourceMode(properties.resources.mode)
     Kube.setResourcePrefix(properties.resources.prefix)
+    Kube.setHtmxEnabled(properties.useHtmx)
   }
 }

@@ -2,6 +2,7 @@ package dev.syncended.kube.core.model
 
 import dev.syncended.kube.core.Kube
 import kotlinx.css.FontWeight
+import loadResource
 import kotlinx.css.FontStyle as CssFontStyle
 
 data class Font(
@@ -34,8 +35,4 @@ val FontResource.extension: String
 val FontResource.url: String
   get() = "/${Kube.resourcesPrefix}/font/${name}"
 
-fun FontResource.getBytes(): ByteArray? {
-  val url = "/$resourceName".replace("//", "/")
-  return Kube::class.java.getResource(url)
-    ?.readBytes()
-}
+fun FontResource.getBytes(): ByteArray? = loadResource("/$resourceName")

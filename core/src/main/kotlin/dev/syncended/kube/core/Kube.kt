@@ -19,6 +19,8 @@ import kotlinx.html.style
 import kotlinx.html.unsafe
 
 object Kube {
+  private val plugins = mutableSetOf<KubePlugin>()
+
   private var _resourcesPrefix: String = ""
   internal val resourcesPrefix: String get() = _resourcesPrefix
 
@@ -26,6 +28,14 @@ object Kube {
   internal val resourceMode: ResourceMode get() = _resourceMode
 
   private var isHtmxEnabled = false
+
+  fun install(vararg plugins: KubePlugin) {
+    this.plugins.addAll(plugins)
+  }
+
+  fun remove(plugin: KubePlugin) {
+    plugins.remove(plugin)
+  }
 
   fun setResourceMode(mode: ResourceMode) {
     _resourceMode = mode

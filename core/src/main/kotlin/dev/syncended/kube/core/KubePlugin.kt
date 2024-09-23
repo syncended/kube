@@ -1,0 +1,48 @@
+package dev.syncended.kube.core
+
+import dev.syncended.kube.core.component.Modifier
+import kotlinx.css.CssBuilder
+import kotlinx.html.HEAD
+import kotlinx.html.Tag
+
+/**
+ * Core entity, which allow append core functions of KUBE.
+ */
+sealed interface KubePlugin {
+
+  /**
+   * Plugin for to main.css composition phase.
+   * Should be used to add new styling rules of your elements.
+   */
+  interface ElementStyling {
+    fun apply(cssBuilder: CssBuilder)
+  }
+
+  /**
+   * Plugin to apply custom modifier params, to element's style attribute
+   */
+  interface ModifierStyling {
+    fun apply(modifier: Modifier, cssBuilder: CssBuilder)
+  }
+
+  /**
+   * Plugin to add custom tags, depending on modifier
+   */
+  interface ModifierAttributes {
+    fun apply(modifier: Modifier, element: Tag)
+  }
+
+  /**
+   * Plugin to add custom elements to html webpage HEAD
+   */
+  interface HeadAppender {
+    fun apply(head: HEAD)
+  }
+
+  /**
+   * Plugin to add batch of plugins.
+   */
+  interface PluginsWrapper {
+    fun getPlugins(): List<KubePlugin>
+  }
+}

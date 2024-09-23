@@ -14,35 +14,35 @@ sealed interface KubePlugin {
    * Plugin for to main.css composition phase.
    * Should be used to add new styling rules of your elements.
    */
-  interface ElementStyling {
+  interface ElementStyling : KubePlugin {
     fun apply(cssBuilder: CssBuilder)
   }
 
   /**
    * Plugin to apply custom modifier params, to element's style attribute
    */
-  interface ModifierStyling {
+  interface ModifierStyling : KubePlugin {
     fun apply(modifier: Modifier, cssBuilder: CssBuilder)
   }
 
   /**
    * Plugin to add custom tags, depending on modifier
    */
-  interface ModifierAttributes {
+  interface ModifierAttributes : KubePlugin {
     fun apply(modifier: Modifier, element: Tag)
   }
 
   /**
    * Plugin to add custom elements to html webpage HEAD
    */
-  interface HeadAppender {
+  interface HeadAppender : KubePlugin {
     fun apply(head: HEAD)
   }
 
   /**
    * Plugin to add batch of plugins.
    */
-  interface PluginsWrapper {
-    fun getPlugins(): List<KubePlugin>
+  interface PluginsWrapper : KubePlugin {
+    val plugins: Set<KubePlugin>
   }
 }

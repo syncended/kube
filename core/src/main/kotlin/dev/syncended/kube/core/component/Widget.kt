@@ -1,7 +1,7 @@
 package dev.syncended.kube.core.component
 
+import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.model.toCssColor
-import dev.syncended.kube.core.modifier.KubeModifiers
 import dev.syncended.kube.core.styling.styling
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
@@ -86,31 +86,7 @@ abstract class Widget(protected val modifier: Modifier) {
   }
 
   protected open fun applyStyling(builder: CssBuilder) {
-    modifier.width?.let { builder.width = it.toDimension() }
-    modifier.minWidth?.let { builder.minWidth = it.toDimension() }
-    modifier.maxWidth?.let { builder.maxWidth = it.toDimension() }
-
-    modifier.height?.let { builder.height = it.toDimension() }
-    modifier.minHeight?.let { builder.minHeight = it.toDimension() }
-    modifier.maxHeight?.let { builder.maxHeight = it.toDimension() }
-
-    modifier.paddingTop?.let { builder.paddingTop = it.toDimension() }
-    modifier.paddingLeft?.let { builder.paddingLeft = it.toDimension() }
-    modifier.paddingRight?.let { builder.paddingRight = it.toDimension() }
-    modifier.paddingBottom?.let { builder.paddingBottom = it.toDimension() }
-
-    modifier.marginTop?.let { builder.marginTop = it.toDimension() }
-    modifier.marginLeft?.let { builder.marginLeft = it.toDimension() }
-    modifier.marginRight?.let { builder.marginRight = it.toDimension() }
-    modifier.marginBottom?.let { builder.marginBottom = it.toDimension() }
-
-    modifier.backgroundColor?.let { builder.backgroundColor = it.toCssColor() }
-    modifier.borderTopLeftRadius?.let { builder.borderTopLeftRadius = it.toDimension() }
-    modifier.borderTopRightRadius?.let { builder.borderTopRightRadius = it.toDimension() }
-    modifier.borderBottomLeftRadius?.let { builder.borderBottomLeftRadius = it.toDimension() }
-    modifier.borderBottomRightRadius?.let { builder.borderBottomRightRadius = it.toDimension() }
-
-    KubeModifiers.cssBuilders.forEach { it.invoke(builder, modifier) }
+    Kube.modifierStylingPlugins.forEach { it.apply(modifier, builder) }
   }
 
   private fun buildClasses(): String? {

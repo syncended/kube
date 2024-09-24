@@ -2,7 +2,7 @@ package dev.syncended.kube.spring.controller
 
 import dev.syncended.kube.core.model.getBytes
 import dev.syncended.kube.core.model.name
-import dev.syncended.kube.core.styling.KubeStyling
+import dev.syncended.kube.core.KubeStyling
 import dev.syncended.kube.htmx.htmxMinJs
 import dev.syncended.kube.spring.utils.contentType
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty

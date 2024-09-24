@@ -5,7 +5,7 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
-import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.row
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
@@ -29,7 +29,7 @@ class Row(
   }
 
   companion object {
-    fun styling() = row.styling {
+    fun styling(cssBuilder: CssBuilder) = cssBuilder.on(row) {
       display = Display.flex
       flexDirection = FlexDirection.row
     }

@@ -7,6 +7,7 @@ object KubePlugins : KubePlugin.PluginsWrapper {
     get() = setOf(
       ViewportPlugin,
       MainCssPlugin,
-      ModifierStylingPlugins
+      StylingPlugin,
+      ModifierStylingPlugin,
     )
 }

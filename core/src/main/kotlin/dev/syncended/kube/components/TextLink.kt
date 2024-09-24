@@ -7,11 +7,12 @@ import dev.syncended.kube.core.model.FontSize
 import dev.syncended.kube.core.model.FontStyle
 import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.core.model.toCssColor
-import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Colors
 import dev.syncended.kube.styling.Selectors.link
 import dev.syncended.kube.styling.Selectors.linkLink
 import dev.syncended.kube.styling.Selectors.linkVisited
+import kotlinx.css.CssBuilder
 import kotlinx.css.color
 import kotlinx.css.properties.TextDecoration
 import kotlinx.css.textDecoration
@@ -37,14 +38,14 @@ class TextLink(
   }
 
   companion object {
-    fun styling() {
-      link.styling {
+    fun styling(cssBuilder: CssBuilder) {
+      cssBuilder.on(link) {
         textDecoration = TextDecoration.none
       }
-      linkLink.styling {
+      cssBuilder.on(linkLink) {
         color = Colors.black.toCssColor()
       }
-      linkVisited.styling {
+      cssBuilder.on(linkVisited) {
         color = Colors.black.toCssColor()
       }
     }

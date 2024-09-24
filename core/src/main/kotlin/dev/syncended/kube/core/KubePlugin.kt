@@ -14,7 +14,7 @@ sealed interface KubePlugin {
    * Plugin for to main.css composition phase.
    * Should be used to add new styling rules of your elements.
    */
-  interface ElementStyling : KubePlugin {
+  interface Styling : KubePlugin {
     fun apply(cssBuilder: CssBuilder)
   }
 

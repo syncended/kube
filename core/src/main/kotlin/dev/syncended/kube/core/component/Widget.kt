@@ -1,32 +1,12 @@
 package dev.syncended.kube.core.component
 
 import dev.syncended.kube.core.Kube
-import dev.syncended.kube.core.model.toCssColor
-import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
-import kotlinx.css.backgroundColor
-import kotlinx.css.borderBottomLeftRadius
-import kotlinx.css.borderBottomRightRadius
-import kotlinx.css.borderTopLeftRadius
-import kotlinx.css.borderTopRightRadius
 import kotlinx.css.display
-import kotlinx.css.height
-import kotlinx.css.marginBottom
-import kotlinx.css.marginLeft
-import kotlinx.css.marginRight
-import kotlinx.css.marginTop
-import kotlinx.css.maxHeight
-import kotlinx.css.maxWidth
-import kotlinx.css.minHeight
-import kotlinx.css.minWidth
-import kotlinx.css.paddingBottom
-import kotlinx.css.paddingLeft
-import kotlinx.css.paddingRight
-import kotlinx.css.paddingTop
-import kotlinx.css.width
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.DIV
@@ -102,13 +82,13 @@ abstract class Widget(protected val modifier: Modifier) {
   }
 
   companion object {
-    fun styling() {
-      dynamicDesktop.styling {
+    fun styling(cssBuilder: CssBuilder) {
+      cssBuilder.on(dynamicDesktop) {
         media("screen and (max-width: 475px)") {
           display = Display.none
         }
       }
-      dynamicMobile.styling {
+      cssBuilder.on(dynamicMobile) {
         media("screen and (min-width: 476px)") {
           display = Display.none
         }

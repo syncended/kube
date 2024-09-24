@@ -28,10 +28,6 @@ sealed class Selector {
       is Raw -> value
     }
   }
-
-  internal fun Selector.toCssSelector(): TagSelector {
-    return TagSelector(this.toRawSelector())
-  }
 }
 
 fun String.toClassSelector(): Selector.Class {
@@ -52,4 +48,8 @@ fun String.toRawSelector(): Selector.Raw {
 
 fun Selector.Class.appendName(appendName: String): Selector.Class {
   return this.copy(name = name + appendName)
+}
+
+internal fun Selector.toCssSelector(): TagSelector {
+  return TagSelector(this.toRawSelector())
 }

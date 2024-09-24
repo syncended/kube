@@ -19,6 +19,8 @@ object Kube {
 
   private val headPlugins: List<KubePlugin.HeadAppender>
     get() = plugins.filterIsInstance<KubePlugin.HeadAppender>()
+  internal val stylingPlugins: List<KubePlugin.Styling>
+    get() = plugins.filterIsInstance<KubePlugin.Styling>()
   internal val modifierStylingPlugins: List<KubePlugin.ModifierStyling>
     get() = plugins.filterIsInstance<KubePlugin.ModifierStyling>()
 

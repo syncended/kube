@@ -6,7 +6,7 @@ import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.model.toJustifyContent
-import dev.syncended.kube.core.styling.styling
+import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.box
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
@@ -41,7 +41,7 @@ class Box(
 ) {
 
   companion object {
-    fun styling() = box.styling {
+    fun styling(cssBuilder: CssBuilder) = cssBuilder.on(box) {
       display = Display.flex
     }
   }

@@ -4,7 +4,7 @@ import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.Kube.resourcesPrefix
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.model.ResourceMode
-import dev.syncended.kube.core.styling.KubeStyling.buildStyle
+import dev.syncended.kube.core.KubeStyling.buildStyle
 import kotlinx.html.HEAD
 import kotlinx.html.link
 import kotlinx.html.style

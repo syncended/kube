@@ -2,6 +2,7 @@ package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.RenderMode
+import dev.syncended.kube.core.model.ResourceMode
 import dev.syncended.kube.core.plugins.KubePlugins
 import dev.syncended.kube.htmx.htmxMinJs
 import kotlinx.html.HTML
@@ -12,12 +13,10 @@ import kotlinx.html.head
 import kotlinx.html.html
 import kotlinx.html.script
 import kotlinx.html.unsafe
+import trimSlashes
 
 object Kube {
   internal val plugins = PluginsHolder()
-
-  private var _resourcesPrefix: String = ""
-  internal val resourcesPrefix: String get() = _resourcesPrefix
 
   private var isHtmxEnabled = false
 
@@ -31,10 +30,6 @@ object Kube {
 
   fun remove(plugin: KubePlugin) {
     plugins.remove(plugin)
-  }
-
-  fun setResourcePrefix(prefix: String) {
-    _resourcesPrefix = prefix.trim('/')
   }
 
   fun setHtmxEnabled(isEnabled: Boolean) {
@@ -52,9 +47,11 @@ object Kube {
     if (mode == RenderMode.VIEW_ONLY) return
     head {
       plugins.head.forEach { it.apply(this) }
-      when (plugins.resources) {
-        is KubePlugin.Resources.Fat -> if (isHtmxEnabled) script { unsafe { +htmxMinJs() } }
-        is KubePlugin.Resources.Link -> if (isHtmxEnabled) script { src = "/$resourcesPrefix/js/htmx.min.js" }
+      when (plugins.resources.mode) {
+        ResourceMode.FAT -> if (isHtmxEnabled) script { unsafe { +htmxMinJs() } }
+        ResourceMode.LINK -> if (isHtmxEnabled) script {
+          src = "/${plugins.resources.prefix}/js/htmx.min.js".trimSlashes()
+        }
       }
     }
   }

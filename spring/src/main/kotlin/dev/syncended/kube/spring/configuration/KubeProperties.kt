@@ -1,5 +1,6 @@
 package dev.syncended.kube.spring.configuration
 
+import dev.syncended.kube.core.model.ResourceMode
 import org.springframework.boot.context.properties.ConfigurationProperties
 
 

@@ -1,10 +1,10 @@
 package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.ResourceMode
 import kotlinx.css.CssBuilder
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HEAD
-import kotlinx.html.Tag
 
 /**
  * Core entity, which allow append core functions of KUBE.
@@ -42,12 +42,12 @@ sealed interface KubePlugin {
 
   /**
    * Resource mode plugin, how page should be rendered
-   * @property Fat build resources into rendered webpage
-   * @property Link link resources as external endpoints
+   * @property mode resources mode
+   * @property prefix resources link prefix
    */
-  sealed interface Resources : KubePlugin {
-    data object Fat : Resources
-    data object Link : Resources
+  interface Resources : KubePlugin {
+    val mode: ResourceMode
+    val prefix: String
   }
 
   /**

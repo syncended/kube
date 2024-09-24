@@ -5,3 +5,7 @@ fun loadResource(location: String): ByteArray? {
   return Kube::class.java.getResource(url)
     ?.readBytes()
 }
+
+fun String.trimSlashes(): String {
+  return "/${this.trim('/')}"
+}

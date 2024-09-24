@@ -1,5 +1,7 @@
 package dev.syncended.kube.core
 
+import dev.syncended.kube.core.plugins.KubeResourcesPlugin
+
 internal class PluginsHolder {
   private val _head = mutableSetOf<KubePlugin.HeadAppender>()
   private val _styling = mutableSetOf<KubePlugin.Styling>()
@@ -11,7 +13,7 @@ internal class PluginsHolder {
   val modifierStyling: Set<KubePlugin.ModifierStyling> get() = _modifierStyling
   val modifierAttributes: Set<KubePlugin.ModifierAttributes> get() = _modifierAttributes
 
-  var resources: KubePlugin.Resources = KubePlugin.Resources.Fat
+  var resources: KubePlugin.Resources = KubeResourcesPlugin()
     private set
 
   fun install(plugins: Set<KubePlugin>) {
@@ -25,7 +27,7 @@ internal class PluginsHolder {
       is KubePlugin.ModifierAttributes -> _modifierAttributes -= plugin
       is KubePlugin.HeadAppender -> _head -= plugin
       is KubePlugin.Styling -> _styling -= plugin
-      is KubePlugin.Resources -> resources = KubePlugin.Resources.Fat
+      is KubePlugin.Resources -> resources = KubeResourcesPlugin()
     }
   }
 

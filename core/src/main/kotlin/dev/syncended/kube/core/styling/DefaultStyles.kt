@@ -1,11 +1,11 @@
 package dev.syncended.kube.core.styling
 
-import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.Kube.plugins
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.KubeStyling
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.FontResource
+import dev.syncended.kube.core.model.ResourceMode
 import dev.syncended.kube.core.model.getBytes
 import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.core.model.url
@@ -27,9 +27,9 @@ internal fun fontStyling(font: Font) {
   KubeStyling.styling(font.name.toRawSelector()) {
     font.resources.forEach { resource ->
       fontFace {
-        src = when (plugins.resources) {
-          KubePlugin.Resources.Fat -> readBase64Resource(resource)
-          KubePlugin.Resources.Link -> URL_TEMPLATE.format(resource.url)
+        src = when (plugins.resources.mode) {
+          ResourceMode.FAT -> readBase64Resource(resource)
+          ResourceMode.LINK -> URL_TEMPLATE.format(resource.url)
         }
         fontFamily = font.name
         fontWeight = resource.size.mapping

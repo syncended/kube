@@ -1,5 +1,6 @@
 package dev.syncended.kube.core
 
+import dev.syncended.kube.core.Kube.plugins
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.toCssSelector
@@ -10,7 +11,7 @@ import kotlinx.css.CssBuilder
 object KubeStyling {
   private val cssBuilder by lazy {
     val builder = CssBuilder()
-    Kube.stylingPlugins.forEach { it.apply(builder) }
+    plugins.styling.forEach { it.apply(builder) }
     builder
   }
 

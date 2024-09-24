@@ -15,14 +15,7 @@ import kotlinx.html.script
 import kotlinx.html.unsafe
 
 object Kube {
-  private val plugins = mutableSetOf<KubePlugin>()
-
-  private val headPlugins: List<KubePlugin.HeadAppender>
-    get() = plugins.filterIsInstance<KubePlugin.HeadAppender>()
-  internal val stylingPlugins: List<KubePlugin.Styling>
-    get() = plugins.filterIsInstance<KubePlugin.Styling>()
-  internal val modifierStylingPlugins: List<KubePlugin.ModifierStyling>
-    get() = plugins.filterIsInstance<KubePlugin.ModifierStyling>()
+  internal val plugins = PluginsHolder()
 
   private var _resourcesPrefix: String = ""
   internal val resourcesPrefix: String get() = _resourcesPrefix
@@ -37,17 +30,7 @@ object Kube {
   }
 
   fun install(vararg plugins: KubePlugin) {
-    install(plugins.toSet())
-  }
-
-  private fun install(plugins: Set<KubePlugin>) {
-    plugins.forEach { plugin ->
-      if (plugin is KubePlugin.PluginsWrapper) {
-        install(plugin.plugins)
-      } else {
-        this.plugins.add(plugin)
-      }
-    }
+    this.plugins.install(plugins.toSet())
   }
 
   fun remove(plugin: KubePlugin) {
@@ -76,7 +59,7 @@ object Kube {
   private fun HTML.renderHead(mode: RenderMode) {
     if (mode == RenderMode.VIEW_ONLY) return
     head {
-      headPlugins.forEach { it.apply(this) }
+      plugins.head.forEach { it.apply(this) }
       if (resourceMode == ResourceMode.FAT) {
         if (isHtmxEnabled) script { unsafe { +htmxMinJs() } }
       } else {

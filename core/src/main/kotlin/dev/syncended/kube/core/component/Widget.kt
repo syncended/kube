@@ -1,6 +1,6 @@
 package dev.syncended.kube.core.component
 
-import dev.syncended.kube.core.Kube
+import dev.syncended.kube.core.Kube.plugins
 import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
@@ -66,7 +66,7 @@ abstract class Widget(protected val modifier: Modifier) {
   }
 
   protected open fun applyStyling(builder: CssBuilder) {
-    Kube.modifierStylingPlugins.forEach { it.apply(modifier, builder) }
+    plugins.modifierStyling.forEach { it.apply(modifier, builder) }
   }
 
   private fun buildClasses(): String? {

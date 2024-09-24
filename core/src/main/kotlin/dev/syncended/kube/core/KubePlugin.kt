@@ -41,6 +41,16 @@ sealed interface KubePlugin {
   }
 
   /**
+   * Resource mode plugin, how page should be rendered
+   * @property Fat build resources into rendered webpage
+   * @property Link link resources as external endpoints
+   */
+  sealed interface Resources : KubePlugin {
+    data object Fat : Resources
+    data object Link : Resources
+  }
+
+  /**
    * Plugin to add batch of plugins.
    */
   interface PluginsWrapper : KubePlugin {

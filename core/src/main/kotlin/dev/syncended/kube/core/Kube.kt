@@ -2,7 +2,6 @@ package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.RenderMode
-import dev.syncended.kube.core.model.ResourceMode
 import dev.syncended.kube.core.plugins.KubePlugins
 import dev.syncended.kube.htmx.htmxMinJs
 import kotlinx.html.HTML
@@ -20,9 +19,6 @@ object Kube {
   private var _resourcesPrefix: String = ""
   internal val resourcesPrefix: String get() = _resourcesPrefix
 
-  private var _resourceMode = ResourceMode.FAT
-  internal val resourceMode: ResourceMode get() = _resourceMode
-
   private var isHtmxEnabled = false
 
   init {
@@ -35,10 +31,6 @@ object Kube {
 
   fun remove(plugin: KubePlugin) {
     plugins.remove(plugin)
-  }
-
-  fun setResourceMode(mode: ResourceMode) {
-    _resourceMode = mode
   }
 
   fun setResourcePrefix(prefix: String) {
@@ -60,10 +52,9 @@ object Kube {
     if (mode == RenderMode.VIEW_ONLY) return
     head {
       plugins.head.forEach { it.apply(this) }
-      if (resourceMode == ResourceMode.FAT) {
-        if (isHtmxEnabled) script { unsafe { +htmxMinJs() } }
-      } else {
-        if (isHtmxEnabled) script { src = "/$resourcesPrefix/js/htmx.min.js" }
+      when (plugins.resources) {
+        is KubePlugin.Resources.Fat -> if (isHtmxEnabled) script { unsafe { +htmxMinJs() } }
+        is KubePlugin.Resources.Link -> if (isHtmxEnabled) script { src = "/$resourcesPrefix/js/htmx.min.js" }
       }
     }
   }

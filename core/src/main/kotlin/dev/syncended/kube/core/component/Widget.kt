@@ -15,7 +15,6 @@ import kotlinx.html.IMG
 import kotlinx.html.P
 import kotlinx.html.a
 import kotlinx.html.div
-import kotlinx.html.id
 import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.style
@@ -61,12 +60,11 @@ abstract class Widget(protected val modifier: Modifier) {
   protected abstract fun render()
 
   protected open fun CommonAttributeGroupFacade.applyModifierAttributes() {
-    modifier.id?.let { id = it.name }
+    plugins.modifierAttributes.forEach { it.apply(modifier, this) }
     buildStyling()?.let { style = it }
   }
 
   protected open fun applyStyling(builder: CssBuilder) {
-    plugins.modifierStyling.forEach { it.apply(modifier, builder) }
   }
 
   private fun buildClasses(): String? {
@@ -76,6 +74,7 @@ abstract class Widget(protected val modifier: Modifier) {
 
   private fun buildStyling(): String? {
     val builder = CssBuilder()
+    plugins.modifierStyling.forEach { it.apply(modifier, builder) }
     applyStyling(builder)
     return builder.toString()
       .trim().takeIf { it.isNotEmpty() }

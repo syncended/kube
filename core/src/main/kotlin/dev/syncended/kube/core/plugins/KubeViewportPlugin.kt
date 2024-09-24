@@ -5,7 +5,7 @@ import dev.syncended.kube.utils.setAttr
 import kotlinx.html.HEAD
 import kotlinx.html.meta
 
-object ViewportPlugin : KubePlugin.HeadAppender {
+object KubeViewportPlugin : KubePlugin.HeadAppender {
   override fun apply(head: HEAD) {
     head.meta {
       name = "viewport"

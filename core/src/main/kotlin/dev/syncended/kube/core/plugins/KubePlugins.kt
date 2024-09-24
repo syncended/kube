@@ -5,9 +5,10 @@ import dev.syncended.kube.core.KubePlugin
 object KubePlugins : KubePlugin.PluginsWrapper {
   override val plugins: Set<KubePlugin>
     get() = setOf(
-      ViewportPlugin,
-      MainCssPlugin,
-      StylingPlugin,
-      ModifierStylingPlugin,
+      KubeViewportPlugin,
+      KubeMainCssPlugin,
+      KubeStylingPlugin,
+      KubeModifierStylingPlugin,
+      KubeModifierAttributesPlugin,
     )
 }

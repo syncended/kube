@@ -2,6 +2,7 @@ package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Modifier
 import kotlinx.css.CssBuilder
+import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.HEAD
 import kotlinx.html.Tag
 
@@ -29,7 +30,7 @@ sealed interface KubePlugin {
    * Plugin to add custom tags, depending on modifier
    */
   interface ModifierAttributes : KubePlugin {
-    fun apply(modifier: Modifier, element: Tag)
+    fun apply(modifier: Modifier, tag: CommonAttributeGroupFacade)
   }
 
   /**

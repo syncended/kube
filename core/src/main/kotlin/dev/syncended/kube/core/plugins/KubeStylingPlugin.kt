@@ -28,7 +28,7 @@ import kotlinx.css.padding
 import kotlinx.css.userSelect
 import kotlinx.css.width
 
-object StylingPlugin : KubePlugin.Styling {
+object KubeStylingPlugin : KubePlugin.Styling {
   override fun apply(cssBuilder: CssBuilder) {
     widgetStyling(cssBuilder)
     rawStyling(cssBuilder)

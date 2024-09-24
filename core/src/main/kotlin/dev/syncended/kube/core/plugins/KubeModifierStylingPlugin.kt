@@ -43,7 +43,7 @@ import kotlinx.css.paddingRight
 import kotlinx.css.paddingTop
 import kotlinx.css.width
 
-object ModifierStylingPlugin: KubePlugin.ModifierStyling {
+object KubeModifierStylingPlugin: KubePlugin.ModifierStyling {
   override fun apply(modifier: Modifier, cssBuilder: CssBuilder) {
     modifier.width?.let { cssBuilder.width = it.toDimension() }
     modifier.minWidth?.let { cssBuilder.minWidth = it.toDimension() }

@@ -10,7 +10,7 @@ import kotlinx.html.link
 import kotlinx.html.style
 import kotlinx.html.unsafe
 
-object MainCssPlugin : KubePlugin.HeadAppender {
+object KubeMainCssPlugin : KubePlugin.HeadAppender {
   override fun apply(head: HEAD) {
     if (Kube.resourceMode == ResourceMode.FAT) {
       head.style { unsafe { +buildStyle() } }

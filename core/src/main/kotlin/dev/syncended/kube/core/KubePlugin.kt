@@ -1,6 +1,7 @@
 package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.ResourceMode
 import kotlinx.css.CssBuilder
 import kotlinx.html.CommonAttributeGroupFacade
@@ -45,10 +46,27 @@ sealed interface KubePlugin {
    * @property mode resources mode
    * @property prefix resources link prefix
    */
-  interface Resources : KubePlugin {
-    val mode: ResourceMode
-    val prefix: String
+
+  class Resources(
+    val mode: ResourceMode = ResourceMode.FAT,
+    prefix: String = ""
+  ) : KubePlugin {
+    val prefix: String = prefix.trim('/')
   }
+
+  /**
+   * Font resource, which will be available from kube dsl
+   */
+  data class FontResource(
+    val font: Font
+  ) : KubePlugin
+
+  /**
+   * Font, which will be used as default font
+   */
+  data class DefaultFontResource(
+    val font: Font
+  ) : KubePlugin
 
   /**
    * Plugin to add batch of plugins.

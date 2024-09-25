@@ -1,6 +1,5 @@
 package dev.syncended.kube.core.model
 
-import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.Kube.plugins
 import kotlinx.css.FontWeight
 import loadResource

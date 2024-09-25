@@ -1,6 +1,7 @@
 package dev.syncended.kube.core.plugins
 
 import dev.syncended.kube.core.KubePlugin
+import dev.syncended.kube.styling.Fonts
 
 object KubePlugins : KubePlugin.PluginsWrapper {
   override val plugins: Set<KubePlugin>
@@ -10,5 +11,6 @@ object KubePlugins : KubePlugin.PluginsWrapper {
       KubeStylingPlugin,
       KubeModifierStylingPlugin,
       KubeModifierAttributesPlugin,
+      KubePlugin.DefaultFontResource(Fonts.jbMono),
     )
 }

@@ -22,7 +22,7 @@ fun docs(path: DocsPath) = webpage {
   docsLayout(path) {
     when (path) {
       DocsPath.WELCOME -> welcome()
-      DocsPath.TEST -> text("todo")
+      DocsPath.HTMX -> htmxDocs()
     }
   }
 }
@@ -52,7 +52,7 @@ private fun Layout.docsLayout(
     }
 
     cardComponent(modifier = Modifier.fillMaxWidth()) {
-      column { content() }
+      column(modifier = Modifier.fillMaxWidth()) { content() }
     }
   }
 }
@@ -64,8 +64,8 @@ private fun Column.menuElements(path: DocsPath) {
     selectedPath = path
   )
   menuElement(
-    name = "Test page",
-    path = DocsPath.TEST,
+    name = "HTMX Integration",
+    path = DocsPath.HTMX,
     selectedPath = path
   )
 }

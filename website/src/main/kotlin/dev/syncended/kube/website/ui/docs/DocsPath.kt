@@ -2,7 +2,7 @@ package dev.syncended.kube.website.ui.docs
 
 enum class DocsPath {
   WELCOME,
-  TEST;
+  HTMX,
 }
 
 fun String.toDocsPath(): DocsPath {

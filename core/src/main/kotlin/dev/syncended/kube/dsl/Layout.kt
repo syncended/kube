@@ -14,7 +14,7 @@ fun Layout.box(
   modifier: Modifier = Modifier,
   verticalAlignment: Alignment.Vertical? = null,
   horizontalAlignment: Alignment.Horizontal? = null,
-  body: Box.() -> Unit
+  body: Box.() -> Unit = {}
 ) = widget(
   instance = Box(
     modifier = modifier,

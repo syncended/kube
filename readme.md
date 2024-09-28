@@ -21,7 +21,7 @@ Resource mode can be modified over install `KubePlugin.Resources` plugin
 
 There is 2 possible values:
 - `FAT` - put every used resource in single page. Page will include fonts/css/js code inside
-- `LINK` - currently unsupported. Webpage will include each resource as `link`. Resources will
+- `LINK` - webpage will include each resource as `link`. Resources will
     be loaded asynchronously. (Better prformance for webpage loading)
 
 ### Modifier

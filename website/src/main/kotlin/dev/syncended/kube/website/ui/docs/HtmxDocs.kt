@@ -7,7 +7,6 @@ import dev.syncended.kube.core.component.marginLeft
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.row
-import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.htmx.model.HxSwap
 import dev.syncended.kube.htmx.modifier.hxGet

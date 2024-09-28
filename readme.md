@@ -36,3 +36,6 @@ space(Modifier.height(1.rm))
 
 Under the hood, Modifier is a Map<String, Any>, which hold every parameter
 of widget, and render on applyStyling step
+
+### HTMX Integration
+TODO

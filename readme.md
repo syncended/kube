@@ -17,7 +17,7 @@ Each method support `RenderMode`. Render mode - is an description how element sh
 - `VIEW_ONLY` - just render element, without any resources on it (it will be used to render dynamic elements of HTMX)  
 
 ### Resource mode
-Resource mode can be modified over call `Kube.setResourceMode`
+Resource mode can be modified over install `KubePlugin.Resources` plugin
 
 There is 2 possible values:
 - `FAT` - put every used resource in single page. Page will include fonts/css/js code inside

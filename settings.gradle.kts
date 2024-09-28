@@ -1,5 +1,7 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include("core")
-include("spring")
+include("htmx")
+include("spring:core")
+include("spring:htmx")
 include("website")

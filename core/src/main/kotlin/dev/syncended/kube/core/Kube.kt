@@ -2,6 +2,7 @@ package dev.syncended.kube.core
 
 import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.RenderMode
+import dev.syncended.kube.core.model.ResourceMode
 import dev.syncended.kube.core.plugins.KubePlugins
 import kotlinx.html.HTML
 import kotlinx.html.body
@@ -12,6 +13,8 @@ import kotlinx.html.html
 
 object Kube {
   internal val plugins = PluginsHolder()
+  val resources: KubePlugin.Resources
+    get() = plugins.resources
 
   init {
     install(KubePlugins)

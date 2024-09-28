@@ -1,7 +1,5 @@
 package dev.syncended.kube.core
 
-import dev.syncended.kube.core.plugins.KubePlugins
-
 internal class PluginsHolder {
   private val _head = mutableSetOf<KubePlugin.HeadAppender>()
   private val _styling = mutableSetOf<KubePlugin.Styling>()

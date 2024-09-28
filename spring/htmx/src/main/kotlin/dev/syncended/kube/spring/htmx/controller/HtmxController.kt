@@ -1,6 +1,6 @@
 package dev.syncended.kube.spring.htmx.controller
 
-import dev.syncended.kube.htmx.KubeHtmxPlugins
+import dev.syncended.kube.htmx.utils.htmxSource
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
@@ -24,7 +24,7 @@ class HtmxController {
     val headers = HttpHeaders()
     headers.contentType = MediaType.valueOf("text/javascript")
     return ResponseEntity(
-      KubeHtmxPlugins.htmxSource,
+      htmxSource,
       headers,
       HttpStatus.OK,
     )

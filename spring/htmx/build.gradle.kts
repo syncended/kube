@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
   implementation(projects.core)
-  implementation(projects.htmx)
+  api(projects.htmx)
 
   implementation(libs.spring.web)
   implementation(libs.spring.boot.starter)

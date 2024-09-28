@@ -7,8 +7,8 @@ plugins {
 }
 
 dependencies {
-  implementation(projects.core)
   implementation(projects.spring.core)
+  implementation(projects.spring.htmx)
 
   implementation(libs.kotlin.stdlib)
   implementation(libs.kotlin.reflect)

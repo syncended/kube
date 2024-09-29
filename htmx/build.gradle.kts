@@ -1,15 +1,8 @@
-plugins {
-  alias(libs.plugins.kotlin.jvm)
-  `java-library`
-}
+library("kube-htmx") {
+  modulesApi(projects.core)
 
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  implementation(projects.core)
-
-  implementation(libs.kotlin.stdlib)
-  implementation(libs.kotlin.html)
+  implementation(
+    libs.kotlin.stdlib,
+    libs.kotlin.html,
+  )
 }

@@ -1,17 +1,12 @@
-import org.gradle.jvm.tasks.Jar
+library("kube-spring-htmx") {
+  modulesApi(
+    projects.core,
+    projects.htmx,
+    projects.spring.core,
+  )
 
-plugins {
-  alias(libs.plugins.kotlin.jvm)
-}
-
-dependencies {
-  implementation(projects.core)
-  api(projects.htmx)
-
-  implementation(libs.spring.web)
-  implementation(libs.spring.boot.starter)
-}
-
-tasks.withType<Jar> {
-  archiveBaseName.set("kube-spring-htmx.jar")
+  implementation(
+    libs.spring.web,
+    libs.spring.boot.starter,
+  )
 }

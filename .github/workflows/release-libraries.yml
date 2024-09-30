@@ -24,18 +24,20 @@ jobs:
 
       - name: Create gradle dir
         run: |
-          echo <<EOF "
+          echo  "
           signing.keyId=${{ secrets.GPG_ID }}
-          signing.password=${{ secrets.GPG_PASSWORD }}
+          signing.password=${{ secrets.GPG_PASS }}
           signing.secretKeyRingFile=~/.gradle/gpg.gpg
-          "
-          EOF > ~/.gradle/gradle.properties
+          " > ~/.gradle/gradle.properties
 
       - name: Export release version
         run: export RELEASE_VERSION=${{ github.event.tag }}
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'coretto'
+          java-version: '21'
 
       - name: Build core
         run: ./gradlew :core:publishToSonatype

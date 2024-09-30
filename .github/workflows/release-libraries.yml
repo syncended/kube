@@ -20,13 +20,13 @@ jobs:
         run: mkdir ~/.gradle
 
       - name: Create gpg file
-        run: echo "${{ secretes.GPG_KEY }}" > ~/.gradle/gpg.gpg
+        run: echo "${{ secrets.GPG_KEY }}" > ~/.gradle/gpg.gpg
 
       - name: Create gradle dir
         run: |
           echo <<EOF "
           signing.keyId=${{ secrets.GPG_ID }}
-          signing.password=${{ secretes.GPG_PASSWORD }}
+          signing.password=${{ secrets.GPG_PASSWORD }}
           signing.secretKeyRingFile=~/.gradle/gpg.gpg
           "
           EOF > ~/.gradle/gradle.properties

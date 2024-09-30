@@ -11,4 +11,5 @@ repositories {
 dependencies {
   implementation(gradleApi())
   implementation(libs.kotlin.stdlib)
+  implementation(libs.sonatype.publish)
 }

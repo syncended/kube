@@ -1,6 +1,6 @@
 package builder
 
-import LibraryInfo
+import PublishingInfo
 import org.gradle.api.Project
 import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.internal.catalog.DelegatingProjectDependency
@@ -11,7 +11,7 @@ import org.gradle.plugin.use.PluginDependency
 
 abstract class ModuleBuilder(
   protected val project: Project,
-  archiveName: String
+  private val moduleName: String
 ) {
   private val pluginBuilder = PluginBuilder(project)
   private val dependencyBuilder = DependencyBuilder(project)
@@ -21,7 +21,7 @@ abstract class ModuleBuilder(
     dependencies { implementation("kotlin-stdlib") }
     applyDefaultPlugins()
     applyDefaultDependencies()
-    applyArchiveName(archiveName)
+    applyArchiveName(moduleName)
   }
 
   fun plugins(builder: PluginBuilder.() -> Unit) {
@@ -90,7 +90,7 @@ class ApplicationBuilder(
     }
 
   init {
-    version = LibraryInfo.version
+    version = PublishingInfo.releaseVersion
   }
 
   override fun applyDefaultPlugins() = plugins {
@@ -99,7 +99,12 @@ class ApplicationBuilder(
 }
 
 class LibraryBuilder(project: Project, name: String) : ModuleBuilder(project, name) {
+  init {
+    project.setupPublishing(name)
+  }
+
   override fun applyDefaultPlugins() = plugins {
     apply("java-library")
+    apply("sonatype-publish")
   }
 }

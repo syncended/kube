@@ -18,6 +18,8 @@ fun Project.setupPublishing(archiveName: String) {
 
 private fun Project.setupSigning() {
   extensions.getByType<SigningExtension>().apply {
+    val publishing = extensions.getByType<PublishingExtension>()
+    sign(publishing.publications)
     useGpgCmd()
     useInMemoryPgpKeys(
       PublishingInfo.gpgId,

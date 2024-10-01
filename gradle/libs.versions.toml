@@ -38,4 +38,5 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 
 java-library = { id = "org.gradle.java-library" }
 application = { id = "org.gradle.application" }
+signing = { id = "org.gradle.signing" }
 sonatype-publish = { id = "eu.kakde.gradle.sonatype-maven-central-publisher" }

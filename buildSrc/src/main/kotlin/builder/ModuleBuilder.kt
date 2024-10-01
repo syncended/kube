@@ -8,6 +8,9 @@ import org.gradle.api.plugins.JavaApplication
 import org.gradle.api.provider.Provider
 import org.gradle.jvm.tasks.Jar
 import org.gradle.plugin.use.PluginDependency
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 abstract class ModuleBuilder(
   protected val project: Project,
@@ -61,8 +64,20 @@ abstract class ModuleBuilder(
   }
 
   private fun applyArchiveName(name: String) {
+    val isApplication = this is ApplicationBuilder
     project.tasks.withType(Jar::class.java) {
-      archiveBaseName.set("${name}.jar")
+      archiveBaseName.set(name)
+      if (isApplication) {
+        doLast {
+          val archive = archiveFile.get().asFile
+          val serviceFile = File(archive.parentFile, "service.jar")
+          Files.copy(
+            archive.toPath(),
+            serviceFile.toPath(),
+            StandardCopyOption.REPLACE_EXISTING
+          )
+        }
+      }
     }
   }
 }
@@ -105,6 +120,7 @@ class LibraryBuilder(project: Project, name: String) : ModuleBuilder(project, na
 
   override fun applyDefaultPlugins() = plugins {
     apply("java-library")
+    apply("signing")
     apply("sonatype-publish")
   }
 }

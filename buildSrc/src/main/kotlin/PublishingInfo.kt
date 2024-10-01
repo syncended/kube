@@ -17,4 +17,10 @@ object PublishingInfo {
 
   val mavenPassword: String
     get() = System.getenv("SONATYPE_PASSWORD") ?: ""
+
+  val gpgKey: String
+    get() = System.getenv("GPG_KEY") ?: ""
+
+  val gpgPassword: String
+    get() = System.getenv("GPG_PASSWORD") ?: ""
 }

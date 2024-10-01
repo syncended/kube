@@ -12,6 +12,21 @@ import org.gradle.plugins.signing.SigningExtension
 import java.net.URI
 
 fun Project.setupPublishing(archiveName: String) {
+  setupSigning()
+  setupSonatypeExt(archiveName)
+}
+
+private fun Project.setupSigning() {
+  extensions.getByType<SigningExtension>().apply {
+    useGpgCmd()
+    useInMemoryPgpKeys(
+      PublishingInfo.gpgKey,
+      PublishingInfo.gpgPassword
+    )
+  }
+}
+
+private fun Project.setupSonatypeExt(archiveName: String) {
   extensions.getByType<SonatypeCentralPublishExtension>().apply {
     username.set(PublishingInfo.mavenUsername)
     password.set(PublishingInfo.mavenPassword)

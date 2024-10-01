@@ -16,20 +16,6 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v3
 
-      - name: Create gradle dir
-        run: mkdir ~/.gradle
-
-      - name: Create gpg file
-        run: echo "${{ secrets.GPG_KEY }}" > ~/.gradle/gpg.gpg
-
-      - name: Create gradle dir
-        run: |
-          echo  "
-          signing.keyId=${{ secrets.GPG_ID }}
-          signing.password=${{ secrets.GPG_PASS }}
-          signing.secretKeyRingFile=~/.gradle/gpg.gpg
-          " > ~/.gradle/gradle.properties
-
       - name: Export release version
         run: export RELEASE_VERSION=${{ github.event.tag }}
 

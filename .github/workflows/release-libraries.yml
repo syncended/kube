@@ -16,9 +16,6 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v3
 
-      - name: Export release version
-        run: export RELEASE_VERSION=${{ github.event.tag }}
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -27,11 +24,12 @@ jobs:
 
       - name: Export envs
         run: |
-          export GPG_ID='${{ secrets.GPG_ID }}';
-          export GPG_KEY='${{ secrets.GPG_KEY }}';
-          export GPG_PASSWORD='${{ secrets.GPG_PASSWORD }}';
-          export SONATYPE_USERNAME='${{ secrets.SONATYPE_USERNAME }}';
-          export SONATYPE_PASSWORD='${{ secrets.SONATYPE_PASSWORD }}';
+          export RELEASE_VERSION=${{ github.event.tag }};
+          export GPG_ID="${{ secrets.GPG_ID }}";
+          export GPG_KEY="${{ secrets.GPG_KEY }}";
+          export GPG_PASSWORD="${{ secrets.GPG_PASSWORD }}";
+          export SONATYPE_USERNAME="${{ secrets.SONATYPE_USERNAME }}";
+          export SONATYPE_PASSWORD="${{ secrets.SONATYPE_PASSWORD }}";
 
       - name: Build core
         run: ./gradlew :core:publishToSonatype

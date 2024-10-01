@@ -116,6 +116,7 @@ class ApplicationBuilder(
 class LibraryBuilder(project: Project, name: String) : ModuleBuilder(project, name) {
   init {
     project.setupPublishing(name)
+    println("Library version: ${PublishingInfo.releaseVersion}")
   }
 
   override fun applyDefaultPlugins() = plugins {

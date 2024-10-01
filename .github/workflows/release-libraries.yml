@@ -25,6 +25,14 @@ jobs:
           distribution: 'corretto'
           java-version: '21'
 
+      - name: Export envs
+        run: |
+          export GPG_ID='${{ secrets.GPG_ID }}';
+          export GPG_KEY='${{ secrets.GPG_KEY }}';
+          export GPG_PASSWORD='${{ secrets.GPG_PASSWORD }}';
+          export SONATYPE_USERNAME='${{ secrets.SONATYPE_USERNAME }}';
+          export SONATYPE_PASSWORD='${{ secrets.SONATYPE_PASSWORD }}';
+
       - name: Build core
         run: ./gradlew :core:publishToSonatype
 

@@ -22,23 +22,16 @@ jobs:
           distribution: 'corretto'
           java-version: '21'
 
-      - name: Export envs
+      - name: Publish libraries
         run: |
-          export RELEASE_VERSION=${{ github.event.tag }};
-          export GPG_ID="${{ secrets.GPG_ID }}";
-          export GPG_KEY="${{ secrets.GPG_KEY }}";
-          export GPG_PASSWORD="${{ secrets.GPG_PASSWORD }}";
-          export SONATYPE_USERNAME="${{ secrets.SONATYPE_USERNAME }}";
-          export SONATYPE_PASSWORD="${{ secrets.SONATYPE_PASSWORD }}";
-
-      - name: Build core
-        run: ./gradlew :core:publishToSonatype
-
-      - name: Build htmx
-        run: ./gradlew :htmx:publishToSonatype
-
-      - name: Build spring-core
-        run: ./gradlew :spring:core:publishToSonatype
-
-      - name: Build spring-htmx
-        run: ./gradlew :spring:htmx:publishToSonatype
+          ./gradlew :core:publishToSonatype &&
+            ./gradlew :htmx:publishToSonatype &&
+            ./gradlew :spring:core:publishToSonatype &&
+            ./gradlew :spring:htmx:publishToSonatype &&
+        env:
+          RELEASE_VERSION: ${{ github.event.tag }}
+          GPG_ID: "${{ secrets.GPG_ID }}"
+          GPG_KEY: "${{ secrets.GPG_KEY }}"
+          GPG_PASSWORD: "${{ secrets.GPG_PASSWORD }}"
+          SONATYPE_USERNAME: "${{ secrets.SONATYPE_USERNAME }}"
+          SONATYPE_PASSWORD: "${{ secrets.SONATYPE_PASSWORD }}"

@@ -20,6 +20,7 @@ private fun Project.setupSigning() {
   extensions.getByType<SigningExtension>().apply {
     useGpgCmd()
     useInMemoryPgpKeys(
+      PublishingInfo.gpgId,
       PublishingInfo.gpgKey,
       PublishingInfo.gpgPassword
     )

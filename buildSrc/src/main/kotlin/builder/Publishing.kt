@@ -6,17 +6,23 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.bundling.Jar
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.provideDelegate
+import org.gradle.kotlin.dsl.register
+import org.gradle.kotlin.dsl.registering
 import org.gradle.plugins.signing.SigningExtension
 import java.net.URI
 
 fun Project.setupPublishing(archiveName: String) {
   setupSigning()
+  setupPublications()
   setupSonatypeExt(archiveName)
 }
 
 private fun Project.setupSigning() {
+  if (!PublishingInfo.hasGpgKeys) return
   extensions.getByType<SigningExtension>().apply {
     val publishing = extensions.getByType<PublishingExtension>()
     sign(publishing.publications)
@@ -26,6 +32,16 @@ private fun Project.setupSigning() {
       PublishingInfo.gpgKey,
       PublishingInfo.gpgPassword
     )
+  }
+}
+
+private fun Project.setupPublications() {
+  extensions.getByType<PublishingExtension>().apply {
+    publications {
+      register("publications", MavenPublication::class.java) {
+        from(components["java"])
+      }
+    }
   }
 }
 

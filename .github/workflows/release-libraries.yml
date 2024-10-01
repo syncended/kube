@@ -27,3 +27,12 @@ jobs:
 
       - name: Build core
         run: ./gradlew :core:publishToSonatype
+
+      - name: Build htmx
+        run: ./gradlew :htmx:publishToSonatype
+
+      - name: Build spring-core
+        run: ./gradlew :spring:core:publishToSonatype
+
+      - name: Build spring-htmx
+        run: ./gradlew :spring:htmx:publishToSonatype

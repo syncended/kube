@@ -10,7 +10,7 @@ spring-boot = "3.3.3"
 slf4j = "2.0.16"
 logback = "1.5.7"
 
-sonatype-publish = "1.0.6"
+jreleaser = "1.14.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -30,7 +30,7 @@ spring-boot-webflux = { module = "org.springframework.boot:spring-boot-starter-w
 slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
-sonatype-publish = { module = "eu.kakde.gradle:plugin", version.ref = "sonatype-publish" }
+jreleaser = { module = "org.jreleaser:jreleaser-gradle-plugin", version.ref = "jreleaser" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -38,5 +38,5 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 
 java-library = { id = "org.gradle.java-library" }
 application = { id = "org.gradle.application" }
-signing = { id = "org.gradle.signing" }
-sonatype-publish = { id = "eu.kakde.gradle.sonatype-maven-central-publisher" }
+maven-publish = { id = "org.gradle.maven-publish" }
+jreleaser = { id = "org.jreleaser" }

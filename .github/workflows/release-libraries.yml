@@ -24,13 +24,17 @@ jobs:
 
       - name: Publish libraries
         run: |
-          ./gradlew :core:publishToSonatype
-          ./gradlew :htmx:publishToSonatype
-          ./gradlew :spring:core:publishToSonatype
-          ./gradlew :spring:htmx:publishToSonatype
+          ./gradlew :core:publish
+          ./gradlew :htmx:publish
+          ./gradlew :spring:core:publish
+          ./gradlew :spring:htmx:publish
+          ./gradlew :core:jreleaserFullRelease
+          ./gradlew :htmx:jreleaserFullRelease
+          ./gradlew :spring:core:jreleaserFullRelease
+          ./gradlew :spring:htmx:jreleaserFullRelease
         env:
           RELEASE_VERSION: ${{ github.event.inputs.tag }}
-          GPG_ID: ${{ secrets.GPG_ID }}
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
           GPG_KEY: ${{ secrets.GPG_KEY }}
           GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}

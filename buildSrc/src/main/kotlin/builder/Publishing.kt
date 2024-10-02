@@ -1,84 +1,130 @@
 package builder
 
 import PublishingInfo
-import eu.kakde.sonatypecentral.SonatypeCentralPublishExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.bundling.Jar
+import org.gradle.kotlin.dsl.assign
+import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.provideDelegate
-import org.gradle.kotlin.dsl.register
-import org.gradle.kotlin.dsl.registering
+import org.gradle.kotlin.dsl.withType
 import org.gradle.plugins.signing.SigningExtension
-import java.net.URI
+import org.jreleaser.gradle.plugin.JReleaserExtension
+import org.jreleaser.model.Active
+import java.io.File
+
+private val Project.java: JavaPluginExtension
+  get() = extensions.getByType()
+
+private val Project.signing: SigningExtension
+  get() = extensions.getByType()
+
+private val Project.publishing: PublishingExtension
+  get() = extensions.getByType()
+
+private val Project.jReleaser: JReleaserExtension
+  get() = extensions.getByType()
+
+private val Project.stagingDir: File
+  get() = layout.buildDirectory.dir("staging").get().asFile
 
 fun Project.setupPublishing(archiveName: String) {
-  setupSigning()
-  setupPublications()
-  setupSonatypeExt(archiveName)
+  setupJava()
+  setupPublications(archiveName)
+  setupJReleaser()
+  jReleaserTask()
 }
 
-private fun Project.setupSigning() {
-  if (!PublishingInfo.hasGpgKeys) return
-  extensions.getByType<SigningExtension>().apply {
-    val publishing = extensions.getByType<PublishingExtension>()
-    sign(publishing.publications)
-    useGpgCmd()
-    useInMemoryPgpKeys(
-      PublishingInfo.gpgId,
-      PublishingInfo.gpgKey,
-      PublishingInfo.gpgPassword
-    )
+fun Project.jReleaserTask() {
+  tasks["publish"].doFirst {
+    File(layout.buildDirectory.get().asFile, "jreleaser").mkdirs()
   }
 }
 
-private fun Project.setupPublications() {
-  extensions.getByType<PublishingExtension>().apply {
-    publications {
-      register("publications", MavenPublication::class.java) {
-        from(components["java"])
+private fun Project.setupJava() = java.apply {
+  withJavadocJar()
+  withSourcesJar()
+}
+
+private fun Project.setupPublications(archiveName: String) = publishing.apply {
+  publications {
+    repositories {
+      maven { url = stagingDir.toURI() }
+    }
+    create<MavenPublication>("mavenPublications") {
+      from(components["java"])
+      groupId = PublishingInfo.group
+      artifactId = archiveName
+      version = PublishingInfo.releaseVersion
+
+      pom {
+        name = archiveName
+        description = "KUBE Library"
+        url = "https://github.com/syncended/kube"
+        scm {
+          connection = "scm:git:https://github.com/syncended/kube"
+          developerConnection = "scm:git:https://github.com/syncended/"
+          url = "https://github.com/syncended/kube"
+        }
+
+        licenses {
+          license {
+            name = "Apache-2.0 license"
+            url = "https://www.apache.org/licenses/LICENSE-2.0"
+          }
+        }
+        developers {
+          developer {
+            id = "syncended"
+            name = "Mikhail Ivanov"
+            email = "syncended@gmail.com"
+          }
+        }
       }
     }
   }
 }
 
-private fun Project.setupSonatypeExt(archiveName: String) {
-  extensions.getByType<SonatypeCentralPublishExtension>().apply {
-    username.set(PublishingInfo.mavenUsername)
-    password.set(PublishingInfo.mavenPassword)
+private fun Project.setupJReleaser() = jReleaser.apply {
+  dryrun = false
+  gitRootSearch = true
+  version = PublishingInfo.releaseVersion
 
-    groupId.set(PublishingInfo.group)
-    artifactId.set(archiveName)
-    version.set(PublishingInfo.releaseVersion)
-    componentType.set("java")
-    publishingType.set("AUTOMATIC")
+  signing {
+    active = Active.ALWAYS
+    armored = true
+    verify = true
+    artifacts = true
+    files = true
 
-    pom {
-      name.set(archiveName)
-      description.set("KUBE Library")
-      url.set("https://github.com/syncended/kube")
-      scm {
-        connection.set("scm:git:https://github.com/syncended/kube")
-        developerConnection.set("scm:git:https://github.com/syncended/")
-        url.set("https://github.com/syncended/kube")
-      }
+    publicKey = PublishingInfo.gpgPublicKey
+    secretKey = PublishingInfo.gpgKey
+    passphrase = PublishingInfo.gpgPassword
+  }
+  deploy {
+    maven {
+      mavenCentral {
+        active = Active.ALWAYS
+        create("sonatype") {
+          active = Active.ALWAYS
+          url = "https://central.sonatype.com/api/v1/publisher"
+          println("Sign dir: ${stagingDir}")
+          stagingRepository(stagingDir.toString())
 
-      licenses {
-        license {
-          name.set("Apache-2.0 license")
-          url.set("https://www.apache.org/licenses/LICENSE-2.0")
+          username = PublishingInfo.mavenUsername
+          password = PublishingInfo.mavenPassword
         }
       }
-      developers {
-        developer {
-          id.set("syncended")
-          name.set("Mikhail Ivanov")
-          email.set("syncended@gmail.com")
-        }
-      }
+    }
+  }
+  release {
+    github {
+      skipRelease = true
+      skipTag = true
+      overwrite = false
+      token = "none"
     }
   }
 }

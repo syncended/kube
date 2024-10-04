@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RestController
 class ClockController {
 
   @GetMapping("/clock")
-  fun getClock() = clock()
+  fun getClock() = clockPage()
 }

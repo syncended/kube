@@ -45,6 +45,10 @@ jobs:
       - name: Create github release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "*/build/libs/*.jar"
+          artifacts: |
+            core/build/libs/*.jar
+            htmx/build/libs/*.jar
+            spring/core/build/libs/*.jar
+            spring/htmx/build/libs/*.jar
           bodyFile: "changelog.md"
           tag: v${{ github.event.inputs.tag }}

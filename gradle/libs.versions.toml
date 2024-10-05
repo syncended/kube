@@ -2,11 +2,11 @@
 kotlin = "2.0.20"
 kotlin-coroutines = "1.8.1"
 kotlin-html = "0.11.0"
-kotlin-css = "1.0.0-pre.798"
+kotlin-css = "1.0.0-pre.814"
 
 ktor = "2.3.12"
 spring = "6.1.12"
-spring-boot = "3.3.3"
+spring-boot = "3.3.4"
 slf4j = "2.0.16"
 logback = "1.5.7"
 

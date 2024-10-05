@@ -7,6 +7,29 @@ Sample webpage written using this library available at https://kube.syncended.de
 
 [Tasks tracker](https://github.com/users/syncended/projects/3/views/1)
 
+## Integration
+KUBE is available at [maven central](https://mvnrepository.com/artifact/dev.syncended) repository
+
+Maven:
+```xml
+<dependency>
+    <groupId>dev.syncended</groupId>
+    <artifactId>kube-core</artifactId>
+    <version>0.1.0</version>
+</dependency>
+```
+
+Gradle:
+```kotlin
+implementation("dev.syncended:kube-core:0.1.0")
+```
+
+Library packages:
+- [kube-core](https://mvnrepository.com/artifact/dev.syncended/kube-core)
+- [kube-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-htmx)
+- [kube-spring-core](https://mvnrepository.com/artifact/dev.syncended/kube-spring-core)
+- [kube-spring-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-spring-htmx)
+
 ## How to
 ### Webpage
 To create webpage - you should just using high-level funcitons of layout like

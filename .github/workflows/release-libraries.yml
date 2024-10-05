@@ -43,11 +43,14 @@ jobs:
       - name: Build libraries
         run: |
           ./gradlew assemble
+        env:
+          RELEASE_VERSION: ${{ github.event.inputs.tag }}
 
-      - name: Create release tag
-        uses: qoomon/actions--create-tag@v1
+      - name: Bump version and push tag
+        uses: mathieudutour/github-tag-action@v6.2
         with:
-          name: ${{ github.event.inputs.tag }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ github.event.inputs.tag }}
 
       - name: Create github release
         uses: ncipollo/release-action@v1

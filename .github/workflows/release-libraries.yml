@@ -22,20 +22,36 @@ jobs:
           distribution: 'corretto'
           java-version: '21'
 
-      - name: Publish libraries
+#      - name: Publish libraries
+#        run: |
+#          ./gradlew :core:publish
+#          ./gradlew :htmx:publish
+#          ./gradlew :spring:core:publish
+#          ./gradlew :spring:htmx:publish
+#          ./gradlew :core:jreleaserFullRelease
+#          ./gradlew :htmx:jreleaserFullRelease
+#          ./gradlew :spring:core:jreleaserFullRelease
+#          ./gradlew :spring:htmx:jreleaserFullRelease
+#        env:
+#          RELEASE_VERSION: ${{ github.event.inputs.tag }}
+#          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+#          GPG_KEY: ${{ secrets.GPG_KEY }}
+#          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
+#          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+#          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+
+      - name: Build libraries
         run: |
-          ./gradlew :core:publish
-          ./gradlew :htmx:publish
-          ./gradlew :spring:core:publish
-          ./gradlew :spring:htmx:publish
-          ./gradlew :core:jreleaserFullRelease
-          ./gradlew :htmx:jreleaserFullRelease
-          ./gradlew :spring:core:jreleaserFullRelease
-          ./gradlew :spring:htmx:jreleaserFullRelease
-        env:
-          RELEASE_VERSION: ${{ github.event.inputs.tag }}
-          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
-          GPG_KEY: ${{ secrets.GPG_KEY }}
-          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          ./gradlew assemble
+
+      - name: Create release tag
+        uses: qoomon/actions--create-tag@v1
+        with:
+          name: ${{ github.event.inputs.tag }}
+
+      - name: Create github release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*/build/libs/*.jar"
+          bodyFile: "changelog.md"
+          tag: ${{ github.event.inputs.tag }}

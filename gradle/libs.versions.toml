@@ -4,6 +4,8 @@ kotlin-coroutines = "1.8.1"
 kotlin-html = "0.11.0"
 kotlin-css = "1.0.0-pre.814"
 
+flexmark = "0.64.6"
+
 ktor = "2.3.12"
 spring = "6.1.12"
 spring-boot = "3.3.4"
@@ -19,6 +21,8 @@ kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-co
 kotlin-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlin-coroutines" }
 kotlin-html = { module = "org.jetbrains.kotlinx:kotlinx-html", version.ref = "kotlin-html" }
 kotlin-css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref = "kotlin-css" }
+
+flexmark = { module = "com.vladsch.flexmark:flexmark-all", version.ref = "flexmark" }
 
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }

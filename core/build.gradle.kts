@@ -3,5 +3,6 @@ library("kube-core") {
     libs.kotlin.stdlib,
     libs.kotlin.html,
     libs.kotlin.css,
+    libs.flexmark,
   )
 }

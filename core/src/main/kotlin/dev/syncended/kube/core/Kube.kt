@@ -32,7 +32,7 @@ object Kube {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }
-    }.serialize()
+    }.serialize(prettyPrint = false) // For markdown support, find better solution
   }
 
   private fun HTML.renderHead(mode: RenderMode) {

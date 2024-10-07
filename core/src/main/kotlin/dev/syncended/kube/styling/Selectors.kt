@@ -1,6 +1,7 @@
 package dev.syncended.kube.styling
 
 import dev.syncended.kube.core.model.appendName
+import dev.syncended.kube.core.model.child
 import dev.syncended.kube.core.model.toClassSelector
 import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.core.model.toTagSelector
@@ -10,6 +11,9 @@ internal object Selectors {
   val all = "*".toRawSelector()
   val html = "html".toTagSelector()
   val body = "body".toTagSelector()
+
+  val pre = "pre".toTagSelector()
+  val code = "code".toTagSelector()
 
   // Custom classes
   val box = "kube-box".toClassSelector()
@@ -22,6 +26,7 @@ internal object Selectors {
   val dynamicDesktop = "kube-dynamic-desktop".toClassSelector()
 
   // Custom selectors
-  val linkVisited = link.appendName(":visited")
-  val linkLink = link.appendName(":link")
+  val linkVisited = link appendName ":visited"
+  val linkLink = link appendName ":link"
+  val preCode = pre child code
 }

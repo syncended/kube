@@ -1,6 +1,6 @@
 package dev.syncended.kube.core.model
 
-import dev.syncended.kube.core.Kube.plugins
+import dev.syncended.kube.core.Kube.settings
 import kotlinx.css.FontWeight
 import loadResource
 import trimSlashes
@@ -34,6 +34,6 @@ val FontResource.name: String
 val FontResource.extension: String
   get() = name.split('.').last()
 val FontResource.url: String
-  get() = "/${plugins.resources.prefix}/font/${name}".trimSlashes()
+  get() = "/${settings.resources.prefix}/font/${name}".trimSlashes()
 
 fun FontResource.getBytes(): ByteArray? = loadResource("/$resourceName")

@@ -19,20 +19,14 @@ fun Column.welcome() {
   text("KUBE is available on maven central repository")
   markdown {
     """
-      *bold text*
-      
-      **not bold text**
-      
-      ~~sc~~
-      
-      ~~~
+      ```kotlin
       dependencies {
         implementation("dev.syncended:kube-core:0.1.0")
         implementation("dev.syncended:kube-htmx:0.1.0")
         implementation("dev.syncended:kube-spring-core:0.1.0")
         implementation("dev.syncended:kube-spring-htmx:0.1.0")
       }
-      ~~~
+      ```
     """.trimIndent()
   }
   text("TODO(\"Add some description here\");")

@@ -42,33 +42,6 @@ sealed interface KubePlugin {
   }
 
   /**
-   * Resource mode plugin, how page should be rendered
-   * @property mode resources mode
-   * @property prefix resources link prefix
-   */
-
-  class Resources(
-    val mode: ResourceMode = ResourceMode.FAT,
-    prefix: String = ""
-  ) : KubePlugin {
-    val prefix: String = prefix.trim('/')
-  }
-
-  /**
-   * Font resource, which will be available from kube dsl
-   */
-  data class FontResource(
-    val font: Font
-  ) : KubePlugin
-
-  /**
-   * Font, which will be used as default font
-   */
-  data class DefaultFontResource(
-    val font: Font
-  ) : KubePlugin
-
-  /**
    * Plugin to add batch of plugins.
    */
   interface PluginsWrapper : KubePlugin {

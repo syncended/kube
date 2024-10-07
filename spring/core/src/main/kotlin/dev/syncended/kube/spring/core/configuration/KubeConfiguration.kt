@@ -12,10 +12,11 @@ import org.springframework.context.annotation.ComponentScan
 open class KubeConfiguration(properties: KubeProperties) {
 
   init {
-    val resourcesPlugin = KubePlugin.Resources(
-      mode = properties.resources.mode,
-      prefix = properties.resources.prefix
-    )
-    Kube.install(resourcesPlugin)
+    Kube.settings {
+      resources {
+        mode = properties.resources.mode
+        prefix = properties.resources.prefix
+      }
+    }
   }
 }

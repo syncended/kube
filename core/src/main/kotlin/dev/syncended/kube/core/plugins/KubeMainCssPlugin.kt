@@ -1,6 +1,6 @@
 package dev.syncended.kube.core.plugins
 
-import dev.syncended.kube.core.Kube.plugins
+import dev.syncended.kube.core.Kube.settings
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.KubeStyling.buildStyle
 import dev.syncended.kube.core.model.ResourceMode
@@ -12,11 +12,11 @@ import trimSlashes
 
 object KubeMainCssPlugin : KubePlugin.HeadAppender {
   override fun apply(head: HEAD) {
-    when (plugins.resources.mode) {
+    when (settings.resources.mode) {
       ResourceMode.FAT -> head.style { unsafe { +buildStyle() } }
       ResourceMode.LINK -> head.link {
         rel = "stylesheet"
-        href = "/${plugins.resources.prefix}/css/main.css".trimSlashes()
+        href = "/${settings.resources.prefix}/css/main.css".trimSlashes()
       }
     }
   }

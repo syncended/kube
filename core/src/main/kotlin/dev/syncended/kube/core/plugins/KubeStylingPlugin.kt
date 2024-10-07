@@ -5,7 +5,7 @@ import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.components.Row
 import dev.syncended.kube.components.TextLink
-import dev.syncended.kube.core.Kube.plugins
+import dev.syncended.kube.core.Kube.settings
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.Font
@@ -62,7 +62,7 @@ object KubeStylingPlugin : KubePlugin.Styling {
       padding = Padding(rem0.toDimension())
       margin = Margin(rem0.toDimension())
       userSelect = UserSelect.none
-      plugins.defaultFont?.font?.name?.let { fontFamily = it }
+      settings.fonts.defaultFont?.name?.let { fontFamily = it }
     }
     cssBuilder.on(html) {
       width = percent100.toDimension()
@@ -75,13 +75,13 @@ object KubeStylingPlugin : KubePlugin.Styling {
   }
 
   private fun fonts(cssBuilder: CssBuilder) {
-    plugins.fonts.forEach { fontStyling(it.font, cssBuilder) }
+    settings.fonts.fonts.forEach { fontStyling(it, cssBuilder) }
   }
 
   private fun fontStyling(font: Font, cssBuilder: CssBuilder) {
     font.resources.forEach { resource ->
       cssBuilder.fontFace {
-        src = when (plugins.resources.mode) {
+        src = when (settings.resources.mode) {
           ResourceMode.FAT -> {
             val base64 = loadResourceBase64(resource.resourceName)
             FONT_BASE_64_TEMPLATE.format(base64)

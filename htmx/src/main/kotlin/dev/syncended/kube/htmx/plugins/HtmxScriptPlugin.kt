@@ -7,7 +7,6 @@ import dev.syncended.kube.htmx.utils.htmxSource
 import kotlinx.html.HEAD
 import kotlinx.html.script
 import kotlinx.html.unsafe
-import loadResource
 import trimSlashes
 
 

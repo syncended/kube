@@ -11,6 +11,5 @@ object KubePlugins : KubePlugin.PluginsWrapper {
       KubeStylingPlugin,
       KubeModifierStylingPlugin,
       KubeModifierAttributesPlugin,
-      KubePlugin.DefaultFontResource(Fonts.jbMono),
     )
 }

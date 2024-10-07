@@ -11,6 +11,10 @@ import com.vladsch.flexmark.parser.Parser
 import com.vladsch.flexmark.util.data.MutableDataSet
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.Widget
+import dev.syncended.kube.core.on
+import dev.syncended.kube.styling.Selectors.preCode
+import kotlinx.css.CssBuilder
+import kotlinx.css.background
 import kotlinx.html.unsafe
 
 class Markdown(
@@ -24,8 +28,8 @@ class Markdown(
     }
   }
 
-  private companion object {
-    val options = MutableDataSet().apply {
+  companion object {
+    private val options = MutableDataSet().apply {
       set(
         Parser.EXTENSIONS, listOf(
           AutolinkExtension.create(),
@@ -38,7 +42,7 @@ class Markdown(
       )
       set(HtmlRenderer.SOFT_BREAK, "<br/>")
     }
-    val parser = Parser.builder(options).build()
-    val htmlRenderer = HtmlRenderer.builder(options).build()
+    private val parser = Parser.builder(options).build()
+    private val htmlRenderer = HtmlRenderer.builder(options).build()
   }
 }

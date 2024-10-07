@@ -1,6 +1,7 @@
 package dev.syncended.kube.core
 
 import dev.syncended.kube.core.Kube.plugins
+import dev.syncended.kube.core.Kube.settings
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.toCssSelector
@@ -17,7 +18,7 @@ object KubeStyling {
     return cssBuilder.toString()
   }
 
-  fun getFonts(): Set<Font> = plugins.fonts.map { it.font }.toSet()
+  fun getFonts(): Set<Font> = settings.fonts.fonts.toSet()
 }
 
 fun CssBuilder.on(selector: Selector, builder: CssBuilder.() -> Unit) {

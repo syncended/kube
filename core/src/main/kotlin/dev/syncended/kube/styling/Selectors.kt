@@ -1,5 +1,6 @@
 package dev.syncended.kube.styling
 
+import dev.syncended.kube.core.model.append
 import dev.syncended.kube.core.model.appendName
 import dev.syncended.kube.core.model.child
 import dev.syncended.kube.core.model.toClassSelector
@@ -28,5 +29,6 @@ internal object Selectors {
   // Custom selectors
   val linkVisited = link appendName ":visited"
   val linkLink = link appendName ":link"
+  val preWithCode = pre append ":has(${code.toRawSelector()})"
   val preCode = pre child code
 }

@@ -50,6 +50,10 @@ infix fun Selector.Class.appendName(appendName: String): Selector.Class {
   return this.copy(name = name + appendName)
 }
 
+infix fun Selector.append(append: String): Selector {
+  return Selector.Raw("${toRawSelector()}$append")
+}
+
 infix fun Selector.child(child: Selector): Selector.Raw {
   return Selector.Raw("${toRawSelector()} ${child.toRawSelector()}")
 }

@@ -3,6 +3,7 @@ package dev.syncended.kube.core.plugins
 import dev.syncended.kube.components.Box
 import dev.syncended.kube.components.Card
 import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.Markdown
 import dev.syncended.kube.components.Row
 import dev.syncended.kube.components.TextLink
 import dev.syncended.kube.core.Kube.settings
@@ -49,6 +50,7 @@ object KubeStylingPlugin : KubePlugin.Styling {
     Box.styling(cssBuilder)
     Card.styling(cssBuilder)
     Column.styling(cssBuilder)
+    Markdown.styling(cssBuilder)
     Row.styling(cssBuilder)
     TextLink.styling(cssBuilder)
     Widget.styling(cssBuilder)

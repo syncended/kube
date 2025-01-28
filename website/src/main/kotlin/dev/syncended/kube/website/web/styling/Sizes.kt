@@ -7,7 +7,7 @@ object Sizes {
   val spaceSizeDefault = 1.rm
   val spaceSizeExtra = 2.rm
 
-  val sizeMaxPage = 48.rm
+  val sizeMaxPage = 64.rm
   val sizeToolbarHeight = 3.rm
   var sizeIconDefault = 2.rm
 

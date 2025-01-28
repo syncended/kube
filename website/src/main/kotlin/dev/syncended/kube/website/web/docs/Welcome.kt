@@ -1,11 +1,11 @@
-package dev.syncended.kube.website.ui.docs
+package dev.syncended.kube.website.web.docs
 
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.ui.components.title
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.title
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
 
 fun Column.welcome() {
   title("KUBE Documentation")

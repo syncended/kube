@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.docs
+package dev.syncended.kube.website.web.docs
 
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.core.component.Modifier
@@ -7,8 +7,8 @@ import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.ui.clock.clockWidget
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
+import dev.syncended.kube.website.web.clock.clockWidget
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeDefault
 
 fun Column.htmxDocs() {
   text("HTMX - open source library, to create lightweight dynamic websites")

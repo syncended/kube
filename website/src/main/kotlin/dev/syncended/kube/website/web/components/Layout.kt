@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.components
+package dev.syncended.kube.website.web.components
 
 import dev.syncended.kube.components.Card
 import dev.syncended.kube.core.component.Layout
@@ -7,8 +7,8 @@ import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.padding
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.card
-import dev.syncended.kube.website.ui.styling.Colors.colorBackground
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
+import dev.syncended.kube.website.web.styling.Colors.colorBackground
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeDefault
 
 fun Layout.cardComponent(
   modifier: Modifier = Modifier,

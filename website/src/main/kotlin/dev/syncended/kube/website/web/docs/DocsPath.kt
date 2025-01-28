@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.docs
+package dev.syncended.kube.website.web.docs
 
 enum class DocsPath {
   WELCOME,

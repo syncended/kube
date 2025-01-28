@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.main
+package dev.syncended.kube.website.web.main
 
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.backgroundColor
@@ -8,11 +8,11 @@ import dev.syncended.kube.core.component.padding
 import dev.syncended.kube.dsl.card
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.ui.components.title
-import dev.syncended.kube.website.ui.page.webpage
-import dev.syncended.kube.website.ui.styling.Colors
-import dev.syncended.kube.website.ui.styling.Sizes
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.title
+import dev.syncended.kube.website.web.page.webpage
+import dev.syncended.kube.website.web.styling.Colors
+import dev.syncended.kube.website.web.styling.Sizes
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
 
 fun mainPage() = webpage {
   card(

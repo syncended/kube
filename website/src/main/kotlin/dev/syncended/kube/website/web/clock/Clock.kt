@@ -1,11 +1,10 @@
-package dev.syncended.kube.website.ui.clock
+package dev.syncended.kube.website.web.clock
 
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.RenderMode
 import dev.syncended.kube.core.model.toClassSelector
-import dev.syncended.kube.core.model.toRawSelector
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.htmx.model.HxSwap

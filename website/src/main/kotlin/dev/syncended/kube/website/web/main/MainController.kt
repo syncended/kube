@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.main
+package dev.syncended.kube.website.web.main
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController

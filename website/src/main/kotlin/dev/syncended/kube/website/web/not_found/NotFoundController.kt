@@ -1,10 +1,10 @@
-package dev.syncended.kube.website.ui.not_found
+package dev.syncended.kube.website.web.not_found
 
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.ui.components.cardComponent
-import dev.syncended.kube.website.ui.page.webpage
+import dev.syncended.kube.website.web.components.cardComponent
+import dev.syncended.kube.website.web.page.webpage
 import org.springframework.http.HttpStatus
 import org.springframework.http.server.reactive.ServerHttpResponse
 import org.springframework.web.bind.annotation.GetMapping

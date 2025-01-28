@@ -1,6 +1,5 @@
-package dev.syncended.kube.website.ui.components
+package dev.syncended.kube.website.web.components
 
-import dev.syncended.kube.components.Text
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Color
@@ -8,8 +7,8 @@ import dev.syncended.kube.core.model.FontSize
 import dev.syncended.kube.core.model.FontStyle
 import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.ui.styling.Sizes.fontSizeDefault
-import dev.syncended.kube.website.ui.styling.Sizes.fontSizeHeader
+import dev.syncended.kube.website.web.styling.Sizes.fontSizeDefault
+import dev.syncended.kube.website.web.styling.Sizes.fontSizeHeader
 
 fun Layout.heading(
   text: String,

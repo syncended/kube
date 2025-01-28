@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.components
+package dev.syncended.kube.website.web.components
 
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
@@ -14,10 +14,10 @@ import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.textLink
 import dev.syncended.kube.styling.Size.rem0
-import dev.syncended.kube.website.ui.styling.Images.cubeLogo
-import dev.syncended.kube.website.ui.styling.Sizes.sizeIconDefault
-import dev.syncended.kube.website.ui.styling.Sizes.sizeToolbarHeight
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeDefault
+import dev.syncended.kube.website.web.styling.Images.cubeLogo
+import dev.syncended.kube.website.web.styling.Sizes.sizeIconDefault
+import dev.syncended.kube.website.web.styling.Sizes.sizeToolbarHeight
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeDefault
 
 fun Layout.toolbar() = cardComponent(
   verticalAlignment = Alignment.Vertical.Center,

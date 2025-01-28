@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.docs
+package dev.syncended.kube.website.web.docs
 
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.core.component.Layout
@@ -13,10 +13,10 @@ import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.dsl.textLink
-import dev.syncended.kube.website.ui.components.cardComponent
-import dev.syncended.kube.website.ui.page.webpage
-import dev.syncended.kube.website.ui.styling.Sizes.sizeNavBar
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.cardComponent
+import dev.syncended.kube.website.web.page.webpage
+import dev.syncended.kube.website.web.styling.Sizes.sizeNavBar
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
 
 fun docs(path: DocsPath) = webpage {
   docsLayout(path) {

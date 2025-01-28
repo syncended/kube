@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.ui.page
+package dev.syncended.kube.website.web.page
 
 import dev.syncended.kube.components.Column
 import dev.syncended.kube.core.component.Modifier
@@ -12,10 +12,10 @@ import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.space
-import dev.syncended.kube.website.ui.components.toolbar
-import dev.syncended.kube.website.ui.styling.Colors.colorPageBackground
-import dev.syncended.kube.website.ui.styling.Sizes.sizeMaxPage
-import dev.syncended.kube.website.ui.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.toolbar
+import dev.syncended.kube.website.web.styling.Colors.colorPageBackground
+import dev.syncended.kube.website.web.styling.Sizes.sizeMaxPage
+import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
 
 fun webpage(content: Column.() -> Unit): String = box(
   horizontalAlignment = Alignment.Horizontal.Center,

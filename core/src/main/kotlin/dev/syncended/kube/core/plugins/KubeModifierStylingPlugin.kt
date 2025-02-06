@@ -21,6 +21,7 @@ import dev.syncended.kube.core.component.paddingLeft
 import dev.syncended.kube.core.component.paddingRight
 import dev.syncended.kube.core.component.paddingTop
 import dev.syncended.kube.core.component.width
+import dev.syncended.kube.core.component.zIndex
 import dev.syncended.kube.core.model.toCssColor
 import kotlinx.css.CssBuilder
 import kotlinx.css.backgroundColor
@@ -42,9 +43,11 @@ import kotlinx.css.paddingLeft
 import kotlinx.css.paddingRight
 import kotlinx.css.paddingTop
 import kotlinx.css.width
+import kotlinx.css.zIndex
 
-object KubeModifierStylingPlugin: KubePlugin.ModifierStyling {
+object KubeModifierStylingPlugin : KubePlugin.ModifierStyling {
   override fun apply(modifier: Modifier, cssBuilder: CssBuilder) {
+    modifier.zIndex?.let { cssBuilder.zIndex = it }
     modifier.width?.let { cssBuilder.width = it.toDimension() }
     modifier.minWidth?.let { cssBuilder.minWidth = it.toDimension() }
     modifier.maxWidth?.let { cssBuilder.maxWidth = it.toDimension() }

@@ -38,6 +38,9 @@ fun Modifier.withClass(value: Selector.Class) = set("classes", classes + value)
 internal val Modifier.backgroundColor: Color? get() = get("backgroundColor")
 fun Modifier.backgroundColor(value: Color?) = set("backgroundColor", value)
 
+internal val Modifier.zIndex: Int? get() = get("zIndex")
+fun Modifier.zIndex(value: Int?) = set("width", value)
+
 internal val Modifier.width: Size? get() = get("width")
 internal val Modifier.minWidth: Size? get() = get("minWidth")
 internal val Modifier.maxWidth: Size? get() = get("maxWidth")

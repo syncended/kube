@@ -8,6 +8,7 @@ Sample webpage written using this library available at https://kube.syncended.de
 [Tasks tracker](https://github.com/users/syncended/projects/3/views/1)
 
 ## Integration
+Latest version is available on releases page
 KUBE is available at [maven central](https://mvnrepository.com/artifact/dev.syncended) repository
 
 Maven:
@@ -15,13 +16,13 @@ Maven:
 <dependency>
     <groupId>dev.syncended</groupId>
     <artifactId>kube-core</artifactId>
-    <version>0.1.0</version>
+    <version>x.y.z</version>
 </dependency>
 ```
 
 Gradle:
 ```kotlin
-implementation("dev.syncended:kube-core:0.1.0")
+implementation("dev.syncended:kube-core:x.y.z")
 ```
 
 Library packages:

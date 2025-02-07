@@ -8,11 +8,14 @@ import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.model.toJustifyContent
 import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.box
+import dev.syncended.kube.styling.Selectors.boxChild
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.Position
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.justifyContent
+import kotlinx.css.position
 
 abstract class AbstractBox(
   modifier: Modifier,
@@ -41,8 +44,11 @@ class Box(
 ) {
 
   companion object {
-    fun styling(cssBuilder: CssBuilder) = cssBuilder.on(box) {
-      display = Display.flex
+    fun styling(cssBuilder: CssBuilder) {
+      cssBuilder.on(box) { display = Display.flex }
+      cssBuilder.on(boxChild) {
+        position = Position.absolute
+      }
     }
   }
 }

@@ -8,7 +8,6 @@ Sample webpage written using this library available at https://kube.syncended.de
 [Tasks tracker](https://github.com/users/syncended/projects/3/views/1)
 
 ## Integration
-Latest version is available on releases page
 KUBE is available at [maven central](https://mvnrepository.com/artifact/dev.syncended) repository
 
 Maven:
@@ -30,6 +29,8 @@ Library packages:
 - [kube-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-htmx)
 - [kube-spring-core](https://mvnrepository.com/artifact/dev.syncended/kube-spring-core)
 - [kube-spring-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-spring-htmx)
+
+Latest release version is available on releases page
 
 ## How to
 ### Webpage

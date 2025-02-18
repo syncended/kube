@@ -45,7 +45,10 @@ class Box(
 
   companion object {
     fun styling(cssBuilder: CssBuilder) {
-      cssBuilder.on(box) { display = Display.flex }
+      cssBuilder.on(box) {
+        display = Display.flex
+        position = Position.relative
+      }
       cssBuilder.on(boxChild) {
         position = Position.absolute
       }

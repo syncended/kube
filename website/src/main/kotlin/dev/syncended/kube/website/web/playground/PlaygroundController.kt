@@ -1,7 +1,5 @@
 package dev.syncended.kube.website.web.playground
 
-import dev.syncended.kube.core.component.Modifier
-import dev.syncended.kube.core.component.zIndex
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.web.page.webpage
@@ -15,7 +13,7 @@ class PlaygroundController {
   fun getPlayground() = webpage {
     box {
       text("boba")
-      text("aliboba", modifier = Modifier.zIndex(10))
+      text("aliboba")
     }
   }
 }

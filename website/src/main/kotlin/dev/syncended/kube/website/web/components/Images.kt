@@ -1,6 +1,6 @@
 package dev.syncended.kube.website.web.components
 
-import dev.syncended.kube.components.ImageType
+import dev.syncended.kube.components.ui.ImageType
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.dsl.image

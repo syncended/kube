@@ -1,14 +1,24 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.Box
-import dev.syncended.kube.components.Card
-import dev.syncended.kube.components.Column
-import dev.syncended.kube.components.Link
-import dev.syncended.kube.components.Row
+import dev.syncended.kube.components.layout.Box
+import dev.syncended.kube.components.layout.Card
+import dev.syncended.kube.components.layout.Column
+import dev.syncended.kube.components.layout.FlatLayout
+import dev.syncended.kube.components.layout.Link
+import dev.syncended.kube.components.layout.Row
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.RenderMode
+
+fun render(
+  mode: RenderMode = RenderMode.PAGE,
+  body: FlatLayout.() -> Unit
+) = widget(
+  mode = mode,
+  instance = FlatLayout(),
+  body = body
+)
 
 fun Layout.box(
   modifier: Modifier = Modifier,

@@ -1,6 +1,6 @@
 package dev.syncended.kube.website.web.components
 
-import dev.syncended.kube.components.Card
+import dev.syncended.kube.components.layout.Card
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.backgroundColor

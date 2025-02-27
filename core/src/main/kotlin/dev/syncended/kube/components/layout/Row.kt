@@ -1,4 +1,4 @@
-package dev.syncended.kube.components
+package dev.syncended.kube.components.layout
 
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
@@ -6,7 +6,7 @@ import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.toAlignment
 import dev.syncended.kube.core.on
-import dev.syncended.kube.styling.Selectors.column
+import dev.syncended.kube.styling.Selectors
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection
@@ -14,10 +14,10 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
 
-class Column(
-  modifier: Modifier = Modifier,
-  private val alignment: Alignment.Horizontal? = null,
-) : Layout(modifier.withClass(column)) {
+class Row(
+  modifier: Modifier = Modifier.Modifier,
+  private val alignment: Alignment.Vertical? = null
+) : Layout(modifier.withClass(Selectors.row)) {
 
   override fun render() = div {
     renderChild(this)
@@ -29,9 +29,9 @@ class Column(
   }
 
   companion object {
-    fun styling(cssBuilder: CssBuilder) = cssBuilder.on(column) {
+    fun styling(cssBuilder: CssBuilder) = cssBuilder.on(Selectors.row) {
       display = Display.flex
-      flexDirection = FlexDirection.column
+      flexDirection = FlexDirection.row
     }
   }
 }

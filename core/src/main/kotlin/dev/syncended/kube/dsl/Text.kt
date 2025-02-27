@@ -1,7 +1,7 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.Text
-import dev.syncended.kube.components.TextLink
+import dev.syncended.kube.components.text.Text
+import dev.syncended.kube.components.text.TextLink
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Color

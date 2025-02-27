@@ -21,7 +21,7 @@ import kotlinx.html.style
 
 abstract class Widget(protected val modifier: Modifier) {
   private var _flowContent: FlowContent? = null
-  private val flowContent: FlowContent get() = requireNotNull(_flowContent)
+  protected val flowContent: FlowContent get() = requireNotNull(_flowContent)
 
   fun render(flowContent: FlowContent) {
     _flowContent = flowContent

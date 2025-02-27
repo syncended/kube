@@ -1,4 +1,4 @@
-package dev.syncended.kube.components
+package dev.syncended.kube.components.layout
 
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier

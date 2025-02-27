@@ -1,8 +1,8 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.Image
-import dev.syncended.kube.components.ImageType
-import dev.syncended.kube.components.Space
+import dev.syncended.kube.components.ui.Image
+import dev.syncended.kube.components.ui.ImageType
+import dev.syncended.kube.components.ui.Space
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import kotlin.io.encoding.Base64

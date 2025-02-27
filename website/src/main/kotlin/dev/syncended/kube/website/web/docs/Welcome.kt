@@ -1,6 +1,6 @@
 package dev.syncended.kube.website.web.docs
 
-import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.dsl.text

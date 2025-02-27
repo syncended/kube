@@ -1,6 +1,6 @@
 package dev.syncended.kube.website.web.page
 
-import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.fillMaxSize

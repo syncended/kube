@@ -1,6 +1,6 @@
 package dev.syncended.kube.website.web.docs
 
-import dev.syncended.kube.components.Column
+import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.LayoutSize
 import dev.syncended.kube.core.component.Modifier

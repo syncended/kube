@@ -34,8 +34,7 @@ Latest release version is available on releases page
 
 ## How to
 ### Webpage
-To create webpage - you should just using high-level funcitons of layout like
-`box`, `column`, `row`, etc.
+To create webpage - you should just using high-level funciton `render`, which creates default KUBE layout, to render webpage.
 
 Each method support `RenderMode`. Render mode - is an description how element should be rendered.
 - `PAGE` - include built in styles, attach js/css code on page, support scaling and etc

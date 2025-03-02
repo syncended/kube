@@ -1,7 +1,9 @@
 package dev.syncended.kube
 
 import dev.syncended.kube.dsl.render
+import dev.syncended.kube.ktor.core.KubeCore
 import dev.syncended.kube.ktor.core.respondRender
+import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.server.routing.get
@@ -21,6 +23,7 @@ open class PlaygroundApplication : ApplicationRunner {
       Netty,
       port = 3001
     ) {
+      install(KubeCore)
       routing { get("/") { call.respondRender { renderUi() } } }
     }.start(wait = false)
   }

@@ -1,3 +1,4 @@
-### Kube v0.1.6 release
-- Fixed box child behavior
-- Added playground webpage
+### Kube v0.2.0 release
+- Added ktor plugin
+- Rework base components render
+- Add FlatLayout

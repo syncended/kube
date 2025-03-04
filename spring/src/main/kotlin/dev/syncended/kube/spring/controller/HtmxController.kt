@@ -1,4 +1,4 @@
-package dev.syncended.kube.spring.htmx.controller
+package dev.syncended.kube.spring.controller
 
 import dev.syncended.kube.htmx.utils.htmxSource
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @ConditionalOnProperty(
-  value = ["kube.resources.mode"],
-  havingValue = "LINK",
-  matchIfMissing = true
+  value = ["kube.htmx"],
+  havingValue = "true",
+  matchIfMissing = false
 )
 @RequestMapping("/\${kube.resources.prefix:static}")
 class HtmxController {

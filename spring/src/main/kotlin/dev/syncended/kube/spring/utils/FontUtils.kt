@@ -1,4 +1,4 @@
-package dev.syncended.kube.spring.core.utils
+package dev.syncended.kube.spring.utils
 
 import dev.syncended.kube.core.model.FontResource
 import dev.syncended.kube.core.model.extension

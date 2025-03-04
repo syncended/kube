@@ -1,7 +1,6 @@
 application {
     modules(
-        projects.spring.core,
-        projects.spring.htmx,
+        projects.spring,
         projects.ktor,
     )
 

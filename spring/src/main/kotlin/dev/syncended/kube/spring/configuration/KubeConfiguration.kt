@@ -1,7 +1,8 @@
-package dev.syncended.kube.spring.core.configuration
+package dev.syncended.kube.spring.configuration
 
 import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.KubePlugin
+import dev.syncended.kube.htmx.KubeHtmxPlugins
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan
@@ -17,5 +18,6 @@ open class KubeConfiguration(properties: KubeProperties) {
       prefix = properties.resources.prefix
     )
     Kube.install(resourcesPlugin)
+    if (properties.htmx) Kube.install(KubeHtmxPlugins)
   }
 }

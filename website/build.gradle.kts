@@ -1,23 +1,20 @@
 application {
-  mainClass = "dev.syncended.kube.website.application.KubeWebsiteApplication"
-  group = "dev.syncended.kube.website"
+    mainClass = "dev.syncended.kube.website.application.KubeWebsiteApplication"
+    group = "dev.syncended.kube.website"
 
-  plugins(libs.plugins.spring.boot)
+    plugins(libs.plugins.spring.boot)
 
-  modules(
-    projects.spring.core,
-    projects.spring.htmx,
-  )
+    modules(projects.spring)
 
-  implementation(
-    libs.kotlin.stdlib,
-    libs.kotlin.reflect,
-    libs.kotlin.coroutines.core,
-    libs.kotlin.coroutines.reactor,
+    implementation(
+        libs.kotlin.stdlib,
+        libs.kotlin.reflect,
+        libs.kotlin.coroutines.core,
+        libs.kotlin.coroutines.reactor,
 
-    libs.spring.boot.webflux,
+        libs.spring.boot.webflux,
 
-    libs.slf4j,
-    libs.logback,
-  )
+        libs.slf4j,
+        libs.logback,
+    )
 }

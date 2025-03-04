@@ -115,6 +115,7 @@ private fun Project.setupJReleaser() = jReleaser.apply {
 
           username = PublishingInfo.mavenUsername
           password = PublishingInfo.mavenPassword
+          retryDelay = 60
         }
       }
     }

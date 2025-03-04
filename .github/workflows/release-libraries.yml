@@ -30,7 +30,7 @@ jobs:
           ./gradlew :htmx:publish
           ./gradlew :spring:publish
           ./gradlew :ktor:publish
-          ./gradlew :core:jreleaserFullRelease
+          ./gradlew :core:jreleaserFullRelease --stacktrace
           ./gradlew :htmx:jreleaserFullRelease
           ./gradlew :spring:jreleaserFullRelease
           ./gradlew :ktor:jreleaserFullRelease

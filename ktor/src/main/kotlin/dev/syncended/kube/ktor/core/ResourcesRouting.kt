@@ -13,12 +13,19 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.Routing
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
+import loadResource
 
-private val mainCss = KubeStyling.buildStyle()
+private val mainCss by lazy { KubeStyling.buildStyle() }
+private val htmxSource by lazy {
+  loadResource("/js/htmx.min.js")
+    ?.let { String(it) }
+    ?: ""
+}
 
-internal fun Routing.resourcesRouting(basePath: String) = route(basePath) {
+internal fun Routing.resourcesRouting(config: KubeCorePluginConfiguration) = route(config.resourcePrefix) {
   getMainCss()
   getFont()
+  getHtmx(config)
 }
 
 private fun Route.getMainCss() = get("/css/main.css") {
@@ -34,7 +41,13 @@ private fun Route.getFont() = get("/font/{path}") {
   if (bytes == null) {
     call.respondText("", status = HttpStatusCode.NotFound)
   } else {
-    call.respondBytes(bytes = bytes, contentType = font.contentType, HttpStatusCode.OK)
+    call.respondBytes(bytes = bytes, contentType = font.contentType, status = HttpStatusCode.OK)
+  }
+}
+
+private fun Route.getHtmx(configuration: KubeCorePluginConfiguration) {
+  if (configuration.useHtmx) get("/js/htmx.min.js") {
+    call.respondText(text = htmxSource, contentType = ContentType.Text.JavaScript, status = HttpStatusCode.OK)
   }
 }
 

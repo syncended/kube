@@ -8,7 +8,8 @@ import io.ktor.server.routing.routing
 
 class KubeCorePluginConfiguration(
   var resourceMode: ResourceMode = ResourceMode.LINK,
-  var resourcePrefix: String = "static"
+  var resourcePrefix: String = "static",
+  var useHtmx: Boolean = false,
 )
 
 val KubeCore = createApplicationPlugin(
@@ -22,6 +23,6 @@ val KubeCore = createApplicationPlugin(
   Kube.install(resourcesPlugin)
 
   if (pluginConfig.resourceMode == ResourceMode.LINK) application.routing {
-    resourcesRouting(pluginConfig.resourcePrefix)
+    resourcesRouting(pluginConfig)
   }
 }

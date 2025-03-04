@@ -1,5 +1,8 @@
-library("kube-ktor-core") {
-    modulesApi(projects.core)
+library("kube-ktor") {
+    modulesApi(
+        projects.core,
+        projects.htmx
+    )
 
     implementation(
         libs.ktor.server.core,

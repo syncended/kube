@@ -2,7 +2,7 @@ application {
     modules(
         projects.spring.core,
         projects.spring.htmx,
-        projects.ktor.core,
+        projects.ktor,
     )
 
     implementation(

@@ -3,6 +3,7 @@ package dev.syncended.kube.ktor.core
 import dev.syncended.kube.core.Kube
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.model.ResourceMode
+import dev.syncended.kube.htmx.KubeHtmxPlugins
 import io.ktor.server.application.createApplicationPlugin
 import io.ktor.server.routing.routing
 
@@ -21,6 +22,7 @@ val KubeCore = createApplicationPlugin(
     prefix = pluginConfig.resourcePrefix
   )
   Kube.install(resourcesPlugin)
+  if (pluginConfig.useHtmx) Kube.install(KubeHtmxPlugins)
 
   if (pluginConfig.resourceMode == ResourceMode.LINK) application.routing {
     resourcesRouting(pluginConfig)

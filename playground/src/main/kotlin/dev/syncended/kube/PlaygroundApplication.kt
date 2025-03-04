@@ -23,7 +23,7 @@ open class PlaygroundApplication : ApplicationRunner {
       Netty,
       port = 3001
     ) {
-      install(KubeCore)
+      install(KubeCore) { useHtmx = true }
       routing { get("/") { call.respondRender { renderUi() } } }
     }.start(wait = false)
   }

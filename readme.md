@@ -5,8 +5,6 @@
 
 Sample webpage written using this library available at https://kube.syncended.dev
 
-[Tasks tracker](https://github.com/users/syncended/projects/3/views/1)
-
 ## Integration
 KUBE is available at [maven central](https://mvnrepository.com/artifact/dev.syncended) repository
 
@@ -27,8 +25,8 @@ implementation("dev.syncended:kube-core:x.y.z")
 Library packages:
 - [kube-core](https://mvnrepository.com/artifact/dev.syncended/kube-core)
 - [kube-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-htmx)
-- [kube-spring-core](https://mvnrepository.com/artifact/dev.syncended/kube-spring-core)
-- [kube-spring-htmx](https://mvnrepository.com/artifact/dev.syncended/kube-spring-htmx)
+- [kube-spring](https://mvnrepository.com/artifact/dev.syncended/kube-spring)
+- [kube-ktor](https://mvnrepository.com/artifact/dev.syncended/kube-ktor)
 
 Latest release version is available on releases page
 

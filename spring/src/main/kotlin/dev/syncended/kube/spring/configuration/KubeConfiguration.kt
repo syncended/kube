@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan
 
 @AutoConfiguration
-@ComponentScan("dev.syncended.kube.spring.core")
+@ComponentScan("dev.syncended.kube.spring")
 @EnableConfigurationProperties(KubeProperties::class)
 open class KubeConfiguration(properties: KubeProperties) {
 

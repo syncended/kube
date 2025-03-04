@@ -20,20 +20,13 @@ private val sdf = SimpleDateFormat("HH:mm:ss")
 private val formattedNow: String
   get() = sdf.format(Date())
 
-fun clockPage(): String = box(mode = RenderMode.VIEW_ONLY, modifier = Modifier.withClass(clockContainer)) {
-  clock()
-}
-
-fun Layout.clockWidget() = box(Modifier.withClass(clockContainer)) {
-  clock()
-}
-
-private fun Layout.clock() {
+fun Layout.clock() {
   text(
     text = formattedNow,
     modifier = Modifier.hxGet("/clock")
       .hxSwap(HxSwap.OuterHTML)
       .hxTarget(clockContainer)
       .hxTrigger("every 1s")
+      .withClass(clockContainer)
   )
 }

@@ -34,22 +34,6 @@ fun Layout.box(
   body = body
 )
 
-fun box(
-  mode: RenderMode = RenderMode.PAGE,
-  modifier: Modifier = Modifier,
-  verticalAlignment: Alignment.Vertical? = null,
-  horizontalAlignment: Alignment.Horizontal? = null,
-  body: Box.() -> Unit
-) = widget(
-  mode = mode,
-  instance = Box(
-    modifier = modifier,
-    verticalAlignment = verticalAlignment,
-    horizontalAlignment = horizontalAlignment
-  ),
-  body = body
-)
-
 fun Layout.column(
   modifier: Modifier = Modifier,
   alignment: Alignment.Horizontal? = null,
@@ -62,38 +46,11 @@ fun Layout.column(
   body = body
 )
 
-fun column(
-  mode: RenderMode = RenderMode.PAGE,
-  modifier: Modifier = Modifier,
-  alignment: Alignment.Horizontal? = null,
-  body: Column.() -> Unit
-) = widget(
-  mode = mode,
-  instance = Column(
-    modifier = modifier,
-    alignment = alignment
-  ),
-  body = body
-)
-
 fun Layout.row(
   modifier: Modifier = Modifier,
   alignment: Alignment.Vertical? = null,
   body: Row.() -> Unit
 ) = widget(
-  instance = Row(
-    modifier = modifier,
-    alignment = alignment
-  ),
-  body = body
-)
-
-fun row(
-  mode: RenderMode = RenderMode.PAGE,
-  modifier: Modifier = Modifier,
-  alignment: Alignment.Vertical? = null, body: Row.() -> Unit
-) = widget(
-  mode = mode,
   instance = Row(
     modifier = modifier,
     alignment = alignment
@@ -115,21 +72,6 @@ fun Layout.card(
   body = body
 )
 
-fun card(
-  mode: RenderMode = RenderMode.PAGE,
-  modifier: Modifier = Modifier,
-  verticalAlignment: Alignment.Vertical? = null,
-  horizontalAlignment: Alignment.Horizontal? = null, body: Card.() -> Unit
-) = widget(
-  mode = mode,
-  instance = Card(
-    modifier = modifier,
-    verticalAlignment = verticalAlignment,
-    horizontalAlignment = horizontalAlignment
-  ),
-  body = body
-)
-
 fun Layout.link(
   href: String,
   modifier: Modifier = Modifier,
@@ -141,18 +83,3 @@ fun Layout.link(
   ),
   body = body
 )
-
-fun link(
-  href: String,
-  mode: RenderMode = RenderMode.PAGE,
-  modifier: Modifier = Modifier,
-  body: Link.() -> Unit
-) = widget(
-  mode = mode,
-  instance = Link(
-    modifier = modifier,
-    href = href
-  ),
-  body = body
-)
-

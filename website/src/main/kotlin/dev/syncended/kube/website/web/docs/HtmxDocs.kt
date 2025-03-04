@@ -7,7 +7,7 @@ import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.web.clock.clockWidget
+import dev.syncended.kube.website.web.clock.clock
 import dev.syncended.kube.website.web.styling.Sizes.spaceSizeDefault
 
 fun Column.htmxDocs() {
@@ -23,6 +23,6 @@ fun Column.htmxDocs() {
       .marginTop(spaceSizeDefault)
   ) {
     text("Sample widget, using htmx:", Modifier.marginRight(spaceSizeDefault))
-    clockWidget()
+    clock()
   }
 }

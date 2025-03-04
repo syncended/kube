@@ -28,12 +28,12 @@ jobs:
         run: |
           ./gradlew :core:publish
           ./gradlew :htmx:publish
-          ./gradlew :spring:core:publish
-          ./gradlew :spring:htmx:publish
+          ./gradlew :spring:publish
+          ./gradlew :ktor:publish
           ./gradlew :core:jreleaserFullRelease
           ./gradlew :htmx:jreleaserFullRelease
-          ./gradlew :spring:core:jreleaserFullRelease
-          ./gradlew :spring:htmx:jreleaserFullRelease
+          ./gradlew :spring:jreleaserFullRelease
+          ./gradlew :ktor:jreleaserFullRelease
         env:
           RELEASE_VERSION: ${{ github.event.inputs.tag }}
           GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}

@@ -12,7 +12,6 @@ import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.link
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.space
-import dev.syncended.kube.dsl.textLink
 import dev.syncended.kube.styling.Size.rem0
 import dev.syncended.kube.website.web.styling.Images.cubeLogo
 import dev.syncended.kube.website.web.styling.Sizes.sizeIconDefault
@@ -50,12 +49,12 @@ private fun Layout.logo() = link(href = "/") {
 }
 
 private fun Layout.menu() {
-  textLink(
+  link(
     text = "Docs",
     href = "/docs",
     modifier = Modifier.marginRight(spaceSizeDefault)
   )
-  textLink(
+  link(
     text = "GitHub",
     href = "https://github.com/syncended/kube"
   )

@@ -10,9 +10,9 @@ import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.maxWidth
 import dev.syncended.kube.core.component.renderOn
 import dev.syncended.kube.dsl.column
+import dev.syncended.kube.dsl.link
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.dsl.textLink
 import dev.syncended.kube.website.web.components.cardComponent
 import dev.syncended.kube.website.web.page.webpage
 import dev.syncended.kube.website.web.styling.Sizes.sizeNavBar
@@ -72,6 +72,6 @@ private fun Column.menuElements(path: DocsPath) {
 
 private fun Column.menuElement(name: String, path: DocsPath, selectedPath: DocsPath) = row {
   if (path == selectedPath) text(">", modifier = Modifier.marginRight(spaceSizeSmall))
-  textLink(text = name, href = "/docs/${path.name.lowercase()}")
+  link(text = name, href = "/docs/${path.name.lowercase()}")
 }
 

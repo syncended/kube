@@ -1,7 +1,7 @@
 package dev.syncended.kube.dsl
 
-import dev.syncended.kube.components.text.Text
-import dev.syncended.kube.components.text.TextLink
+import dev.syncended.kube.components.layout.Link
+import dev.syncended.kube.components.ui.Text
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Color
@@ -27,7 +27,7 @@ fun Layout.text(
   ),
 )
 
-fun Layout.textLink(
+fun Layout.link(
   text: String?,
   href: String?,
   modifier: Modifier = Modifier,
@@ -36,7 +36,7 @@ fun Layout.textLink(
   fontSize: FontSize? = null,
   fontStyle: FontStyle? = null,
 ) = widget(
-  instance = TextLink(
+  instance = Link(
     modifier = modifier,
     color = color,
     textSize = textSize,

@@ -1,4 +1,4 @@
-package dev.syncended.kube.components.text
+package dev.syncended.kube.components.ui
 
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.Widget
@@ -13,13 +13,18 @@ import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
 
-abstract class AbstractText(
-  modifier: Modifier,
+class Text(
+  modifier: Modifier = Modifier.Modifier,
   private val color: Color?,
   private val textSize: Size?,
   private val fontSize: FontSize?,
   private val fontStyle: FontStyle?,
+  private val text: String? = null,
 ) : Widget(modifier) {
+
+  override fun render() = p {
+    +text.orEmpty()
+  }
 
   override fun applyStyling(builder: CssBuilder) {
     super.applyStyling(builder)
@@ -27,25 +32,5 @@ abstract class AbstractText(
     textSize?.let { builder.fontSize = it.toDimension() }
     fontSize?.let { builder.fontWeight = it.mapping }
     fontStyle?.let { builder.fontStyle = it.mapping }
-  }
-}
-
-class Text(
-  modifier: Modifier = Modifier,
-  color: Color? = null,
-  textSize: Size? = null,
-  fontSize: FontSize? = null,
-  fontStyle: FontStyle? = null,
-  private val text: String? = null,
-) : AbstractText(
-  modifier = modifier,
-  color = color,
-  textSize = textSize,
-  fontSize = fontSize,
-  fontStyle = fontStyle
-) {
-
-  override fun render() = p {
-    +text.orEmpty()
   }
 }

@@ -4,7 +4,6 @@ import dev.syncended.kube.components.layout.Box
 import dev.syncended.kube.components.layout.Card
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.components.layout.Row
-import dev.syncended.kube.components.text.TextLink
 import dev.syncended.kube.core.Kube.plugins
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.component.Widget

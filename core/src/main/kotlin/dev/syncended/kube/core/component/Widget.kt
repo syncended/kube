@@ -10,11 +10,15 @@ import kotlinx.css.display
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
 import kotlinx.html.DIV
+import kotlinx.html.FORM
 import kotlinx.html.FlowContent
+import kotlinx.html.FormEncType
+import kotlinx.html.FormMethod
 import kotlinx.html.IMG
 import kotlinx.html.P
 import kotlinx.html.a
 import kotlinx.html.div
+import kotlinx.html.form
 import kotlinx.html.img
 import kotlinx.html.p
 import kotlinx.html.style
@@ -29,33 +33,46 @@ abstract class Widget(protected val modifier: Modifier) {
     _flowContent = null
   }
 
-  fun div(body: DIV.() -> Unit) {
+  protected fun div(body: DIV.() -> Unit) {
     flowContent.div(classes = buildClasses()) {
       applyModifierAttributes()
       body()
     }
   }
 
-  fun p(body: P.() -> Unit) {
+  protected fun p(body: P.() -> Unit) {
     flowContent.p(classes = buildClasses()) {
       applyModifierAttributes()
       body()
     }
   }
 
-  fun a(body: A.() -> Unit) {
+  protected fun a(body: A.() -> Unit) {
     flowContent.a(classes = buildClasses()) {
       applyModifierAttributes()
       body()
     }
   }
 
-  fun img(body: IMG.() -> Unit) {
+  protected fun img(body: IMG.() -> Unit) {
     flowContent.img(classes = buildClasses()) {
       applyModifierAttributes()
       body()
     }
   }
+
+  protected fun form(
+    action: String? = null,
+    encType: FormEncType? = null,
+    method: FormMethod? = null,
+    body: FORM.() -> Unit
+  ) = flowContent.form(
+    action = action,
+    encType = encType,
+    method = method,
+    classes = buildClasses(),
+    block = body
+  )
 
   protected abstract fun render()
 

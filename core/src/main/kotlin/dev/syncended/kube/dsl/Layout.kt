@@ -4,6 +4,9 @@ import dev.syncended.kube.components.layout.Box
 import dev.syncended.kube.components.layout.Card
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.components.layout.FlatLayout
+import dev.syncended.kube.components.layout.Form
+import dev.syncended.kube.components.layout.FormEncoding
+import dev.syncended.kube.components.layout.FormMethod
 import dev.syncended.kube.components.layout.Link
 import dev.syncended.kube.components.layout.Row
 import dev.syncended.kube.core.component.Layout
@@ -80,6 +83,22 @@ fun Layout.link(
   instance = Link(
     modifier = modifier,
     href = href
+  ),
+  body = body
+)
+
+fun Layout.form(
+  modifier: Modifier = Modifier,
+  action: String? = null,
+  encoding: FormEncoding? = null,
+  method: FormMethod? = null,
+  body: Form.() -> Unit
+) = widget(
+  instance = Form(
+    modifier = modifier,
+    action = action,
+    encoding = encoding,
+    method = method
   ),
   body = body
 )

@@ -3,19 +3,19 @@ package dev.syncended.kube.components.layout
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import kotlinx.html.FormEncType
-import kotlinx.html.FormMethod as HtmlFormMethod
+import kotlinx.html.FormMethod
 
 class Form(
     modifier: Modifier,
     private val action: String? = null,
     private val encoding: FormEncoding? = null,
-    private val method: FormMethod? = null
+    private val method: HttpMethod? = null
 ) : Layout(modifier) {
 
     override fun render() = form(
         action = action,
         encType = encoding?.toFormEnc(),
-        method = method?.toHtmlFormMethod()
+        method = method?.toFormMethod()
     ) { renderChild(this) }
 }
 
@@ -25,9 +25,12 @@ enum class FormEncoding {
     TEXT_PLAIN,
 }
 
-enum class FormMethod {
+enum class HttpMethod {
     GET,
     POST,
+    PUT,
+    PATCH,
+    DELETE
 }
 
 private fun FormEncoding.toFormEnc(): FormEncType = when (this) {
@@ -36,7 +39,10 @@ private fun FormEncoding.toFormEnc(): FormEncType = when (this) {
     FormEncoding.TEXT_PLAIN -> FormEncType.textPlain
 }
 
-private fun FormMethod.toHtmlFormMethod(): HtmlFormMethod = when (this) {
-    FormMethod.GET -> HtmlFormMethod.get
-    FormMethod.POST -> HtmlFormMethod.post
+private fun HttpMethod.toFormMethod(): FormMethod = when (this) {
+    HttpMethod.GET -> FormMethod.get
+    HttpMethod.POST -> FormMethod.post
+    HttpMethod.PUT -> FormMethod.put
+    HttpMethod.PATCH -> FormMethod.patch
+    HttpMethod.DELETE -> FormMethod.delete
 }

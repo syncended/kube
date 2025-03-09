@@ -15,11 +15,15 @@ import kotlinx.html.FlowContent
 import kotlinx.html.FormEncType
 import kotlinx.html.FormMethod
 import kotlinx.html.IMG
+import kotlinx.html.InputFormEncType
+import kotlinx.html.InputFormMethod
+import kotlinx.html.InputType
 import kotlinx.html.P
 import kotlinx.html.a
 import kotlinx.html.div
 import kotlinx.html.form
 import kotlinx.html.img
+import kotlinx.html.input
 import kotlinx.html.p
 import kotlinx.html.style
 
@@ -62,9 +66,9 @@ abstract class Widget(protected val modifier: Modifier) {
   }
 
   protected fun form(
-    action: String? = null,
-    encType: FormEncType? = null,
-    method: FormMethod? = null,
+    action: String?,
+    encType: FormEncType?,
+    method: FormMethod?,
     body: FORM.() -> Unit
   ) = flowContent.form(
     action = action,
@@ -72,6 +76,19 @@ abstract class Widget(protected val modifier: Modifier) {
     method = method,
     classes = buildClasses(),
     block = body
+  )
+
+  protected fun input(
+    type: InputType?,
+    formEncType: InputFormEncType?,
+    formMethod: InputFormMethod?,
+    name: String?
+  ) = flowContent.input(
+    type = type,
+    formEncType = formEncType,
+    formMethod = formMethod,
+    name = name,
+    classes = buildClasses(),
   )
 
   protected abstract fun render()

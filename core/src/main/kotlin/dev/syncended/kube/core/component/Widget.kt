@@ -6,6 +6,7 @@ import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.blockquote
 import kotlinx.css.display
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
@@ -15,6 +16,7 @@ import kotlinx.html.FlowContent
 import kotlinx.html.FormEncType
 import kotlinx.html.FormMethod
 import kotlinx.html.IMG
+import kotlinx.html.INPUT
 import kotlinx.html.InputFormEncType
 import kotlinx.html.InputFormMethod
 import kotlinx.html.InputType
@@ -82,13 +84,15 @@ abstract class Widget(protected val modifier: Modifier) {
     type: InputType?,
     formEncType: InputFormEncType?,
     formMethod: InputFormMethod?,
-    name: String?
+    name: String?,
+    body: INPUT.() -> Unit
   ) = flowContent.input(
     type = type,
     formEncType = formEncType,
     formMethod = formMethod,
     name = name,
     classes = buildClasses(),
+    block = body
   )
 
   protected abstract fun render()

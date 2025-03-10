@@ -57,6 +57,23 @@ class TextInput(
   inputType = type.toInputType()
 )
 
+class ButtonInput(
+  modifier: Modifier = Modifier,
+  name: String? = null,
+  type: ButtonType = ButtonType.BUTTON,
+  formEncoding: FormEncoding? = null,
+  formMethod: HttpMethod? = null,
+  text: String = ""
+) : AbstractInput(
+  modifier = modifier,
+  name = name,
+  formEncoding = formEncoding,
+  formMethod = formMethod,
+  inputType = type.toInputType()
+) {
+  override val value: String = text
+}
+
 enum class TextInputType {
   EMAIL,
   NUMBER,
@@ -65,6 +82,12 @@ enum class TextInputType {
   TEL,
   TEXT,
   URL,
+}
+
+enum class ButtonType {
+  BUTTON,
+  RESET,
+  SUBMIT
 }
 
 private fun TextInputType.toInputType(): InputType = when (this) {
@@ -77,9 +100,14 @@ private fun TextInputType.toInputType(): InputType = when (this) {
   TextInputType.URL -> InputType.url
 }
 
+private fun ButtonType.toInputType(): InputType = when (this) {
+  ButtonType.BUTTON -> InputType.button
+  ButtonType.RESET -> InputType.reset
+  ButtonType.SUBMIT -> InputType.submit
+}
+
 /*
 TODO
-    button("button"),
     checkBox("checkbox"),
     color("color"),
     date("date"),
@@ -90,8 +118,6 @@ TODO
     month("month"),
     radio("radio"),
     range("range"),
-    reset("reset"),
-    submit("submit"),
     time("time"),
     week("week")
  */

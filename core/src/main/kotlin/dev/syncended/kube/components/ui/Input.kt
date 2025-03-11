@@ -4,7 +4,6 @@ import dev.syncended.kube.components.layout.FormEncoding
 import dev.syncended.kube.components.layout.HttpMethod
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
-import kotlinx.html.INPUT
 import kotlinx.html.InputFormEncType
 import kotlinx.html.InputFormMethod
 import kotlinx.html.InputType
@@ -43,11 +42,11 @@ class HiddenInput(
 )
 
 class TextInput(
-  name: String,
   modifier: Modifier = Modifier,
   type: TextInputType = TextInputType.TEXT,
   formEncoding: FormEncoding? = null,
   formMethod: HttpMethod? = null,
+  name: String? = null,
   override val value: String = ""
 ) : AbstractInput(
   modifier = modifier,
@@ -59,10 +58,10 @@ class TextInput(
 
 class ButtonInput(
   modifier: Modifier = Modifier,
-  name: String? = null,
   type: ButtonType = ButtonType.BUTTON,
   formEncoding: FormEncoding? = null,
   formMethod: HttpMethod? = null,
+  name: String? = null,
   text: String = ""
 ) : AbstractInput(
   modifier = modifier,
@@ -73,6 +72,21 @@ class ButtonInput(
 ) {
   override val value: String = text
 }
+
+class DateTimeInput(
+  modifier: Modifier = Modifier,
+  type: DateTimeType = DateTimeType.DATE_TIME,
+  formEncoding: FormEncoding? = null,
+  formMethod: HttpMethod? = null,
+  name: String? = null,
+  override val value: String = ""
+) : AbstractInput(
+  modifier = modifier,
+  name = name,
+  formEncoding = formEncoding,
+  formMethod = formMethod,
+  inputType = type.toInputType()
+)
 
 enum class TextInputType {
   EMAIL,
@@ -88,6 +102,15 @@ enum class ButtonType {
   BUTTON,
   RESET,
   SUBMIT
+}
+
+enum class DateTimeType {
+  DATE,
+  DATE_TIME,
+  DATE_TIME_LOCAL,
+  MONTH,
+  TIME,
+  WEEK
 }
 
 private fun TextInputType.toInputType(): InputType = when (this) {
@@ -106,20 +129,23 @@ private fun ButtonType.toInputType(): InputType = when (this) {
   ButtonType.SUBMIT -> InputType.submit
 }
 
+private fun DateTimeType.toInputType(): InputType = when (this) {
+  DateTimeType.DATE -> InputType.date
+  DateTimeType.DATE_TIME -> InputType.dateTime
+  DateTimeType.DATE_TIME_LOCAL -> InputType.dateTimeLocal
+  DateTimeType.MONTH -> InputType.month
+  DateTimeType.TIME -> InputType.time
+  DateTimeType.WEEK -> InputType.week
+}
+
 /*
 TODO
     checkBox("checkbox"),
     color("color"),
-    date("date"),
-    dateTime("datetime"),
-    dateTimeLocal("datetime-local"),
     file("file"),
     image("image"),
-    month("month"),
     radio("radio"),
     range("range"),
-    time("time"),
-    week("week")
  */
 
 private fun FormEncoding.toInputFormEncType() = when (this) {

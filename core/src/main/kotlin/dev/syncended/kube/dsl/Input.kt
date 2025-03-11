@@ -4,6 +4,8 @@ import dev.syncended.kube.components.layout.FormEncoding
 import dev.syncended.kube.components.layout.HttpMethod
 import dev.syncended.kube.components.ui.ButtonInput
 import dev.syncended.kube.components.ui.ButtonType
+import dev.syncended.kube.components.ui.DateTimeInput
+import dev.syncended.kube.components.ui.DateTimeType
 import dev.syncended.kube.components.ui.HiddenInput
 import dev.syncended.kube.components.ui.TextInput
 import dev.syncended.kube.components.ui.TextInputType
@@ -25,11 +27,11 @@ fun Layout.hiddenInput(
 )
 
 fun Layout.textInput(
-  name: String,
   modifier: Modifier = Modifier,
   type: TextInputType = TextInputType.TEXT,
   formEncoding: FormEncoding? = null,
   formMethod: HttpMethod? = null,
+  name: String? = null,
   value: String = "",
 ) = widget(
   instance = TextInput(
@@ -44,15 +46,34 @@ fun Layout.textInput(
 
 fun Layout.buttonInput(
   modifier: Modifier = Modifier,
-  name: String? = null,
   type: ButtonType = ButtonType.BUTTON,
   formEncoding: FormEncoding? = null,
   formMethod: HttpMethod? = null,
+  name: String? = null,
   text: String = "",
 ) = widget(
   instance = ButtonInput(
     name = name,
     text = text,
+    modifier = modifier,
+    type = type,
+    formEncoding = formEncoding,
+    formMethod = formMethod
+  )
+)
+
+
+fun Layout.dateTimeInput(
+  modifier: Modifier = Modifier,
+  type: DateTimeType = DateTimeType.DATE_TIME,
+  formEncoding: FormEncoding? = null,
+  formMethod: HttpMethod? = null,
+  name: String? = null,
+  value: String = "",
+) = widget(
+  instance = DateTimeInput(
+    name = name,
+    value = value,
     modifier = modifier,
     type = type,
     formEncoding = formEncoding,

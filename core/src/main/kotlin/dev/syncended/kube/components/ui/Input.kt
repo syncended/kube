@@ -17,6 +17,8 @@ abstract class AbstractInput(
 ) : Layout(modifier) {
 
   protected open val value: String? = null
+  protected open val alt: String? = null
+  protected open val src: String? = null
 
   override fun render() = input(
     type = inputType,
@@ -25,6 +27,8 @@ abstract class AbstractInput(
     name = name
   ) {
     this@AbstractInput.value?.let { value = it }
+    this@AbstractInput.alt?.let { alt = it }
+    this@AbstractInput.src?.let { src = it }
   }
 }
 
@@ -72,6 +76,21 @@ class ButtonInput(
 ) {
   override val value: String = text
 }
+
+class ImageInput(
+  override val src: String,
+  modifier: Modifier = Modifier,
+  formEncoding: FormEncoding? = null,
+  formMethod: HttpMethod? = null,
+  name: String? = null,
+  override val alt: String = ""
+) : AbstractInput(
+  modifier = modifier,
+  name = name,
+  formEncoding = formEncoding,
+  formMethod = formMethod,
+  inputType = InputType.image
+)
 
 class DateTimeInput(
   modifier: Modifier = Modifier,
@@ -143,7 +162,6 @@ TODO
     checkBox("checkbox"),
     color("color"),
     file("file"),
-    image("image"),
     radio("radio"),
     range("range"),
  */

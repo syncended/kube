@@ -7,6 +7,7 @@ import dev.syncended.kube.components.ui.ButtonType
 import dev.syncended.kube.components.ui.DateTimeInput
 import dev.syncended.kube.components.ui.DateTimeType
 import dev.syncended.kube.components.ui.HiddenInput
+import dev.syncended.kube.components.ui.ImageInput
 import dev.syncended.kube.components.ui.TextInput
 import dev.syncended.kube.components.ui.TextInputType
 import dev.syncended.kube.core.component.Layout
@@ -62,7 +63,6 @@ fun Layout.buttonInput(
   )
 )
 
-
 fun Layout.dateTimeInput(
   modifier: Modifier = Modifier,
   type: DateTimeType = DateTimeType.DATE_TIME,
@@ -78,5 +78,23 @@ fun Layout.dateTimeInput(
     type = type,
     formEncoding = formEncoding,
     formMethod = formMethod
+  )
+)
+
+fun Layout.imageInput(
+  src: String,
+  modifier: Modifier = Modifier,
+  formEncoding: FormEncoding? = null,
+  formMethod: HttpMethod? = null,
+  name: String? = null,
+  alt: String = ""
+) = widget(
+  instance = ImageInput(
+    src = src,
+    name = name,
+    modifier = modifier,
+    formEncoding = formEncoding,
+    formMethod = formMethod,
+    alt = alt
   )
 )

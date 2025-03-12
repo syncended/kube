@@ -17,6 +17,10 @@ internal object Selectors {
   val row = "kube-row".toClassSelector()
   val card = "kube-card".toClassSelector()
   val link = "kube-link".toClassSelector()
+  val textInput = "kube-text-input".toClassSelector()
+  val button = "kube-button".toClassSelector()
+  val buttonHover = button.appendName(":hover")
+  val buttonActive = button.appendName(":active")
 
   val dynamicMobile = "kube-dynamic-mobile".toClassSelector()
   val dynamicDesktop = "kube-dynamic-desktop".toClassSelector()

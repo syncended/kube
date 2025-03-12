@@ -2,7 +2,7 @@ name: "Build website image"
 on:
   push:
     branches:
-      - master
+      - trunk
   workflow_dispatch:
 
 jobs:

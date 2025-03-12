@@ -5,6 +5,7 @@ import dev.syncended.kube.components.layout.Card
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.components.layout.Link
 import dev.syncended.kube.components.layout.Row
+import dev.syncended.kube.components.ui.inputStyling
 import dev.syncended.kube.core.Kube.plugins
 import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.component.Widget
@@ -52,6 +53,7 @@ object KubeStylingPlugin : KubePlugin.Styling {
     Row.styling(cssBuilder)
     Link.styling(cssBuilder)
     Widget.styling(cssBuilder)
+    inputStyling(cssBuilder)
   }
 
   private fun rawStyling(cssBuilder: CssBuilder) {

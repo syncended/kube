@@ -4,6 +4,28 @@ import dev.syncended.kube.components.layout.FormEncoding
 import dev.syncended.kube.components.layout.HttpMethod
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.withClass
+import dev.syncended.kube.core.model.toCssColor
+import dev.syncended.kube.core.on
+import dev.syncended.kube.styling.Colors
+import dev.syncended.kube.styling.Selectors.button
+import dev.syncended.kube.styling.Selectors.buttonActive
+import dev.syncended.kube.styling.Selectors.buttonHover
+import dev.syncended.kube.styling.Selectors.textInput
+import dev.syncended.kube.styling.Size.rem00625
+import dev.syncended.kube.styling.Size.rem0125
+import dev.syncended.kube.styling.Size.rem025
+import dev.syncended.kube.styling.Size.rem05
+import kotlinx.css.Border
+import kotlinx.css.BorderStyle
+import kotlinx.css.CssBuilder
+import kotlinx.css.Margin
+import kotlinx.css.Padding
+import kotlinx.css.backgroundColor
+import kotlinx.css.border
+import kotlinx.css.borderRadius
+import kotlinx.css.margin
+import kotlinx.css.padding
 import kotlinx.html.InputFormEncType
 import kotlinx.html.InputFormMethod
 import kotlinx.html.InputType
@@ -53,7 +75,7 @@ class TextInput(
   name: String? = null,
   override val value: String = ""
 ) : AbstractInput(
-  modifier = modifier,
+  modifier = modifier.withClass(textInput),
   name = name,
   formEncoding = formEncoding,
   formMethod = formMethod,
@@ -68,7 +90,7 @@ class ButtonInput(
   name: String? = null,
   text: String = ""
 ) : AbstractInput(
-  modifier = modifier,
+  modifier = modifier.withClass(button),
   name = name,
   formEncoding = formEncoding,
   formMethod = formMethod,
@@ -106,6 +128,28 @@ class DateTimeInput(
   formMethod = formMethod,
   inputType = type.toInputType()
 )
+
+internal fun inputStyling(cssBuilder: CssBuilder) {
+  cssBuilder.on(textInput) {
+    margin = Margin(rem00625.toDimension())
+    padding = Padding(horizontal = rem05.toDimension(), vertical = rem025.toDimension())
+    border = Border(rem0125.toDimension(), BorderStyle.solid, Colors.black.toCssColor())
+    borderRadius = rem05.toDimension()
+  }
+  cssBuilder.on(button) {
+    backgroundColor = Colors.white.toCssColor()
+    border = Border(rem0125.toDimension(), BorderStyle.solid, Colors.black.toCssColor())
+    padding = Padding(horizontal = rem05.toDimension(), vertical = rem025.toDimension())
+    borderRadius = rem05.toDimension()
+  }
+  cssBuilder.on(buttonHover) {
+    backgroundColor = Colors.whiteHover.toCssColor()
+  }
+  cssBuilder.on(buttonActive) {
+    backgroundColor = Colors.white.toCssColor()
+    border = Border(rem0125.toDimension(), BorderStyle.solid, Colors.blackActive.toCssColor())
+  }
+}
 
 enum class TextInputType {
   EMAIL,

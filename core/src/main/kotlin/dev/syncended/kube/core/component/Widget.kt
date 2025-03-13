@@ -77,8 +77,10 @@ abstract class Widget(protected val modifier: Modifier) {
     encType = encType,
     method = method,
     classes = buildClasses(),
-    block = body
-  )
+  ) {
+    applyModifierAttributes()
+    body()
+  }
 
   protected fun input(
     type: InputType?,

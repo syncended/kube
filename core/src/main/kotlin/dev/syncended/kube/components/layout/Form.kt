@@ -6,7 +6,7 @@ import kotlinx.html.FormEncType
 import kotlinx.html.FormMethod
 
 class Form(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     private val action: String? = null,
     private val encoding: FormEncoding? = null,
     private val method: HttpMethod? = null

@@ -1,7 +1,8 @@
-package dev.syncended.kube.website.web.docs
+package dev.syncended.kube.website.web.documentation
 
 enum class DocsPath {
   WELCOME,
+  COMPONENTS,
   HTMX,
 }
 

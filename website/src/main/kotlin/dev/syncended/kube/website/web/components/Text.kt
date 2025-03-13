@@ -7,8 +7,8 @@ import dev.syncended.kube.core.model.FontSize
 import dev.syncended.kube.core.model.FontStyle
 import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.dsl.text
-import dev.syncended.kube.website.web.styling.Sizes.fontSizeDefault
-import dev.syncended.kube.website.web.styling.Sizes.fontSizeHeader
+import dev.syncended.kube.website.web.components.Sizes.fontSizeDefault
+import dev.syncended.kube.website.web.components.Sizes.fontSizeHeader
 
 fun Layout.heading(
   text: String,

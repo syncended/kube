@@ -9,10 +9,19 @@ import dev.syncended.kube.dsl.card
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.web.components.title
-import dev.syncended.kube.website.web.page.webpage
-import dev.syncended.kube.website.web.styling.Colors
-import dev.syncended.kube.website.web.styling.Sizes
-import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.webpage
+import dev.syncended.kube.website.web.components.Colors
+import dev.syncended.kube.website.web.components.Sizes
+import dev.syncended.kube.website.web.components.Sizes.spaceSizeSmall
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+
+// @RestController
+// class MainController {
+//
+//   @GetMapping("/")
+//   suspend fun getMain() = mainPage()
+// }
 
 fun mainPage() = webpage {
   card(
@@ -22,12 +31,7 @@ fun mainPage() = webpage {
   ) {
 
     column {
-      title("What is KUBE?")
-      text(
-        text = "KUBE - Kotlin Ui Builder.",
-        modifier = Modifier.marginVertical(spaceSizeSmall)
-      )
-      text("KUBE is an open-source library, that simplifies your routine of creating internal web interfaces (like an admin panel, or smth else).")
+
 
     }
   }

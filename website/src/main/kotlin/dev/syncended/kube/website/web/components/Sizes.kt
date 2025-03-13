@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.web.styling
+package dev.syncended.kube.website.web.components
 
 import dev.syncended.kube.core.model.rm
 

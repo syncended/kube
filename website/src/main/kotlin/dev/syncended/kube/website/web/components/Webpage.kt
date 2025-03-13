@@ -1,4 +1,4 @@
-package dev.syncended.kube.website.web.page
+package dev.syncended.kube.website.web.components
 
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Modifier
@@ -13,10 +13,9 @@ import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.render
 import dev.syncended.kube.dsl.space
-import dev.syncended.kube.website.web.components.toolbar
-import dev.syncended.kube.website.web.styling.Colors.colorPageBackground
-import dev.syncended.kube.website.web.styling.Sizes.sizeMaxPage
-import dev.syncended.kube.website.web.styling.Sizes.spaceSizeSmall
+import dev.syncended.kube.website.web.components.Colors.colorPageBackground
+import dev.syncended.kube.website.web.components.Sizes.sizeMaxPage
+import dev.syncended.kube.website.web.components.Sizes.spaceSizeSmall
 
 fun webpage(content: Column.() -> Unit): String = render {
   box(

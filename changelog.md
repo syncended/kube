@@ -1,2 +1,2 @@
-### Kube v0.3.1 release
-- fix forms styling
+### Kube v0.3.2 release
+- fix input styling

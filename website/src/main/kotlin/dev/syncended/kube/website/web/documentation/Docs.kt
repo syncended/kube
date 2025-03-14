@@ -95,6 +95,6 @@ private fun Column.menuElements(path: DocsPath) {
 
 private fun Column.menuElement(name: String, path: DocsPath, selectedPath: DocsPath) = row {
   if (path == selectedPath) text(">", modifier = Modifier.marginRight(spaceSizeSmall))
-  link(text = name, href = "/docs/${path.name.lowercase()}")
+  link(text = name, href = "/${path.name.lowercase()}")
 }
 

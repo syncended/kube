@@ -94,8 +94,10 @@ abstract class Widget(protected val modifier: Modifier) {
     formMethod = formMethod,
     name = name,
     classes = buildClasses(),
-    block = body
-  )
+  ) {
+    applyModifierAttributes()
+    body()
+  }
 
   protected abstract fun render()
 

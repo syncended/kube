@@ -1,10 +1,9 @@
-package dev.syncended.kube.website.web.components
+package dev.syncended.kube.website.web.widget
 
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginLeft
-import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.minHeight
 import dev.syncended.kube.core.component.paddingVertical
 import dev.syncended.kube.core.component.size
@@ -17,6 +16,9 @@ import dev.syncended.kube.website.web.components.Images.cubeLogo
 import dev.syncended.kube.website.web.components.Sizes.sizeIconDefault
 import dev.syncended.kube.website.web.components.Sizes.sizeToolbarHeight
 import dev.syncended.kube.website.web.components.Sizes.spaceSizeDefault
+import dev.syncended.kube.website.web.components.cardComponent
+import dev.syncended.kube.website.web.components.heading
+import dev.syncended.kube.website.web.components.svgImage
 
 fun Layout.toolbar() = cardComponent(
   verticalAlignment = Alignment.Vertical.Center,
@@ -49,11 +51,6 @@ private fun Layout.logo() = link(href = "/") {
 }
 
 private fun Layout.menu() {
-  link(
-    text = "Docs",
-    href = "/docs",
-    modifier = Modifier.marginRight(spaceSizeDefault)
-  )
   link(
     text = "GitHub",
     href = "https://github.com/syncended/kube"

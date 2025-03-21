@@ -23,6 +23,8 @@ fun render(
   body = body
 )
 
+fun renderView(body: FlatLayout.() -> Unit) = render(mode = RenderMode.VIEW_ONLY, body = body)
+
 fun Layout.box(
   modifier: Modifier = Modifier,
   verticalAlignment: Alignment.Vertical? = null,

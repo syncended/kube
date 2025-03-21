@@ -19,3 +19,14 @@ suspend fun RoutingCall.respondRender(
   )
   respondText(text = content, contentType = ContentType.Text.Html, status = status)
 }
+
+suspend fun RoutingCall.respondRenderView(
+  status: HttpStatusCode = HttpStatusCode.OK,
+  body: FlatLayout.() -> Unit
+) {
+  val content = render(
+    mode = RenderMode.VIEW_ONLY,
+    body = body
+  )
+  respondText(text = content, contentType = ContentType.Text.Html, status = status)
+}

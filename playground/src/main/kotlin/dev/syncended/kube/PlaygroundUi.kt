@@ -9,7 +9,9 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.fillMaxSize
 import dev.syncended.kube.core.component.fillMaxWidth
+import dev.syncended.kube.core.component.textSelection
 import dev.syncended.kube.core.model.Alignment
+import dev.syncended.kube.core.model.TextSelection
 import dev.syncended.kube.core.model.toColor
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.buttonInput
@@ -30,6 +32,9 @@ fun Layout.renderUi() = box(
   column {
     text("Hello playground!")
     renderForm()
+
+    text("Selectable test", modifier = Modifier.textSelection(TextSelection.ALL))
+    text("Selectable test 2", modifier = Modifier.textSelection(TextSelection.TEXT))
   }
 }
 

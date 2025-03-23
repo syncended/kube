@@ -6,6 +6,7 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
+import dev.syncended.kube.core.model.TextSelection
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
 import dev.syncended.kube.styling.Size.percent100
@@ -134,6 +135,9 @@ fun Modifier.borderRadius(
   bottomRight?.let { result = result.borderBottomRightRadius(it) }
   return result
 }
+
+internal val Modifier.textSelection: TextSelection? get() = get("textSelection")
+fun Modifier.textSelection(value: TextSelection) = set("textSelection", value)
 
 fun Modifier.renderOn(size: LayoutSize) = size.clazz?.let(::withClass) ?: this
 

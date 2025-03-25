@@ -12,6 +12,7 @@ object KubeViewportPlugin : KubePlugin.HeadAppender {
       content = "width=device-width"
       setAttr("initial-scale", "1.0")
       setAttr("user-scalable", "no")
+      setAttr("interactive-widget", "resizes-content")
     }
   }
 }

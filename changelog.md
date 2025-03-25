@@ -1,3 +1,2 @@
-### Kube v0.3.3 release
-- Render utilities
-- Add copy text modifier
+### Kube v0.3.4 release
+- mobile viewport fixes

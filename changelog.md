@@ -1,2 +1,3 @@
-### Kube v0.3.4 release
-- mobile viewport fixes
+### Kube v0.4.0 release
+- add weight
+- remove fillMaxSize, fillMaxWeight, fillMaxHeight modifiers

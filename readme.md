@@ -23,7 +23,7 @@ class MyController {
     @GetMapping("/")
     fun homePage() = render {
         box(
-            modifier = Modifier.fillMaxSize().backgroundColor("#f5f5f5"),
+            modifier = Modifier.fillMaxSize().backgroundColor("#f5f5f5".toColor()),
             verticalAlignment = Alignment.Vertical.Center,
             horizontalAlignment = Alignment.Horizontal.Center
         ) {
@@ -50,9 +50,7 @@ fun Application.module() {
     routing {
         get("/") {
             call.respondRender {
-                box {
-                    text("Hello from Ktor + KUBE!")
-                }
+                text("Hello from Ktor + KUBE!")
             }
         }
     }

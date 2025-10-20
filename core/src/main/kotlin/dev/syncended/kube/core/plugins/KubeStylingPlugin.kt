@@ -25,6 +25,8 @@ import kotlinx.css.Margin
 import kotlinx.css.Padding
 import kotlinx.css.UserSelect
 import kotlinx.css.boxSizing
+import kotlinx.css.flexGrow
+import kotlinx.css.flexShrink
 import kotlinx.css.fontFamily
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
@@ -58,6 +60,10 @@ object KubeStylingPlugin : KubePlugin.Styling {
 
   private fun rawStyling(cssBuilder: CssBuilder) {
     cssBuilder.on(all) {
+      width = LinearDimension.fitContent
+      height = LinearDimension.fitContent
+      flexGrow = 0
+      flexShrink = 0
       boxSizing = BoxSizing.borderBox
       padding = Padding(rem0.toDimension())
       margin = Margin(rem0.toDimension())

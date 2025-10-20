@@ -58,8 +58,6 @@ object KubeStylingPlugin : KubePlugin.Styling {
 
   private fun rawStyling(cssBuilder: CssBuilder) {
     cssBuilder.on(all) {
-      width = LinearDimension.fitContent
-      height = LinearDimension.fitContent
       boxSizing = BoxSizing.borderBox
       padding = Padding(rem0.toDimension())
       margin = Margin(rem0.toDimension())

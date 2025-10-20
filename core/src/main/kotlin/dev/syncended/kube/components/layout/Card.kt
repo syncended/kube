@@ -8,11 +8,13 @@ import dev.syncended.kube.styling.Selectors
 import dev.syncended.kube.styling.Size
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.Overflow
 import kotlinx.css.borderBottomLeftRadius
 import kotlinx.css.borderBottomRightRadius
 import kotlinx.css.borderTopLeftRadius
 import kotlinx.css.borderTopRightRadius
 import kotlinx.css.display
+import kotlinx.css.overflow
 
 class Card(
   modifier: Modifier = Modifier.Modifier,
@@ -26,6 +28,7 @@ class Card(
   companion object {
     fun styling(cssBuilder: CssBuilder) = cssBuilder.on(Selectors.card) {
       display = Display.flex
+      overflow = Overflow.hidden
 
       borderTopLeftRadius = Size.rem1.toDimension()
       borderTopRightRadius = Size.rem1.toDimension()

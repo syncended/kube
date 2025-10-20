@@ -10,9 +10,11 @@ import dev.syncended.kube.styling.Selectors
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
 import kotlinx.css.FlexDirection
+import kotlinx.css.Overflow
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
+import kotlinx.css.overflow
 
 class Row(
   modifier: Modifier = Modifier.Modifier,
@@ -32,6 +34,7 @@ class Row(
     fun styling(cssBuilder: CssBuilder) = cssBuilder.on(Selectors.row) {
       display = Display.flex
       flexDirection = FlexDirection.row
+      overflow = Overflow.hidden
     }
   }
 }

@@ -11,10 +11,12 @@ import dev.syncended.kube.styling.Selectors.box
 import dev.syncended.kube.styling.Selectors.boxChild
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
+import kotlinx.css.Overflow
 import kotlinx.css.Position
 import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.justifyContent
+import kotlinx.css.overflow
 import kotlinx.css.position
 
 abstract class AbstractBox(
@@ -48,9 +50,7 @@ class Box(
       cssBuilder.on(box) {
         display = Display.flex
         position = Position.relative
-      }
-      cssBuilder.on(boxChild) {
-        position = Position.absolute
+        overflow = Overflow.hidden
       }
     }
   }

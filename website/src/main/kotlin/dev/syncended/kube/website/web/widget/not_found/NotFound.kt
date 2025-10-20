@@ -1,7 +1,7 @@
 package dev.syncended.kube.website.web.widget.not_found
 
 import dev.syncended.kube.core.component.Modifier
-import dev.syncended.kube.core.component.fillMaxWidth
+import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.web.components.cardComponent
 import dev.syncended.kube.website.web.components.webpage
@@ -23,7 +23,7 @@ class NotFoundController {
 
   @GetMapping("/not-found")
   fun notFound(): String = webpage {
-    cardComponent(modifier = Modifier.fillMaxWidth()) {
+    cardComponent(modifier = Modifier.weight(1)) {
       text(text = "Nothing was found :(")
     }
   }

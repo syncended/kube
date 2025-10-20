@@ -21,6 +21,7 @@ import dev.syncended.kube.core.component.paddingLeft
 import dev.syncended.kube.core.component.paddingRight
 import dev.syncended.kube.core.component.paddingTop
 import dev.syncended.kube.core.component.textSelection
+import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.core.component.width
 import dev.syncended.kube.core.component.zIndex
 import dev.syncended.kube.core.model.toCssColor
@@ -31,6 +32,8 @@ import kotlinx.css.borderBottomLeftRadius
 import kotlinx.css.borderBottomRightRadius
 import kotlinx.css.borderTopLeftRadius
 import kotlinx.css.borderTopRightRadius
+import kotlinx.css.flexGrow
+import kotlinx.css.flexShrink
 import kotlinx.css.height
 import kotlinx.css.marginBottom
 import kotlinx.css.marginLeft
@@ -76,5 +79,11 @@ object KubeModifierStylingPlugin : KubePlugin.ModifierStyling {
     modifier.borderBottomRightRadius?.let { cssBuilder.borderBottomRightRadius = it.toDimension() }
 
     modifier.textSelection?.let { cssBuilder.userSelect = it.toUserSelect() }
+
+    // Flex properties
+    modifier.weight?.let {
+      cssBuilder.flexGrow = it
+      cssBuilder.flexShrink = Int.MAX_VALUE - it
+    }
   }
 }

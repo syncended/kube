@@ -11,11 +11,14 @@ import dev.syncended.kube.core.KubePlugin
 import dev.syncended.kube.core.component.Widget
 import dev.syncended.kube.core.model.Font
 import dev.syncended.kube.core.model.ResourceMode
+import dev.syncended.kube.core.model.appendName
 import dev.syncended.kube.core.model.url
 import dev.syncended.kube.core.on
+import dev.syncended.kube.styling.Selectors
 import dev.syncended.kube.styling.Selectors.all
 import dev.syncended.kube.styling.Selectors.body
 import dev.syncended.kube.styling.Selectors.html
+import dev.syncended.kube.styling.Selectors.withWeight
 import dev.syncended.kube.styling.Size.percent100
 import dev.syncended.kube.styling.Size.rem0
 import kotlinx.css.BoxSizing
@@ -78,7 +81,7 @@ object KubeStylingPlugin : KubePlugin.Styling {
       width = percent100.toDimension()
       height = percent100.toDimension()
     }
-  }
+}
 
   private fun fonts(cssBuilder: CssBuilder) {
     plugins.fonts.forEach { fontStyling(it.font, cssBuilder) }

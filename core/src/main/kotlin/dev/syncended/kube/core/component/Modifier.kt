@@ -7,9 +7,10 @@ import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.core.model.TextSelection
+import dev.syncended.kube.core.model.rm
+import dev.syncended.kube.styling.Selectors
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
-import dev.syncended.kube.styling.Size.percent100
 import dev.syncended.kube.core.component.Modifier as CoreModifier
 
 open class Modifier private constructor(
@@ -56,9 +57,9 @@ fun Modifier.height(value: Size?) = set("height", value)
 fun Modifier.minHeight(value: Size?) = set("minHeight", value)
 fun Modifier.maxHeight(value: Size?) = set("maxHeight", value)
 
-fun Modifier.fillMaxWidth() = width(percent100)
-fun Modifier.fillMaxHeight() = height(percent100)
-fun Modifier.fillMaxSize() = fillMaxWidth().fillMaxHeight()
+internal val Modifier.weight: Int? get() = get("weight")
+fun Modifier.weight(value: Int?) = set("weight", value).withClass(Selectors.withWeight)
+
 fun Modifier.size(value: Size) = width(value).height(value)
 fun Modifier.size(width: Size, height: Size) = width(width).height(height)
 fun Modifier.minSize(width: Size, height: Size) = minWidth(width).minHeight(height)

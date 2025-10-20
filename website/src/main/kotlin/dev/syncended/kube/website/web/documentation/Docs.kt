@@ -4,15 +4,17 @@ import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.LayoutSize
 import dev.syncended.kube.core.component.Modifier
-import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginBottom
 import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.maxWidth
 import dev.syncended.kube.core.component.renderOn
+import dev.syncended.kube.core.component.weight
+import dev.syncended.kube.core.component.width
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.link
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
+import dev.syncended.kube.styling.Size.percent100
 import dev.syncended.kube.website.web.components.Sizes.sizeNavBar
 import dev.syncended.kube.website.web.components.Sizes.spaceSizeSmall
 import dev.syncended.kube.website.web.components.cardComponent
@@ -34,7 +36,6 @@ class DocsController {
   fun getDocs(@PathVariable("path") path: String): String = docs(path.toDocsPath())
 }
 
-
 fun docs(path: DocsPath) = webpage {
   docsLayout(path) {
     when (path) {
@@ -48,29 +49,29 @@ fun docs(path: DocsPath) = webpage {
 private fun Layout.docsLayout(
   path: DocsPath,
   content: Column.() -> Unit
-) = row(modifier = Modifier.fillMaxWidth()) {
+) = row(modifier = Modifier.width(percent100)) {
 
   cardComponent(
     modifier = Modifier.renderOn(LayoutSize.Desktop)
-      .fillMaxWidth()
+      .width(percent100)
       .maxWidth(sizeNavBar)
       .marginRight(spaceSizeSmall)
   ) {
     column { menuElements(path) }
   }
 
-  column(modifier = Modifier.fillMaxWidth()) {
+  column(modifier = Modifier.weight(1)) {
 
     cardComponent(
-      modifier = Modifier.fillMaxWidth()
+      modifier = Modifier.weight(1)
         .marginBottom(spaceSizeSmall)
         .renderOn(LayoutSize.Mobile)
     ) {
       column { menuElements(path) }
     }
 
-    cardComponent(modifier = Modifier.fillMaxWidth()) {
-      column(modifier = Modifier.fillMaxWidth()) { content() }
+    cardComponent(modifier = Modifier.weight(1)) {
+      column(modifier = Modifier.weight(1)) { content() }
     }
   }
 }

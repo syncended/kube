@@ -8,13 +8,12 @@ import dev.syncended.kube.core.component.borderBottomLeftRadius
 import dev.syncended.kube.core.component.borderBottomRightRadius
 import dev.syncended.kube.core.component.borderTopLeftRadius
 import dev.syncended.kube.core.component.borderTopRightRadius
-import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.height
 import dev.syncended.kube.core.component.marginBottom
 import dev.syncended.kube.core.component.marginLeft
 import dev.syncended.kube.core.component.marginTop
 import dev.syncended.kube.core.component.marginVertical
-import dev.syncended.kube.core.component.size
+import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.core.component.withClass
 import dev.syncended.kube.core.model.RenderMode
 import dev.syncended.kube.core.model.px
@@ -30,7 +29,6 @@ import dev.syncended.kube.dsl.space
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.htmx.modifier.hxGet
 import dev.syncended.kube.htmx.modifier.hxTarget
-import dev.syncended.kube.htmx.modifier.hxTrigger
 import dev.syncended.kube.styling.Size.rem1
 import dev.syncended.kube.website.web.components.Sizes.spaceSizeDefault
 import dev.syncended.kube.website.web.components.Sizes.spaceSizeSmall
@@ -70,7 +68,7 @@ fun Column.welcome() {
 }
 
 private fun Layout.dependency(gradle: Boolean) = column(
-  modifier = Modifier.fillMaxWidth()
+  modifier = Modifier.weight(1)
     .withClass(dependencies)
     .marginTop(spaceSizeSmall)
 ) {

@@ -12,6 +12,7 @@ internal object Selectors {
   val body = "body".toTagSelector()
 
   // Custom classes
+  val layout = "kube-layout".toClassSelector()
   val box = "kube-box".toClassSelector()
   val column = "kube-column".toClassSelector()
   val row = "kube-row".toClassSelector()
@@ -24,6 +25,8 @@ internal object Selectors {
 
   val dynamicMobile = "kube-dynamic-mobile".toClassSelector()
   val dynamicDesktop = "kube-dynamic-desktop".toClassSelector()
+
+  val withWeight = "kube-with-weight".toClassSelector()
 
   // Custom selectors
   val linkVisited = link.appendName(":visited")

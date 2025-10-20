@@ -2,9 +2,9 @@ package dev.syncended.kube.website.web.documentation.section
 
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Modifier
-import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.marginTop
+import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.dsl.row
 import dev.syncended.kube.dsl.text
 import dev.syncended.kube.website.web.widget.clock.clock
@@ -19,7 +19,7 @@ fun Column.htmxDocs() {
   )
 
   row(
-    modifier = Modifier.fillMaxWidth()
+    modifier = Modifier.weight(1)
       .marginTop(spaceSizeDefault)
   ) {
     text("Sample widget, using htmx:", Modifier.marginRight(spaceSizeDefault))

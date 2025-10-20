@@ -6,20 +6,21 @@ import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.component.backgroundColor
 import dev.syncended.kube.core.component.borderRadius
-import dev.syncended.kube.core.component.fillMaxSize
-import dev.syncended.kube.core.component.fillMaxWidth
 import dev.syncended.kube.core.component.height
 import dev.syncended.kube.core.component.marginHorizontal
 import dev.syncended.kube.core.component.maxWidth
 import dev.syncended.kube.core.component.padding
 import dev.syncended.kube.core.component.paddingHorizontal
 import dev.syncended.kube.core.component.paddingVertical
+import dev.syncended.kube.core.component.weight
+import dev.syncended.kube.core.component.width
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.dsl.box
 import dev.syncended.kube.dsl.card
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.render
 import dev.syncended.kube.dsl.space
+import dev.syncended.kube.styling.Size.percent100
 import dev.syncended.kube.styling.Size.rem05
 import dev.syncended.kube.styling.Size.rem1
 import dev.syncended.kube.website.web.components.Colors.colorBackground
@@ -32,11 +33,12 @@ import dev.syncended.kube.website.web.widget.toolbar
 fun webpage(content: Column.() -> Unit): String = render {
   box(
     horizontalAlignment = Alignment.Horizontal.Center,
-    modifier = Modifier.fillMaxSize()
+    modifier = Modifier.width(percent100)
+      .height(percent100)
       .backgroundColor(colorPageBackground)
   ) {
     column(
-      modifier = Modifier.fillMaxWidth()
+      modifier = Modifier.weight(1)
         .marginHorizontal(spaceSizeSmall)
         .maxWidth(sizeMaxPage)
     ) {
@@ -62,7 +64,7 @@ fun Layout.cardComponent(
 
 fun Layout.codeBlock(body: Column.() -> Unit) {
   column(
-    modifier = Modifier.fillMaxWidth()
+    modifier = Modifier.weight(1)
       .backgroundColor(Colors.colorCodeBlockBackground)
       .paddingVertical(rem05)
       .paddingHorizontal(rem1)

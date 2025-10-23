@@ -1,2 +1,2 @@
 ### Kube v0.4.1 release
-- add scrollable
+- https://github.com/syncended/kube/issues/32

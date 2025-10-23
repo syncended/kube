@@ -140,6 +140,9 @@ fun Modifier.borderRadius(
 internal val Modifier.textSelection: TextSelection? get() = get("textSelection")
 fun Modifier.textSelection(value: TextSelection) = set("textSelection", value)
 
+internal val Modifier.scrollable: Boolean? get() = get("scrollable")
+fun Modifier.scrollable(enabled: Boolean) = set("scrollable", enabled)
+
 fun Modifier.renderOn(size: LayoutSize) = size.clazz?.let(::withClass) ?: this
 
 sealed class LayoutSize(internal val clazz: Selector.Class?) {

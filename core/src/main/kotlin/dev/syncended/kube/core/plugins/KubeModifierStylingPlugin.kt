@@ -20,6 +20,7 @@ import dev.syncended.kube.core.component.paddingBottom
 import dev.syncended.kube.core.component.paddingLeft
 import dev.syncended.kube.core.component.paddingRight
 import dev.syncended.kube.core.component.paddingTop
+import dev.syncended.kube.core.component.scrollable
 import dev.syncended.kube.core.component.textSelection
 import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.core.component.width
@@ -43,6 +44,8 @@ import kotlinx.css.maxHeight
 import kotlinx.css.maxWidth
 import kotlinx.css.minHeight
 import kotlinx.css.minWidth
+import kotlinx.css.overflow
+import kotlinx.css.Overflow
 import kotlinx.css.paddingBottom
 import kotlinx.css.paddingLeft
 import kotlinx.css.paddingRight
@@ -79,6 +82,13 @@ object KubeModifierStylingPlugin : KubePlugin.ModifierStyling {
     modifier.borderBottomRightRadius?.let { cssBuilder.borderBottomRightRadius = it.toDimension() }
 
     modifier.textSelection?.let { cssBuilder.userSelect = it.toUserSelect() }
+
+    // Scrollable properties
+    modifier.scrollable?.let { enabled ->
+      if (enabled) {
+        cssBuilder.overflow = Overflow.auto
+      }
+    }
 
     // Flex properties
     modifier.weight?.let {

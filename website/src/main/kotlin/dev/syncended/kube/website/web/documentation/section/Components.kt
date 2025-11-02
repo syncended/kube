@@ -4,6 +4,6 @@ import dev.syncended.kube.core.component.Layout
 import dev.syncended.kube.dsl.text
 
 fun Layout.components() {
-  text("CORE text")
+  text("CORE text v2")
   text("INPUT")
 }

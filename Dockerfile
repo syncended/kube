@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-slim as jdk
+FROM openjdk:21-ea-jdk-slim as jdk
 
 FROM jdk as builder
 WORKDIR /service

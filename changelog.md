@@ -1,2 +1,7 @@
-### Kube v0.4.1 release
-- https://github.com/syncended/kube/issues/32
+### Kube v0.5.0 release
+- Rework Breakpoint system
+  - renderOn removed
+  - LayoutSize removed
+  - added BreakpointEnum
+  - added showOn
+  - added hideOn

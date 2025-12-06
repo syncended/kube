@@ -8,10 +8,12 @@ import dev.syncended.kube.core.model.FontStyle
 import dev.syncended.kube.core.model.Size
 import dev.syncended.kube.core.model.toCssColor
 import kotlinx.css.CssBuilder
+import kotlinx.css.WordBreak
 import kotlinx.css.color
 import kotlinx.css.fontSize
 import kotlinx.css.fontStyle
 import kotlinx.css.fontWeight
+import kotlinx.css.wordBreak
 
 class Text(
   modifier: Modifier = Modifier.Modifier,
@@ -32,5 +34,6 @@ class Text(
     textSize?.let { builder.fontSize = it.toDimension() }
     fontSize?.let { builder.fontWeight = it.mapping }
     fontStyle?.let { builder.fontStyle = it.mapping }
+    builder.wordBreak = WordBreak.breakWord
   }
 }

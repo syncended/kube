@@ -5,3 +5,4 @@
   - added BreakpointEnum
   - added showOn
   - added hideOn
+- Fix word break on large texts

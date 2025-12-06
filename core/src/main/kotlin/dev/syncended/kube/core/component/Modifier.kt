@@ -3,6 +3,7 @@
 package dev.syncended.kube.core.component
 
 import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.model.Breakpoint
 import dev.syncended.kube.core.model.Color
 import dev.syncended.kube.core.model.Selector
 import dev.syncended.kube.core.model.Size
@@ -11,6 +12,10 @@ import dev.syncended.kube.core.model.rm
 import dev.syncended.kube.styling.Selectors
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
+import dev.syncended.kube.styling.Selectors.hideDesktop
+import dev.syncended.kube.styling.Selectors.hideMobile
+import dev.syncended.kube.styling.Selectors.hideTablet
+import dev.syncended.kube.styling.Selectors.hideWide
 import dev.syncended.kube.core.component.Modifier as CoreModifier
 
 open class Modifier private constructor(
@@ -143,10 +148,34 @@ fun Modifier.textSelection(value: TextSelection) = set("textSelection", value)
 internal val Modifier.scrollable: Boolean? get() = get("scrollable")
 fun Modifier.scrollable(enabled: Boolean) = set("scrollable", enabled)
 
-fun Modifier.renderOn(size: LayoutSize) = size.clazz?.let(::withClass) ?: this
+internal val Modifier.hideOnBreakpoints: Set<Breakpoint> get() = get("hideOnBreakpoints") ?: emptySet()
+internal val Modifier.showOnBreakpoints: Set<Breakpoint> get() = get("showOnBreakpoints") ?: emptySet()
 
-sealed class LayoutSize(internal val clazz: Selector.Class?) {
-  data object Mobile : LayoutSize(dynamicMobile)
-  data object Desktop : LayoutSize(dynamicDesktop)
-  data object All : LayoutSize(null)
+fun Modifier.hideOn(vararg breakpoints: Breakpoint) = set("hideOnBreakpoints", hideOnBreakpoints + breakpoints)
+fun Modifier.showOn(vararg breakpoints: Breakpoint) = set("showOnBreakpoints", showOnBreakpoints + breakpoints)
+
+fun Modifier.showOnMobile() = showOn(Breakpoint.Mobile)
+fun Modifier.showOnTablet() = showOn(Breakpoint.Tablet)
+fun Modifier.showOnDesktop() = showOn(Breakpoint.Desktop)
+fun Modifier.showOnWide() = showOn(Breakpoint.Wide)
+
+internal fun Modifier.resolveClasses(): List<Selector.Class> {
+  val breakpointHides = mutableSetOf<Selector.Class>()
+  hideOnBreakpoints.forEach { breakpointHides += it.toHideSelector() }
+  if (showOnBreakpoints.isNotEmpty()) {
+    Breakpoint.values()
+      .filterNot { it in showOnBreakpoints }
+      .forEach { breakpointHides += it.toHideSelector() }
+  }
+  return buildList {
+    addAll(classes)
+    addAll(breakpointHides)
+  }
+}
+
+private fun Breakpoint.toHideSelector(): Selector.Class = when (this) {
+  Breakpoint.Mobile -> hideMobile
+  Breakpoint.Tablet -> hideTablet
+  Breakpoint.Desktop -> hideDesktop
+  Breakpoint.Wide -> hideWide
 }

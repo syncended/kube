@@ -25,6 +25,10 @@ internal object Selectors {
 
   val dynamicMobile = "kube-dynamic-mobile".toClassSelector()
   val dynamicDesktop = "kube-dynamic-desktop".toClassSelector()
+  val hideMobile = "kube-hide-mobile".toClassSelector()
+  val hideTablet = "kube-hide-tablet".toClassSelector()
+  val hideDesktop = "kube-hide-desktop".toClassSelector()
+  val hideWide = "kube-hide-wide".toClassSelector()
 
   val withWeight = "kube-with-weight".toClassSelector()
 

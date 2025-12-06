@@ -2,14 +2,15 @@ package dev.syncended.kube.website.web.documentation
 
 import dev.syncended.kube.components.layout.Column
 import dev.syncended.kube.core.component.Layout
-import dev.syncended.kube.core.component.LayoutSize
 import dev.syncended.kube.core.component.Modifier
+import dev.syncended.kube.core.component.hideOn
 import dev.syncended.kube.core.component.marginBottom
 import dev.syncended.kube.core.component.marginRight
 import dev.syncended.kube.core.component.maxWidth
-import dev.syncended.kube.core.component.renderOn
+import dev.syncended.kube.core.component.showOn
 import dev.syncended.kube.core.component.weight
 import dev.syncended.kube.core.component.width
+import dev.syncended.kube.core.model.Breakpoint
 import dev.syncended.kube.dsl.column
 import dev.syncended.kube.dsl.link
 import dev.syncended.kube.dsl.row
@@ -52,10 +53,11 @@ private fun Layout.docsLayout(
 ) = row(modifier = Modifier.width(percent100)) {
 
   cardComponent(
-    modifier = Modifier.renderOn(LayoutSize.Desktop)
+    modifier = Modifier
       .width(percent100)
       .maxWidth(sizeNavBar)
       .marginRight(spaceSizeSmall)
+      .hideOn(Breakpoint.Mobile)
   ) {
     column { menuElements(path) }
   }
@@ -65,7 +67,7 @@ private fun Layout.docsLayout(
     cardComponent(
       modifier = Modifier.weight(1)
         .marginBottom(spaceSizeSmall)
-        .renderOn(LayoutSize.Mobile)
+        .showOn(Breakpoint.Mobile)
     ) {
       column { menuElements(path) }
     }
@@ -98,4 +100,3 @@ private fun Column.menuElement(name: String, path: DocsPath, selectedPath: DocsP
   if (path == selectedPath) text(">", modifier = Modifier.marginRight(spaceSizeSmall))
   link(text = name, href = "/${path.name.lowercase()}")
 }
-

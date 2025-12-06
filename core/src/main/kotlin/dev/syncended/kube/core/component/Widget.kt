@@ -1,12 +1,16 @@
 package dev.syncended.kube.core.component
 
 import dev.syncended.kube.core.Kube.plugins
+import dev.syncended.kube.core.model.Breakpoint
 import dev.syncended.kube.core.on
 import dev.syncended.kube.styling.Selectors.dynamicDesktop
 import dev.syncended.kube.styling.Selectors.dynamicMobile
+import dev.syncended.kube.styling.Selectors.hideDesktop
+import dev.syncended.kube.styling.Selectors.hideMobile
+import dev.syncended.kube.styling.Selectors.hideTablet
+import dev.syncended.kube.styling.Selectors.hideWide
 import kotlinx.css.CssBuilder
 import kotlinx.css.Display
-import kotlinx.css.blockquote
 import kotlinx.css.display
 import kotlinx.html.A
 import kotlinx.html.CommonAttributeGroupFacade
@@ -110,8 +114,9 @@ abstract class Widget(protected val modifier: Modifier) {
   }
 
   private fun buildClasses(): String? {
-    if (modifier.classes.isEmpty()) return null
-    return modifier.classes.joinToString(" ") { it.name }
+    val resolvedClasses = modifier.resolveClasses()
+    if (resolvedClasses.isEmpty()) return null
+    return resolvedClasses.joinToString(" ") { it.name }
   }
 
   private fun buildStyling(): String? {
@@ -134,7 +139,18 @@ abstract class Widget(protected val modifier: Modifier) {
           display = Display.none
         }
       }
+      cssBuilder.hideOnBreakpoint(hideMobile, Breakpoint.Mobile)
+      cssBuilder.hideOnBreakpoint(hideTablet, Breakpoint.Tablet)
+      cssBuilder.hideOnBreakpoint(hideDesktop, Breakpoint.Desktop)
+      cssBuilder.hideOnBreakpoint(hideWide, Breakpoint.Wide)
+    }
+
+    private fun CssBuilder.hideOnBreakpoint(selector: dev.syncended.kube.core.model.Selector.Class, breakpoint: Breakpoint) {
+      on(selector) {
+        media(breakpoint.mediaQuery()) {
+          display = Display.none
+        }
+      }
     }
   }
 }
-

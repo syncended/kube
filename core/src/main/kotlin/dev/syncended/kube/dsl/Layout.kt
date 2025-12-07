@@ -14,7 +14,7 @@ import dev.syncended.kube.core.component.Modifier
 import dev.syncended.kube.core.model.Alignment
 import dev.syncended.kube.core.model.RenderMode
 
-fun render(
+inline fun render(
   mode: RenderMode = RenderMode.PAGE,
   body: FlatLayout.() -> Unit
 ) = widget(
@@ -23,9 +23,9 @@ fun render(
   body = body
 )
 
-fun renderView(body: FlatLayout.() -> Unit) = render(mode = RenderMode.VIEW_ONLY, body = body)
+inline fun renderView(body: FlatLayout.() -> Unit) = render(mode = RenderMode.VIEW_ONLY, body = body)
 
-fun Layout.box(
+inline fun Layout.box(
   modifier: Modifier = Modifier,
   verticalAlignment: Alignment.Vertical? = null,
   horizontalAlignment: Alignment.Horizontal? = null,
@@ -39,7 +39,7 @@ fun Layout.box(
   body = body
 )
 
-fun Layout.column(
+inline fun Layout.column(
   modifier: Modifier = Modifier,
   alignment: Alignment.Horizontal? = null,
   body: Column.() -> Unit
@@ -51,7 +51,7 @@ fun Layout.column(
   body = body
 )
 
-fun Layout.row(
+inline fun Layout.row(
   modifier: Modifier = Modifier,
   alignment: Alignment.Vertical? = null,
   body: Row.() -> Unit
@@ -63,7 +63,7 @@ fun Layout.row(
   body = body
 )
 
-fun Layout.card(
+inline fun Layout.card(
   modifier: Modifier = Modifier,
   verticalAlignment: Alignment.Vertical? = null,
   horizontalAlignment: Alignment.Horizontal? = null,
@@ -77,7 +77,7 @@ fun Layout.card(
   body = body
 )
 
-fun Layout.link(
+inline fun Layout.link(
   href: String,
   modifier: Modifier = Modifier,
   body: Link.() -> Unit
@@ -89,7 +89,7 @@ fun Layout.link(
   body = body
 )
 
-fun Layout.form(
+inline fun Layout.form(
   modifier: Modifier = Modifier,
   action: String? = null,
   encoding: FormEncoding? = null,

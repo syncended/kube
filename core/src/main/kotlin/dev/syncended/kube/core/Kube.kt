@@ -28,7 +28,7 @@ object Kube {
     plugins.remove(plugin)
   }
 
-  internal fun render(mode: RenderMode, root: Widget): String {
+  fun render(mode: RenderMode, root: Widget): String {
     return createHTMLDocument().html {
       renderHead(mode)
       body { root.render(this) }

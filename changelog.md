@@ -1,8 +1,2 @@
-### Kube v0.5.0 release
-- Rework Breakpoint system
-  - renderOn removed
-  - LayoutSize removed
-  - added BreakpointEnum
-  - added showOn
-  - added hideOn
-- Fix word break on large texts
+### Kube v0.5.1 release
+- Mark all dsl functions as inline, for coroutines support

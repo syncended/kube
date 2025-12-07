@@ -1,2 +1,2 @@
-### Kube v0.5.1 release
-- Mark all dsl functions as inline, for coroutines support
+### Kube v0.5.2 release
+- Fix inline for ktor

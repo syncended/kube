@@ -8,7 +8,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.RoutingCall
 
-suspend fun RoutingCall.respondRender(
+suspend inline fun RoutingCall.respondRender(
   status: HttpStatusCode = HttpStatusCode.OK,
   mode: RenderMode = RenderMode.PAGE,
   body: FlatLayout.() -> Unit
@@ -20,7 +20,7 @@ suspend fun RoutingCall.respondRender(
   respondText(text = content, contentType = ContentType.Text.Html, status = status)
 }
 
-suspend fun RoutingCall.respondRenderView(
+suspend inline fun RoutingCall.respondRenderView(
   status: HttpStatusCode = HttpStatusCode.OK,
   body: FlatLayout.() -> Unit
 ) {

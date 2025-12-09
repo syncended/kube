@@ -1,2 +1,2 @@
-### Kube v0.5.2 release
-- Fix inline for ktor
+### Kube v0.5.3 release
+- Add auto size

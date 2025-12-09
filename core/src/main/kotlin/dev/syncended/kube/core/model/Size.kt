@@ -9,6 +9,9 @@ sealed class Size(private val units: String) {
   data class Rem(override val value: Double) : Size("rem")
   data class Em(override val value: Double) : Size("em")
   data class Percent(override val value: Int) : Size("%")
+  data object Auto : Size("") {
+    override val value: String = "Auto"
+  }
 
   internal fun toDimension(): LinearDimension {
     return LinearDimension(toRawValue())
